@@ -33,7 +33,7 @@ def findtranslations(synset_id, lang, apikey):
         yield sense['lemma']
 
 def main():
-    parser = argparse.ArgumentParser(description="BabelEnte: Entity Extractor and Trannslator using BabelFy and Babelnet.org", formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser = argparse.ArgumentParser(description="BabelEnte: Entity Extractor and Translator using BabelFy and Babelnet.org", formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument('-k','--apikey', type=str,help="Babelnet API key", action='store',default="",required=True)
     parser.add_argument('-f','--sourcelang', type=str,help="Source language code", action='store',default="",required=True)
     parser.add_argument('-t','--targetlang', type=str,help="Target language code", action='store',default="",required=True)
