@@ -21,6 +21,13 @@ You will need a BabelFy API key, get it from `BabelNet.org <http://babelnet.org>
 
 See ``babelente -h`` for usage for now; to be documented further later...
 
+Evaluation
+-----------
+
+The evaluation produces two metrics:
+* **Precision** -How many of the target synsets are correct? (``|matchingsynsets| / |targetsynsets|``)
+* **Recall** - How many of the source synsets are found? (``|matchingsynsets| / |sourcesynsets|``)
+
 License
 -----------
 
