@@ -24,9 +24,10 @@ See ``babelente -h`` for usage for now; to be documented further later...
 Evaluation
 -----------
 
-The evaluation produces two metrics:
+The evaluation produces two metrics, computer per sentence/line pair and final score aggregated as macro-average:
 * **Precision** -How many of the target synsets are correct? (``|matchingsynsets| / |targetsynsets|``)
 * **Recall** - How many of the source synsets are found? (``|matchingsynsets| / |sourcesynsets|``)
+
 
 License
 -----------
