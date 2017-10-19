@@ -125,7 +125,7 @@ def evaluate(sourceentities, targetentities):
     return evaluation
 
 def main():
-    parser = argparse.ArgumentParser(description="BabelEnte: Entity extractioN, Translation and Evaluation using BabelFy and Babelnet.org", formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser = argparse.ArgumentParser(description="BabelEnte: Entity extractioN, Translation and Evaluation using BabelFy", formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument('-k','--apikey', type=str,help="Babelnet API key", action='store',default="",required=False)
     parser.add_argument('-s','--sourcelang', type=str,help="Source language code", action='store',default="EN",required=False)
     parser.add_argument('-t','--targetlang', type=str,help="Target language code", action='store',default="",required=False)
