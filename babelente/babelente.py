@@ -48,11 +48,11 @@ def findtranslations(synset_id, lang, apikey, cache=None):
 def main():
     parser = argparse.ArgumentParser(description="BabelEnte: Entity Extractor and Translator using BabelFy and Babelnet.org", formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument('-k','--apikey', type=str,help="Babelnet API key", action='store',default="",required=True)
-    parser.add_argument('-f','--sourcelang', type=str,help="Source language code", action='store',default="",required=True)
+    parser.add_argument('-f','--sourcelang', type=str,help="Source language code", action='store',default="EN",required=True)
     parser.add_argument('-t','--targetlang', type=str,help="Target language code", action='store',default="",required=True)
     parser.add_argument('-i','--input', type=str,help="Input sentences (plain text, one per line, utf-8)", action='store',default="",required=True)
     parser.add_argument('-c','--cache', type=str,help="Cache file", action='store',required=False)
-    parser.add_argument('--eval', type=str,help="Evaluate against specified file with output sentences", action='store',default="",required=False)
+    parser.add_argument('--eval', type=str,help="Evaluate against specified file with Target sentences", action='store',default="",required=False)
     args = parser.parse_args()
 
     if args.cache:
