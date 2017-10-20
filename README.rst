@@ -19,7 +19,26 @@ Usage
 
 You will need a BabelFy API key, get it from `BabelNet.org <http://babelnet.org>`_ .
 
-See ``babelente -h`` for usage for now; to be documented further later...
+See ``babelente -h`` for usage for now.
+
+To evaluate a translation (english to portuguese in this example), output wil be JSON to stdout:
+
+```
+$ babelente -k "YOUR-API-KEY" -f en -t pt -S sentences.en.txt -T sentences.pt.txt > output.json
+```
+
+To re-evaluate:
+
+```
+$ babelente --evalfile output.json > newoutput.json
+```
+
+You can also use BabelEnte to just extract entities a single language, without evaluation:
+
+```
+$ babelente -k "YOUR-API-KEY" -f en -S sentences.en.txt > output.json
+```
+
 
 Evaluation
 -----------
