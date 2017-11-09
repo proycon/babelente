@@ -102,6 +102,7 @@ def evaluate(sourceentities, targetentities):
 
         evaluation['perline'][linenr] = {'matches': len(matches), 'sources': len(sourcesynsets), 'targets': len(targetsynsets) }
         #precision (how many of the target synsets are correct?)
+        #TODO: alternative precision only on the basis of source synsets?
         if len(targetsynsets):
             precision = len(matches)/len(targetsynsets)
             overallprecision.append(precision)

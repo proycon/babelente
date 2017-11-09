@@ -1,4 +1,4 @@
-BabelEnte: Entity extractioN, Translation and Evaluation using BabelFy
+BabelEnte: Entity extractioN, Translation and implicit Evaluation using BabelFy
 ===================================================================================
 
 This is an entity extractor, translator and evaluator that uses `BabelFy <http://babelfy.org>`_ . Initially developed
@@ -6,6 +6,8 @@ for the TraMOOC project. It is written in Python 3.
 
 Installation
 ---------------
+
+(not yet ready; to appear soonish)
 
 ::
 
