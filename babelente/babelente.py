@@ -54,7 +54,11 @@ def resolveoffset(offsetmap, offset):
 
 def findentities(lines, lang, apikey, dryrun=False):
     """Find entities using BabelFy given a set of input lines"""
-    babelclient = BabelfyClient(apikey, {'lang': lang.upper()})
+    babelfy_params = dict()
+    babelfy_params['lang'] = lang.upper()
+    babelfy_params['cands'] = "TOP"
+    babelclient = BabelfyClient(API_KEY, babelfy_params)
+    #babelclient = BabelfyClient(apikey, {'lang': lang.upper()})
     for text, firstlinenr, lastlinenr, offsetmap in gettextchunks(lines, maxchunksize=4096):
         if dryrun:
             print("Would run query for firstlinenr=" + str(firstlinenr) + ", lastlinenr=" + str(lastlinenr), " text=" + text,file=sys.stderr)
