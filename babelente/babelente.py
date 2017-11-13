@@ -6,11 +6,10 @@
 # GNU Public License v3
 
 import sys
-import os
 import argparse
-import requests
 import json
-import pickle
+import requests
+import numpy as np
 from babelpy.babelfy import BabelfyClient
 
 
@@ -49,30 +48,30 @@ def resolveoffset(offsetmap, offset):
     """Convert a relative character offset in a chunk to an absolute line number"""
     for linenr, (begin, end) in offsetmap.items():
         if offset >= begin and offset < end:
-            return linenr
+            return linenr, offset - begin
     raise ValueError("Unable to resolve offset " + str(offset))
 
 def findentities(lines, lang, args):
     """Find entities using BabelFy given a set of input lines"""
     babelfy_params = dict()
     babelfy_params['lang'] = lang.upper()
-    if hasattr(args,'cands'):
+    if args.cands is not None:
         babelfy_params['cands'] = args.cands
-    if hasattr(args,'anntype'):
+    if args.anntype is not None:
         babelfy_params['annType'] = args.anntype
-    if hasattr(args,'annres'):
+    if args.annres is not None:
         babelfy_params['annres'] = args.annres
-    if hasattr(args,'th'):
+    if args.th is not None:
         babelfy_params['th'] = args.th
-    if hasattr(args,'match'):
+    if args.match is not None:
         babelfy_params['match'] = args.match
-    if hasattr(args,'mcs'):
+    if args.mcs is not None:
         babelfy_params['MCS'] = args.mcs
-    if hasattr(args,'dens') and args.dens:
+    if args.dens:
         babelfy_params['dens'] = "true"
-    if hasattr(args,'extaida') and args.extaida:
+    if args.extaida:
         babelfy_params['extAida'] = "true"
-    if hasattr(args,'postag'):
+    if args.postag is not None:
         babelfy_params['posTag'] = args.postag
     babelclient = BabelfyClient(args.apikey, babelfy_params)
     #babelclient = BabelfyClient(apikey, {'lang': lang.upper()})
@@ -83,8 +82,32 @@ def findentities(lines, lang, args):
         else:
             babelclient.babelfy(text)
             for entity in babelclient.entities:
-                entity['linenr'] = resolveoffset(offsetmap, entity['start'])
+                entity['linenr'], entity['offset'] = resolveoffset(offsetmap, entity['start'])
                 yield entity
+
+def compute_coverage_line(line, linenr, entities):
+    """Computes coverage of entities; expresses as ratio of characters covered; for a single line"""
+    charmask = np.zeros(len(line), dtype=np.int8)
+    for entity in entities:
+        if entity['linenr'] == linenr:
+            for i in range( entity['offset'], entity['offset'] + (entity['end'] - entity['start'])+1):
+                charmask[i] = 1
+        elif entity['linenr'] > linenr: #they are returned in order
+            break
+    coverage = charmask.sum()
+    print(coverage,file=sys.stderr)
+    if coverage: coverage = coverage / len(charmask)
+    return float(coverage)
+
+def compute_coverage(lines, entities):
+    """Computes coverage of entities; expresses as ratio of characters covered; averaged over all lines"""
+    coverage = np.zeros(len(lines), dtype=np.int8)
+    for i, line in enumerate(lines):
+        coverage[i] = compute_coverage_line(line, i, entities)
+    coverage = coverage.sum()
+    if coverage: coverage = coverage / len(coverage)
+    return float(coverage)
+
 
 def findtranslations(synset_id, lang, apikey, cache=None):
     """Translate entity to target language (current not used!)"""
@@ -110,10 +133,12 @@ def findtranslations(synset_id, lang, apikey, cache=None):
             if lang not in cache[synset_id]: cache[synset_id][lang] = set()
             cache[synset_id][lang].add(sense['lemma'])
 
-def evaluate(sourceentities, targetentities):
+def evaluate(sourceentities, targetentities, sourcelines, targetlines):
     evaluation = {'perline':{} }
     overallprecision = []
     overallrecall = []
+    overalltargetcoverage = []
+    overallsourcecoverage = []
     linenumbers = sorted( ( entity['linenr'] for entity in sourceentities) )
     for linenr in  linenumbers:
         #check for each synset ID whether it is present in the target sentence
@@ -124,16 +149,28 @@ def evaluate(sourceentities, targetentities):
         evaluation['perline'][linenr] = {'matches': len(matches), 'sources': len(sourcesynsets), 'targets': len(targetsynsets) }
         #precision (how many of the target synsets are correct?)
         #TODO: alternative precision only on the basis of source synsets?
-        if len(targetsynsets):
+        if targetsynsets:
             precision = len(matches)/len(targetsynsets)
             overallprecision.append(precision)
             evaluation['perline'][linenr]['precision'] = precision
+            coverage = compute_coverage_line(targetlines[linenr], linenr, targetentities)
+            evaluation['perline'][linenr]['targetcoverage'] = coverage
+            overalltargetcoverage.append(coverage)
+        else:
+            evaluation['perline'][linenr]['targetcoverage'] = 0.0
+            overalltargetcoverage.append(0.0)
 
         #recall (how many of the source synsets are found?)
-        if len(sourcesynsets):
+        if sourcesynsets:
             recall = len(matches)/len(sourcesynsets)
             overallrecall.append(recall)
             evaluation['perline'][linenr]['recall'] = recall
+            coverage = compute_coverage_line(sourcelines[linenr], linenr, sourceentities)
+            evaluation['perline'][linenr]['sourcecoverage'] = coverage
+            overallsourcecoverage.append(coverage)
+        else:
+            evaluation['perline'][linenr]['sourcecoverage'] = 0.0
+            overallsourcecoverage.append(0.0)
 
     #macro averages of precision and recall
     if overallprecision:
@@ -144,6 +181,14 @@ def evaluate(sourceentities, targetentities):
         evaluation['recall'] = sum(overallrecall) / len(overallrecall)
     else:
         evaluation['recall'] = 0
+    if overallsourcecoverage:
+        evaluation['overallsourcecoverage'] = sum(overallsourcecoverage) / len(overallsourcecoverage)
+    else:
+        evaluation['overallsourcecoverage'] = 0
+    if overalltargetcoverage:
+        evaluation['overalltargetcoverage'] = sum(overalltargetcoverage) / len(overalltargetcoverage)
+    else:
+        evaluation['overalltargetcoverage'] = 0
     return evaluation
 
 def main():
@@ -172,12 +217,22 @@ def main():
     if args.target and not args.source:
         print("ERROR: Specify --source/-S as well when --target/-T is used . See babelente -h for usage instructions.",file=sys.stderr)
         sys.exit(2)
-    if args.target or args.source and not args.apikey:
+    if (args.target or args.source) and not args.apikey:
         print("ERROR: Specify an API key (--apikey). Get one on http://babelnet.org/",file=sys.stderr)
         sys.exit(2)
     if args.target and not args.targetlang:
         print("ERROR: Specify a target language (-t).",file=sys.stderr)
         sys.exit(2)
+
+    with open(args.source, 'r',encoding='utf-8') as f:
+        sourcelines = [ l.strip() for l in f.readlines() ]
+    if args.target:
+        with open(args.target, 'r',encoding='utf-8') as f:
+            targetlines = [ l.strip() for l in f.readlines() ]
+
+        if len(sourcelines) != len(targetlines):
+            print("ERROR: Expected the same number of line in source and target files, but got " + str(len(sourcelines)) + " vs " + str(len(targetlines)) ,file=sys.stderr)
+            sys.exit(2)
 
     if args.evalfile:
         with open(args.evalfile,'rb') as f:
@@ -186,20 +241,10 @@ def main():
         targetentities = data['targetentities']
 
         print("Evaluating...",file=sys.stderr)
-        evaluation = evaluate(sourceentities, targetentities)
+        evaluation = evaluate(sourceentities, targetentities, sourcelines, targetlines)
         print(json.dumps({'sourceentities':sourceentities, 'targetentities': targetentities, 'evaluation': evaluation}, indent=4,ensure_ascii=False))
         print("PRECISION=" + str(evaluation['precision']), "RECALL=" + str(evaluation['recall']), file=sys.stderr) #summary
     else:
-        with open(args.source, 'r',encoding='utf-8') as f:
-            sourcelines = [ l.strip() for l in f.readlines() ]
-        if args.target:
-            with open(args.target, 'r',encoding='utf-8') as f:
-                targetlines = [ l.strip() for l in f.readlines() ]
-
-            if len(sourcelines) != len(targetlines):
-                print("ERROR: Expected the same number of line in source and target files, but got " + str(len(sourcelines)) + " vs " + str(len(targetlines)) ,file=sys.stderr)
-                sys.exit(2)
-
         print("Extracting source entities...",file=sys.stderr)
         sourceentities = [ entity for  entity in findentities(sourcelines, args.sourcelang, args) if entity['isEntity'] and 'babelSynsetID' in entity ] #with sanity check
 
@@ -208,11 +253,11 @@ def main():
             targetentities = [ entity for  entity in findentities(targetlines, args.targetlang, args) if entity['isEntity'] and 'babelSynsetID' in entity ] #with sanity check
 
             print("Evaluating...",file=sys.stderr)
-            evaluation = evaluate(sourceentities, targetentities)
+            evaluation = evaluate(sourceentities, targetentities, sourcelines, targetlines)
             print(json.dumps({'sourceentities':sourceentities, 'targetentities': targetentities, 'evaluation': evaluation}, indent=4,ensure_ascii=False))
             print("PRECISION=" + str(evaluation['precision']), "RECALL=" + str(evaluation['recall']), file=sys.stderr) #summary
         else:
-            print(json.dumps({'entities':sourceentities}, indent=4,ensure_ascii=False))
+            print(json.dumps({'entities':sourceentities}, indent=4,ensure_ascii=False)) #MAYBE TODO: add coverage?
 
 if __name__ == '__main__':
     main()
