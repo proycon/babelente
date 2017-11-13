@@ -4,8 +4,9 @@ BabelEnte: Entity extractioN, Translation and implicit Evaluation using BabelFy
 This is an entity extractor, translator and evaluator that uses `BabelFy <http://babelfy.org>`_ . Initially developed
 for the TraMOOC project. It is written in Python 3.
 
-![](logo.jpg?raw=true)
-
+.. image:: https://github.com/proycon/babelente/blob/master/logo.jpg?raw=true
+    :align: center
+    
 Installation
 ---------------
 
