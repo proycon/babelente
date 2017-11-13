@@ -95,7 +95,6 @@ def compute_coverage_line(line, linenr, entities):
         elif entity['linenr'] > linenr: #they are returned in order
             break
     coverage = charmask.sum()
-    print(coverage,file=sys.stderr)
     if coverage: coverage = coverage / len(charmask)
     return float(coverage)
 
