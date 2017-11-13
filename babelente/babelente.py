@@ -52,15 +52,32 @@ def resolveoffset(offsetmap, offset):
             return linenr
     raise ValueError("Unable to resolve offset " + str(offset))
 
-def findentities(lines, lang, apikey, dryrun=False):
+def findentities(lines, lang, args):
     """Find entities using BabelFy given a set of input lines"""
     babelfy_params = dict()
     babelfy_params['lang'] = lang.upper()
-    babelfy_params['cands'] = "TOP"
-    babelclient = BabelfyClient(API_KEY, babelfy_params)
+    if hasattr(args,'cands'):
+        babelfy_params['cands'] = args.cands
+    if hasattr(args,'anntype'):
+        babelfy_params['annType'] = args.anntype
+    if hasattr(args,'annres'):
+        babelfy_params['annres'] = args.annres
+    if hasattr(args,'th'):
+        babelfy_params['th'] = args.th
+    if hasattr(args,'match'):
+        babelfy_params['match'] = args.match
+    if hasattr(args,'mcs'):
+        babelfy_params['MCS'] = args.mcs
+    if hasattr(args,'dens') and args.dens:
+        babelfy_params['dens'] = "true"
+    if hasattr(args,'extaida') and args.extaida:
+        babelfy_params['extAida'] = "true"
+    if hasattr(args,'postag'):
+        babelfy_params['posTag'] = args.postag
+    babelclient = BabelfyClient(args.apikey, babelfy_params)
     #babelclient = BabelfyClient(apikey, {'lang': lang.upper()})
     for text, firstlinenr, lastlinenr, offsetmap in gettextchunks(lines, maxchunksize=4096):
-        if dryrun:
+        if args.dryrun:
             print("Would run query for firstlinenr=" + str(firstlinenr) + ", lastlinenr=" + str(lastlinenr), " text=" + text,file=sys.stderr)
             print("Offsetmap:", repr(offsetmap), file=sys.stderr)
         else:
@@ -131,12 +148,21 @@ def evaluate(sourceentities, targetentities):
 
 def main():
     parser = argparse.ArgumentParser(description="BabelEnte: Entity extractioN, Translation and Evaluation using BabelFy", formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    parser.add_argument('-k','--apikey', type=str,help="Babelnet API key", action='store',default="",required=False)
+    parser.add_argument('-k','--apikey','--key', type=str,help="Babelnet API key", action='store',default="",required=False)
     parser.add_argument('-s','--sourcelang', type=str,help="Source language code", action='store',default="EN",required=False)
     parser.add_argument('-t','--targetlang', type=str,help="Target language code", action='store',default="",required=False)
     parser.add_argument('-S','--source', type=str,help="Source sentences (plain text, one per line, utf-8)", action='store',default="",required=False)
     parser.add_argument('-T','--target', type=str,help="Target sentences (plain text, one per line, utf-8)", action='store',default="",required=False)
     parser.add_argument('--evalfile', type=str,help="(Re)evaluate the supplied json file (output of babelente)", action='store',default="",required=False)
+    parser.add_argument('--anntype', type=str,help="Annotation Type: Allows to restrict the disambiguated entries to only named entities (NAMED_ENTITIES), word senses (CONCEPTS) or both (ALL).", action='store',required=False)
+    parser.add_argument('--annres', type=str,help="Annotation Resource: Allows to restrict the disambiguated entries to only WordNet (WN), Wikipedia (WIKI) or BabelNet (BN)", action='store',required=False)
+    parser.add_argument('--th', type=float,help="Cutting Threshold (BabelFy)", action='store',required=False)
+    parser.add_argument('--match', type=str,help="select the candidate extraction strategy, i.e., either only exact matching (EXACT_MATCHING) or both exact and partial matching (PARTIAL_MATCHING)", action='store',required=False)
+    parser.add_argument('--mcs', type=str,help="Use this to enable or disable the most common sense backoff strategy for BabelFy (values: ON, OFF, ON_WITH_STOPWORDS)", action='store',required=False)
+    parser.add_argument('--dens', help="Enable the densest subgraph heuristic during the disambiguation pipeline.", action='store_true',required=False)
+    parser.add_argument('--cands', type=str,help="Use this parameter to obtain as a result of the disambiguation procedure a scored list of candidates (ALL) or only the top ranked one (TOP); if ALL is selected then --mcs and --th parameters will not be taken into account).", action='store',required=False)
+    parser.add_argument('--postag', type=str,help="Use this parameter to change the tokenization and pos-tagging pipeline for your input text. Values: STANDARD, NOMINALIZE_ADJECTIVES, INPUT_FRAGMENTS_AS_NOUNS, CHAR_BASED_TOKENIZATION_ALL_NOUN", action='store',required=False)
+    parser.add_argument('--extaida', help="Extend the candidates sets with the aida_means relations from YAGO.", action='store_true',required=False)
     parser.add_argument('--dryrun', help="Do not query", action='store_true',required=False)
     args = parser.parse_args()
 
@@ -175,11 +201,11 @@ def main():
                 sys.exit(2)
 
         print("Extracting source entities...",file=sys.stderr)
-        sourceentities = [ entity for  entity in findentities(sourcelines, args.sourcelang, args.apikey, args.dryrun) if entity['isEntity'] and 'babelSynsetID' in entity ] #with sanity check
+        sourceentities = [ entity for  entity in findentities(sourcelines, args.sourcelang, args) if entity['isEntity'] and 'babelSynsetID' in entity ] #with sanity check
 
         if args.target:
             print("Extracting target entities...",file=sys.stderr)
-            targetentities = [ entity for  entity in findentities(targetlines, args.targetlang, args.apikey, args.dryrun) if entity['isEntity'] and 'babelSynsetID' in entity ] #with sanity check
+            targetentities = [ entity for  entity in findentities(targetlines, args.targetlang, args) if entity['isEntity'] and 'babelSynsetID' in entity ] #with sanity check
 
             print("Evaluating...",file=sys.stderr)
             evaluation = evaluate(sourceentities, targetentities)
