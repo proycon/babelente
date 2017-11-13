@@ -6,7 +6,7 @@ for the TraMOOC project. It is written in Python 3.
 
 .. image:: https://github.com/proycon/babelente/blob/master/logo.jpg?raw=true
     :align: center
-    
+
 Installation
 ---------------
 
@@ -32,7 +32,7 @@ To evaluate a translation (english to portuguese in this example), output wil be
 
 To re-evaluate:
 
-``$ babelente --evalfile output.json > newoutput.json``
+``$ babelente --evalfile output.json -S sentences.en.txt -T sentences.pt.txt > newoutput.json``
 
 You can also use BabelEnte to just extract entities a single language, without evaluation:
 
