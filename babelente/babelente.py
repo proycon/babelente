@@ -60,7 +60,7 @@ def findentities(lines, lang, args):
     if args.anntype is not None:
         babelfy_params['annType'] = args.anntype
     if args.annres is not None:
-        babelfy_params['annres'] = args.annres
+        babelfy_params['annRes'] = args.annres
     if args.th is not None:
         babelfy_params['th'] = args.th
     if args.match is not None:
