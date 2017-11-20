@@ -46,10 +46,13 @@ def gettextchunks(lines, maxchunksize=4096):
 
 def resolveoffset(offsetmap, offset):
     """Convert a relative character offset in a chunk to an absolute line number"""
+    minoffset = maxoffset = None
     for linenr, (begin, end) in offsetmap.items():
         if offset >= begin and offset < end:
             return linenr, offset - begin
-    raise ValueError("Unable to resolve offset " + str(offset))
+        if minoffset is None or begin < minoffset: minoffset = begin
+        if maxoffset is None or end > maxoffset: maxoffset = end
+    raise ValueError("Unable to resolve offset " + str(offset) + "; minoffset=" + str(minoffset) + ", maxoffset=" + str(maxoffset) + ", lines=" + str(len(offsetmap)) )
 
 def findentities(lines, lang, args):
     """Find entities using BabelFy given a set of input lines"""
@@ -75,15 +78,21 @@ def findentities(lines, lang, args):
         babelfy_params['posTag'] = args.postag
     babelclient = BabelfyClient(args.apikey, babelfy_params)
     #babelclient = BabelfyClient(apikey, {'lang': lang.upper()})
-    for text, firstlinenr, lastlinenr, offsetmap in gettextchunks(lines, maxchunksize=4096):
+    for i, (text, firstlinenr, lastlinenr, offsetmap) in enumerate(gettextchunks(lines, maxchunksize=4096)):
         if args.dryrun:
-            print("Would run query for firstlinenr=" + str(firstlinenr) + ", lastlinenr=" + str(lastlinenr), " text=" + text,file=sys.stderr)
+            print("---\nCHUNK #" + str(i) + ". Would run query for firstlinenr=" + str(firstlinenr) + ", lastlinenr=" + str(lastlinenr), " text=" + text,file=sys.stderr)
             print("Offsetmap:", repr(offsetmap), file=sys.stderr)
         else:
             babelclient.babelfy(text)
-            for entity in babelclient.entities:
-                entity['linenr'], entity['offset'] = resolveoffset(offsetmap, entity['start'])
-                yield entity
+            for j, entity in enumerate(babelclient.entities):
+                try:
+                    entity['linenr'], entity['offset'] = resolveoffset(offsetmap, entity['start'])
+                    yield entity
+                except ValueError as e:
+                    print("---\nCHUNK #" + str(i) + " ENTITY #" + str(j) + ". Ran query for firstlinenr=" + str(firstlinenr) + ", lastlinenr=" + str(lastlinenr), " text=" + text,file=sys.stderr)
+                    print("Entity:", repr(entity), file=sys.stderr)
+                    print("Offsetmap:", repr(offsetmap), file=sys.stderr)
+                    raise e
 
 def compute_coverage_line(line, linenr, entities):
     """Computes coverage of entities; expresses as ratio of characters covered; for a single line"""
