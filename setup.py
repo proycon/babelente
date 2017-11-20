@@ -11,7 +11,7 @@ def read(fname):
 
 setup(
     name = "BabelEnte",
-    version = "0.1",
+    version = "0.1.2",
     author = "Maarten van Gompel, Iris Hendrickx",
     author_email = "proycon@anaproy.nl",
     description = ("Entity extractioN, Translation and Evaluation using BabelFy"),
@@ -31,6 +31,6 @@ setup(
     zip_safe=False,
     include_package_data=True,
     package_data = { },
-    install_requires=[ 'babelpy >= 1.0'],
+    install_requires=[ 'babelpy >= 1.0', 'numpy'],
     entry_points = {    'console_scripts': [ 'babelente = babelente.babelente:main' ] }
 )
