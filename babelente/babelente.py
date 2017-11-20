@@ -96,11 +96,15 @@ def findentities(lines, lang, args):
 
 def compute_coverage_line(line, linenr, entities):
     """Computes coverage of entities; expresses as ratio of characters covered; for a single line"""
-    charmask = np.zeros(len(line), dtype=np.int8)
+    l = len(line)
+    charmask = np.zeros(l, dtype=np.int8)
     for entity in entities:
         if entity['linenr'] == linenr:
             for i in range( entity['offset'], entity['offset'] + (entity['end'] - entity['start'])+1):
-                charmask[i] = 1
+                if i < l:
+                    charmask[i] = 1
+                else:
+                    print("WARNING: coverage out of range: ",i," in ",l,file=sys.stderr)
         elif entity['linenr'] > linenr: #they are returned in order
             break
     coverage = charmask.sum()
