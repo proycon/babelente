@@ -48,7 +48,7 @@ def resolveoffset(offsetmap, offset):
     """Convert a relative character offset in a chunk to an absolute line number"""
     minoffset = maxoffset = None
     for linenr, (begin, end) in offsetmap.items():
-        if offset >= begin and offset < end:
+        if offset >= begin and offset <= end:
             return linenr, offset - begin
         if minoffset is None or begin < minoffset: minoffset = begin
         if maxoffset is None or end > maxoffset: maxoffset = end
