@@ -17,7 +17,7 @@ setup(
     description = ("Entity extractioN, Translation and Evaluation using BabelFy"),
     license = "GPL",
     keywords = "nlp computational_linguistics entities wikipedia dbpedia linguistics tramooc",
-    url = "https://github.com/proycon/bagelente",
+    url = "https://github.com/proycon/babelente",
     packages=['babelente'],
     long_description=read('README.rst'),
     classifiers=[
