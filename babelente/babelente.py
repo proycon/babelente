@@ -44,12 +44,24 @@ def gettextchunks(lines, maxchunksize=4096):
     if text:
         yield text, firstlinenr, lastlinenr, offsetmap
 
-def resolveoffset(offsetmap, offset):
+def resolveoffset(offsetmap, offset, lines, entity_text):
     """Convert a relative character offset in a chunk to an absolute line number"""
     minoffset = maxoffset = None
     for linenr, (begin, end) in offsetmap.items():
         if offset >= begin and offset <= end:
-            return linenr, offset - begin
+            offset = offset-begin
+            try:
+                if lines[linenr][offset:offset+len(entity_text)] != entity_text:
+                    print("--ERROR--",file=sys.stderr)
+                    print("Line #" + str(linenr) + ": " + lines[linenr],file=sys.stderr)
+                    print("Got '" +   lines[linenr][offset:offset+len(entity_text)] + "', expected: '" + entity_text + "'",file=sys.stderr)
+                    raise ValueError("Resolved offset does not match text " + str(offset) + "; minoffset=" + str(minoffset) + ", maxoffset=" + str(maxoffset) + ", lines=" + str(len(offsetmap)) )
+            except IndexError:
+                print("--ERROR--",file=sys.stderr)
+                print("Line #" + str(linenr) + ": " + lines[linenr],file=sys.stderr)
+                print("Out of bounds, expected: '" + entity_text + "'",file=sys.stderr)
+                raise ValueError("Resolved offset does not match text " + str(offset) + "; minoffset=" + str(minoffset) + ", maxoffset=" + str(maxoffset) + ", lines=" + str(len(offsetmap)) )
+            return linenr, offset
         if minoffset is None or begin < minoffset: minoffset = begin
         if maxoffset is None or end > maxoffset: maxoffset = end
     raise ValueError("Unable to resolve offset " + str(offset) + "; minoffset=" + str(minoffset) + ", maxoffset=" + str(maxoffset) + ", lines=" + str(len(offsetmap)) )
@@ -85,7 +97,7 @@ def findentities(lines, lang, args):
             babelclient.babelfy(text)
             for j, entity in enumerate(resolveoverlap(babelclient.entities, args.overlap)):
                 try:
-                    entity['linenr'], entity['offset'] = resolveoffset(offsetmap, entity['start'])
+                    entity['linenr'], entity['offset'] = resolveoffset(offsetmap, entity['start'], lines, entity['text'])
                     yield entity
                 except ValueError as e:
                     print("---\nCHUNK #" + str(i) + " ENTITY #" + str(j) + ". Ran query for firstlinenr=" + str(firstlinenr) + ", lastlinenr=" + str(lastlinenr), " text=" + text,file=sys.stderr)
@@ -140,7 +152,7 @@ def resolveoverlap(entities, overlapstrategy):
 
 
 def compute_coverage_line(line, linenr, entities):
-    """Computes coverage of entities; expresses as ratio of characters covered; for a single line"""
+    """Computes coverage of entities; expressed as ratio of characters covered; for a single line"""
     l = len(line)
     charmask = np.zeros(l, dtype=np.int8)
     for entity in entities:
@@ -157,7 +169,7 @@ def compute_coverage_line(line, linenr, entities):
     return float(coverage)
 
 def compute_coverage(lines, entities):
-    """Computes coverage of entities; expresses as ratio of characters covered; averaged over all lines"""
+    """Computes coverage of entities; expressed as ratio of characters covered; averaged over all lines"""
     coverage = np.zeros(len(lines), dtype=np.int8)
     for i, line in enumerate(lines):
         coverage[i] = compute_coverage_line(line, i, entities)
@@ -248,6 +260,10 @@ def evaluate(sourceentities, targetentities, sourcelines, targetlines):
         evaluation['overalltargetcoverage'] = 0
     return evaluation
 
+def stripmultispace(line):
+    line = line.strip()
+    return " ".join([ w for w in line.split(" ") if w ])
+
 def main():
     parser = argparse.ArgumentParser(description="BabelEnte: Entity extractioN, Translation and Evaluation using BabelFy", formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument('-k','--apikey','--key', type=str,help="Babelnet API key", action='store',default="",required=False)
@@ -283,10 +299,10 @@ def main():
         sys.exit(2)
 
     with open(args.source, 'r',encoding='utf-8') as f:
-        sourcelines = [ l.strip() for l in f.readlines() ]
+        sourcelines = [ stripmultispace(l) for l in f.readlines() ]
     if args.target:
         with open(args.target, 'r',encoding='utf-8') as f:
-            targetlines = [ l.strip() for l in f.readlines() ]
+            targetlines = [ stripmultispace(l) for l in f.readlines() ]
 
         if len(sourcelines) != len(targetlines):
             print("ERROR: Expected the same number of line in source and target files, but got " + str(len(sourcelines)) + " vs " + str(len(targetlines)) ,file=sys.stderr)
