@@ -77,14 +77,13 @@ def findentities(lines, lang, args):
     if args.postag is not None:
         babelfy_params['posTag'] = args.postag
     babelclient = BabelfyClient(args.apikey, babelfy_params)
-    #babelclient = BabelfyClient(apikey, {'lang': lang.upper()})
     for i, (text, firstlinenr, lastlinenr, offsetmap) in enumerate(gettextchunks(lines, maxchunksize=4096)):
         if args.dryrun:
             print("---\nCHUNK #" + str(i) + ". Would run query for firstlinenr=" + str(firstlinenr) + ", lastlinenr=" + str(lastlinenr), " text=" + text,file=sys.stderr)
             print("Offsetmap:", repr(offsetmap), file=sys.stderr)
         else:
             babelclient.babelfy(text)
-            for j, entity in enumerate(babelclient.entities):
+            for j, entity in enumerate(resolveoverlap(babelclient.entities, args.overlap)):
                 try:
                     entity['linenr'], entity['offset'] = resolveoffset(offsetmap, entity['start'])
                     yield entity
@@ -93,6 +92,38 @@ def findentities(lines, lang, args):
                     print("Entity:", repr(entity), file=sys.stderr)
                     print("Offsetmap:", repr(offsetmap), file=sys.stderr)
                     raise e
+
+def resolveoverlap(entities, overlapstrategy):
+    overlapstrategy = overlapstrategy.lower()
+    if overlapstrategy in ('no','none'):
+        for entity in entities:
+            yield entity
+    else:
+        for i, entity in enumerate(entities):
+            best = True
+            if overlapstrategy == 'longest':
+                bestscore = entity['end'] - entity['start'] #measure in characters
+            elif overlapstrategy == 'best':
+                bestscore = entity['score']
+            else:
+                raise ValueError("Invalid overlap strategy: " + overlapstrategy)
+
+            #find overlapping entities for the entity under consideration
+            for j, entity2 in enumerate(entities):
+                if j > i:
+                    #does this entity overlap?
+                    if (entity2['tokenfragment']['start'] >= entity['tokenfragment']['start'] and entity2['tokenfragment']['start'] <=  entity['tokenfragment']['end']) or (entity2['tokenfragment']['end'] >= entity['tokenfragment']['start'] and entity2['tokenfragment']['end'] <=  entity['tokenfragment']['end']):
+                        if overlapstrategy == 'longest':
+                            score = entity2['end'] - entity2['start']
+                        elif overlapstrategy == 'best':
+                            score = entity2['score']
+                        if score >= bestscore:
+                            best = False
+                            break
+
+            if best:
+                yield entity
+
 
 def compute_coverage_line(line, linenr, entities):
     """Computes coverage of entities; expresses as ratio of characters covered; for a single line"""
@@ -220,6 +251,7 @@ def main():
     parser.add_argument('--cands', type=str,help="Use this parameter to obtain as a result of the disambiguation procedure a scored list of candidates (ALL) or only the top ranked one (TOP); if ALL is selected then --mcs and --th parameters will not be taken into account).", action='store',required=False)
     parser.add_argument('--postag', type=str,help="Use this parameter to change the tokenization and pos-tagging pipeline for your input text. Values: STANDARD, NOMINALIZE_ADJECTIVES, INPUT_FRAGMENTS_AS_NOUNS, CHAR_BASED_TOKENIZATION_ALL_NOUN", action='store',required=False)
     parser.add_argument('--extaida', help="Extend the candidates sets with the aida_means relations from YAGO.", action='store_true',required=False)
+    parser.add_argument('--overlap',type='str', help="Resolve overlapping entities, can be set to no (default), longest, best", action='store',default='no',required=False)
     parser.add_argument('--dryrun', help="Do not query", action='store_true',required=False)
     args = parser.parse_args()
 
