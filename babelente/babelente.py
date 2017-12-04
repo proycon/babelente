@@ -100,29 +100,43 @@ def resolveoverlap(entities, overlapstrategy):
             yield entity
     else:
         for i, entity in enumerate(entities):
-            best = True
-            if overlapstrategy == 'longest':
-                bestscore = entity['end'] - entity['start'] #measure in characters
-            elif overlapstrategy == 'best':
-                bestscore = entity['score']
-            else:
-                raise ValueError("Invalid overlap strategy: " + overlapstrategy)
+            if 'skip' not in entity:
+                best = True
+                if overlapstrategy == 'longest':
+                    score = entity['end'] - entity['start'] #measure in characters
+                elif overlapstrategy == 'score':
+                    score = entity['score']
+                elif overlapstrategy == 'globalscore':
+                    score = entity['globalScore']
+                elif overlapstrategy == 'coherencescore':
+                    score = entity['coherenceScore']
+                else:
+                    raise ValueError("Invalid overlap strategy: " + overlapstrategy)
 
-            #find overlapping entities for the entity under consideration
-            for j, entity2 in enumerate(entities):
-                if j > i:
-                    #does this entity overlap?
-                    if (entity2['tokenfragment']['start'] >= entity['tokenfragment']['start'] and entity2['tokenfragment']['start'] <=  entity['tokenfragment']['end']) or (entity2['tokenfragment']['end'] >= entity['tokenfragment']['start'] and entity2['tokenfragment']['end'] <=  entity['tokenfragment']['end']):
-                        if overlapstrategy == 'longest':
-                            score = entity2['end'] - entity2['start']
-                        elif overlapstrategy == 'best':
-                            score = entity2['score']
-                        if score >= bestscore:
-                            best = False
-                            break
+                overlaps = []
 
-            if best:
-                yield entity
+                #find overlapping entities for the entity under consideration
+                for j, entity2 in enumerate(entities):
+                    if i != j:
+                        #does this entity overlap?
+                        if (entity2['tokenFragment']['start'] >= entity['tokenFragment']['start'] and entity2['tokenFragment']['start'] <=  entity['tokenFragment']['end']) or (entity2['tokenFragment']['end'] >= entity['tokenFragment']['start'] and entity2['tokenFragment']['end'] <=  entity['tokenFragment']['end']):
+                            overlaps.append(entity2)
+                            if overlapstrategy == 'longest':
+                                score2 = entity2['end'] - entity2['start']
+                            elif overlapstrategy == 'score':
+                                score2 = entity2['score']
+                            elif overlapstrategy == 'globalscore':
+                                score2 = entity2['globalScore']
+                            elif overlapstrategy == 'coherencescore':
+                                score2 = entity2['coherenceScore']
+                            if score2 > score:
+                                best = False
+
+                entity['overlaps'] = len(overlaps)
+                if best:
+                    yield entity
+                    for entity2 in overlaps:
+                        entity2['skip'] = True
 
 
 def compute_coverage_line(line, linenr, entities):
@@ -251,7 +265,7 @@ def main():
     parser.add_argument('--cands', type=str,help="Use this parameter to obtain as a result of the disambiguation procedure a scored list of candidates (ALL) or only the top ranked one (TOP); if ALL is selected then --mcs and --th parameters will not be taken into account).", action='store',required=False)
     parser.add_argument('--postag', type=str,help="Use this parameter to change the tokenization and pos-tagging pipeline for your input text. Values: STANDARD, NOMINALIZE_ADJECTIVES, INPUT_FRAGMENTS_AS_NOUNS, CHAR_BASED_TOKENIZATION_ALL_NOUN", action='store',required=False)
     parser.add_argument('--extaida', help="Extend the candidates sets with the aida_means relations from YAGO.", action='store_true',required=False)
-    parser.add_argument('--overlap',type='str', help="Resolve overlapping entities, can be set to no (default), longest, best", action='store',default='no',required=False)
+    parser.add_argument('--overlap',type=str, help="Resolve overlapping entities, can be set to no (default), longest, score, globalscore, coherencescore", action='store',default='no',required=False)
     parser.add_argument('--dryrun', help="Do not query", action='store_true',required=False)
     args = parser.parse_args()
 
