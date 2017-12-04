@@ -95,7 +95,7 @@ def findentities(lines, lang, args):
 
 def resolveoverlap(entities, overlapstrategy):
     overlapstrategy = overlapstrategy.lower()
-    if overlapstrategy in ('no','none'):
+    if overlapstrategy in ('allow','yes'):
         for entity in entities:
             yield entity
     else:
@@ -265,7 +265,7 @@ def main():
     parser.add_argument('--cands', type=str,help="Use this parameter to obtain as a result of the disambiguation procedure a scored list of candidates (ALL) or only the top ranked one (TOP); if ALL is selected then --mcs and --th parameters will not be taken into account).", action='store',required=False)
     parser.add_argument('--postag', type=str,help="Use this parameter to change the tokenization and pos-tagging pipeline for your input text. Values: STANDARD, NOMINALIZE_ADJECTIVES, INPUT_FRAGMENTS_AS_NOUNS, CHAR_BASED_TOKENIZATION_ALL_NOUN", action='store',required=False)
     parser.add_argument('--extaida', help="Extend the candidates sets with the aida_means relations from YAGO.", action='store_true',required=False)
-    parser.add_argument('--overlap',type=str, help="Resolve overlapping entities, can be set to no (default), longest, score, globalscore, coherencescore", action='store',default='no',required=False)
+    parser.add_argument('--overlap',type=str, help="Resolve overlapping entities, can be set to allow (default), longest, score, globalscore, coherencescore", action='store',default='allow',required=False)
     parser.add_argument('--dryrun', help="Do not query", action='store_true',required=False)
     args = parser.parse_args()
 
