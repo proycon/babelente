@@ -203,7 +203,7 @@ def findtranslations(synset_id, lang, apikey, cache=None, debug=False):
 
     params = {
         'id': synset_id,
-        'filterLangs': lang,
+        'filterLangs': lang.upper(),
         'key': apikey,
     }
     r = requests.get("https://babelnet.io/v4/getSynset", params=params)
@@ -213,7 +213,7 @@ def findtranslations(synset_id, lang, apikey, cache=None, debug=False):
         print(json.dumps(data,indent=4, ensure_ascii=False),file=sys.stderr)
     if 'senses' in data:
         for sense in data['senses']:
-            if 'lemma' in sense:
+            if 'lemma' in sense and 'language' in sense and sense['language'].lower() == lang.lower():
                 yield sense['lemma']
                 if cache is not None:
                     if synset_id not in cache: cache[synset_id] = {}
