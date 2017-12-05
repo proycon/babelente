@@ -193,7 +193,7 @@ def compute_coverage(lines, entities):
     return float(coverage)
 
 
-def findtranslations(synset_id, lang, apikey, cache=None):
+def findtranslations(synset_id, lang, apikey, cache=None, debug=False):
     """Translate entity to target language (used for recall computation only now)"""
     if cache is not None:
         if synset_id in cache and lang in cache[synset_id]:
@@ -208,8 +208,9 @@ def findtranslations(synset_id, lang, apikey, cache=None):
     }
     r = requests.get("https://babelnet.io/v4/getSynset", params=params)
     data = r.json()
-    #print("DEBUG getsynset id="+synset_id+",filterLangs=" + lang,file=sys.stderr)
-    #print(json.dumps(data,indent=4, ensure_ascii=False),file=sys.stderr)
+    if debug:
+        print("DEBUG getsynset id="+synset_id+",filterLangs=" + lang,file=sys.stderr)
+        print(json.dumps(data,indent=4, ensure_ascii=False),file=sys.stderr)
     if 'senses' in data:
         for sense in data['senses']:
             if 'lemma' in sense:
@@ -219,7 +220,7 @@ def findtranslations(synset_id, lang, apikey, cache=None):
                     if lang not in cache[synset_id]: cache[synset_id][lang] = set()
                     cache[synset_id][lang].add(sense['lemma'])
 
-def evaluate(sourceentities, targetentities, sourcelines, targetlines, do_recall, targetlang, apikey, cache=None):
+def evaluate(sourceentities, targetentities, sourcelines, targetlines, do_recall, targetlang, apikey, cache=None, debug=False):
     evaluation = {'perline':{} }
     overallprecision = []
     overallrecall = []
@@ -254,7 +255,7 @@ def evaluate(sourceentities, targetentities, sourcelines, targetlines, do_recall
             print("\t@L" + str(linenr+1) + " - Computing recall...",end="", file=sys.stderr)
             linkablesynsets = set()
             for synset_id in sourcesynsets:
-                targetlemmas = set(findtranslations(synset_id, targetlang, apikey, cache))
+                targetlemmas = set(findtranslations(synset_id, targetlang, apikey, cache,debug))
                 if len(targetlemmas) > 0:
                     #we have a link
                     linkablesynsets.add(synset_id)
@@ -309,6 +310,7 @@ def main():
     parser.add_argument('-S','--source', type=str,help="Source sentences (plain text, one per line, utf-8)", action='store',default="",required=False)
     parser.add_argument('-T','--target', type=str,help="Target sentences (plain text, one per line, utf-8)", action='store',default="",required=False)
     parser.add_argument('-r', '--recall',help="Compute recall as well using Babel.net (results in many extra queries!)", action='store_true',required=False)
+    parser.add_argument('-d', '--debug',help="Debug", action='store_true',required=False)
     parser.add_argument('--evalfile', type=str,help="(Re)evaluate the supplied json file (output of babelente)", action='store',default="",required=False)
     parser.add_argument('--anntype', type=str,help="Annotation Type: Allows to restrict the disambiguated entries to only named entities (NAMED_ENTITIES), word senses (CONCEPTS) or both (ALL).", action='store',required=False)
     parser.add_argument('--annres', type=str,help="Annotation Resource: Allows to restrict the disambiguated entries to only WordNet (WN), Wikipedia (WIKI) or BabelNet (BN)", action='store',required=False)
@@ -366,7 +368,7 @@ def main():
         targetentities = data['targetentities']
 
         print("Evaluating...",file=sys.stderr)
-        evaluation = evaluate(sourceentities, targetentities, sourcelines, targetlines, args.recall, args.targetlang, args.apikey, None if cache is None else cache['synsets_source'])
+        evaluation = evaluate(sourceentities, targetentities, sourcelines, targetlines, args.recall, args.targetlang, args.apikey, None if cache is None else cache['synsets_source'], args.debug)
     else:
         print("Extracting source entities...",file=sys.stderr)
         sourceentities = [ entity for  entity in findentities(sourcelines, args.sourcelang, args, None if cache is None else cache['source']) if entity['isEntity'] and 'babelSynsetID' in entity ] #with sanity check
@@ -376,7 +378,7 @@ def main():
             targetentities = [ entity for  entity in findentities(targetlines, args.targetlang, args, None if cache is None else cache['target']) if entity['isEntity'] and 'babelSynsetID' in entity ] #with sanity check
 
             print("Evaluating...",file=sys.stderr)
-            evaluation = evaluate(sourceentities, targetentities, sourcelines, targetlines, args.recall, args.targetlang, args.apikey, None if cache is None else cache['synsets_target'])
+            evaluation = evaluate(sourceentities, targetentities, sourcelines, targetlines, args.recall, args.targetlang, args.apikey, None if cache is None else cache['synsets_target'], args.debug)
         else:
             print(json.dumps({'entities':sourceentities}, indent=4,ensure_ascii=False)) #MAYBE TODO: add coverage?
 
