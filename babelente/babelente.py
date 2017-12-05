@@ -227,12 +227,14 @@ def evaluate(sourceentities, targetentities, sourcelines, targetlines, do_recall
     overalltargetcoverage = []
     overallsourcecoverage = []
     overalllinkablesynsets = set()
+    overallmatches = 0
     linenumbers = set( sorted( ( entity['linenr'] for entity in sourceentities) ) )
     for linenr in  linenumbers:
         #check for each synset ID whether it is present in the target sentence
         sourcesynsets = set( entity['babelSynsetID'] for entity in sourceentities if entity['linenr'] == linenr  )
         targetsynsets = set( entity['babelSynsetID'] for entity in targetentities if entity['linenr'] == linenr  )
         matches = sourcesynsets & targetsynsets #intersection
+        overallmatches += len(matches)
 
         evaluation['perline'][linenr] = {'matches': len(matches), 'sources': len(sourcesynsets), 'targets': len(targetsynsets) }
         #precision (how many of the target synsets are correct?)
@@ -296,6 +298,7 @@ def evaluate(sourceentities, targetentities, sourcelines, targetlines, do_recall
     else:
         evaluation['targetcoverage'] = 0
     evaluation['linkablesynsets'] = sum(overalllinkablesynsets)
+    evaluation['matches'] = overallmatches
     return evaluation
 
 def stripmultispace(line):
@@ -387,7 +390,7 @@ def main():
         #output summary to stderr (info is all in JSON stdout output as well)
         print("PRECISION=" + str(evaluation['precision']), "RECALL=" + str(evaluation['recall']), file=sys.stderr)
         print("SOURCECOVERAGE=" + str(evaluation['sourcecoverage']), "TARGETCOVERAGE=" + str(evaluation['targetcoverage']), file=sys.stderr)
-        print("SOURCEENTITIES=" + str(len(sourceentities)), "TARGETENTITIES=" + str(len(targetentities)), file=sys.stderr + "MATCHES=" + str(len(matches)),)
+        print("SOURCEENTITIES=" + str(len(sourceentities)), "TARGETENTITIES=" + str(len(targetentities)) , "MATCHES=" + str(evaluation['matches']), file=sys.stderr)
         print("LINKABLESYNSETS=" + str(evaluation['linkablesynsets']), file=sys.stderr)
 
     if cache is not None:
