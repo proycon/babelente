@@ -297,7 +297,7 @@ def evaluate(sourceentities, targetentities, sourcelines, targetlines, do_recall
         evaluation['targetcoverage'] = sum(overalltargetcoverage) / len(overalltargetcoverage)
     else:
         evaluation['targetcoverage'] = 0
-    evaluation['linkablesynsets'] = sum(overalllinkablesynsets)
+    evaluation['linkablesynsets'] = len(overalllinkablesynsets)
     evaluation['matches'] = overallmatches
     return evaluation
 
