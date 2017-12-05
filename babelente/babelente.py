@@ -266,7 +266,7 @@ def evaluate(sourceentities, targetentities, sourcelines, targetlines, do_recall
                 overallrecall.append(recall)
                 evaluation['perline'][linenr]['recall'] = recall
                 evaluation['perline'][linenr]['linkablesynsets'] = len(linkablesynsets)
-                overalllinkablesynsets += linkablesynsets
+                overalllinkablesynsets |= linkablesynsets
             else:
                 evaluation['perline'][linenr]['recall'] = 0.0
 
