@@ -194,7 +194,7 @@ def compute_coverage(lines, entities):
 
 
 def findtranslations(synset_id, lang, apikey, cache=None):
-    """Translate entity to target language (current not used!)"""
+    """Translate entity to target language (used for recall computation only now)"""
     if cache is not None:
         if synset_id in cache and lang in cache[synset_id]:
             for lemma in cache[synset_id][lang]:
@@ -217,13 +217,15 @@ def findtranslations(synset_id, lang, apikey, cache=None):
             if lang not in cache[synset_id]: cache[synset_id][lang] = set()
             cache[synset_id][lang].add(sense['lemma'])
 
-def evaluate(sourceentities, targetentities, sourcelines, targetlines):
+def evaluate(sourceentities, targetentities, sourcelines, targetlines, do_recall, targetlang, apikey, cache=None):
     evaluation = {'perline':{} }
     overallprecision = []
     overallrecall = []
     overalltargetcoverage = []
     overallsourcecoverage = []
-    linenumbers = sorted( ( entity['linenr'] for entity in sourceentities) )
+    overalllinkablesynsets = set()
+    linenumbers = set( sorted( ( entity['linenr'] for entity in sourceentities) ) )
+    print(linenumbers,file=sys.stderr)
     for linenr in  linenumbers:
         #check for each synset ID whether it is present in the target sentence
         sourcesynsets = set( entity['babelSynsetID'] for entity in sourceentities if entity['linenr'] == linenr  )
@@ -244,11 +246,29 @@ def evaluate(sourceentities, targetentities, sourcelines, targetlines):
             evaluation['perline'][linenr]['targetcoverage'] = 0.0
             overalltargetcoverage.append(0.0)
 
-        #recall (how many of the source synsets are found?)
+        if do_recall:
+            #compute how many of the source synsets have corresponding translations in the target language
+            #this creates a hypothetical upper bound for recall computation
+            #(will query babel.net extensively, hence optional!)
+            print("\t@L" + str(linenr+1) + " - Computing recall...",end="", file=sys.stderr)
+            linkablesynsets = set()
+            for synset_id in sourcesynsets:
+                targetlemmas = set(findtranslations(synset_id, targetlang, apikey, cache))
+                if len(targetlemmas) > 0:
+                    #we have a link
+                    linkablesynsets.add(synset_id)
+            print(len(linkablesynsets),file=sys.stderr)
+
+            if linkablesynsets:
+                recall = len(matches)/len(linkablesynsets)
+                overallrecall.append(recall)
+                evaluation['perline'][linenr]['recall'] = recall
+                evaluation['perline'][linenr]['linkablesynsets'] = len(linkablesynsets)
+                overalllinkablesynsets += linkablesynsets
+            else:
+                evaluation['perline'][linenr]['recall'] = 0.0
+
         if sourcesynsets:
-            recall = len(matches)/len(sourcesynsets)
-            overallrecall.append(recall)
-            evaluation['perline'][linenr]['recall'] = recall
             coverage = compute_coverage_line(sourcelines[linenr], linenr, sourceentities)
             evaluation['perline'][linenr]['sourcecoverage'] = coverage
             overallsourcecoverage.append(coverage)
@@ -266,13 +286,14 @@ def evaluate(sourceentities, targetentities, sourcelines, targetlines):
     else:
         evaluation['recall'] = 0
     if overallsourcecoverage:
-        evaluation['overallsourcecoverage'] = sum(overallsourcecoverage) / len(overallsourcecoverage)
+        evaluation['sourcecoverage'] = sum(overallsourcecoverage) / len(overallsourcecoverage)
     else:
-        evaluation['overallsourcecoverage'] = 0
+        evaluation['sourcecoverage'] = 0
     if overalltargetcoverage:
-        evaluation['overalltargetcoverage'] = sum(overalltargetcoverage) / len(overalltargetcoverage)
+        evaluation['targetcoverage'] = sum(overalltargetcoverage) / len(overalltargetcoverage)
     else:
-        evaluation['overalltargetcoverage'] = 0
+        evaluation['targetcoverage'] = 0
+    evaluation['linkablesynsets'] = sum(overalllinkablesynsets)
     return evaluation
 
 def stripmultispace(line):
@@ -286,6 +307,7 @@ def main():
     parser.add_argument('-t','--targetlang', type=str,help="Target language code", action='store',default="",required=False)
     parser.add_argument('-S','--source', type=str,help="Source sentences (plain text, one per line, utf-8)", action='store',default="",required=False)
     parser.add_argument('-T','--target', type=str,help="Target sentences (plain text, one per line, utf-8)", action='store',default="",required=False)
+    parser.add_argument('-r', '--recall',help="Compute recall as well using Babel.net (results in many extra queries!)", action='store_true',required=False)
     parser.add_argument('--evalfile', type=str,help="(Re)evaluate the supplied json file (output of babelente)", action='store',default="",required=False)
     parser.add_argument('--anntype', type=str,help="Annotation Type: Allows to restrict the disambiguated entries to only named entities (NAMED_ENTITIES), word senses (CONCEPTS) or both (ALL).", action='store',required=False)
     parser.add_argument('--annres', type=str,help="Annotation Resource: Allows to restrict the disambiguated entries to only WordNet (WN), Wikipedia (WIKI) or BabelNet (BN)", action='store',required=False)
@@ -331,10 +353,11 @@ def main():
                 cache = pickle.load(f)
         else:
             print("Creating new cache " + args.cache,file=sys.stderr)
-            cache = {'source':{}, 'target': {}}
+            cache = {'source':{}, 'target': {}, 'synsets_source': {}, 'synsets_target': {}}
     else:
         cache = None
 
+    evaluation = None
     if args.evalfile:
         with open(args.evalfile,'rb') as f:
             data = json.load(f)
@@ -342,9 +365,7 @@ def main():
         targetentities = data['targetentities']
 
         print("Evaluating...",file=sys.stderr)
-        evaluation = evaluate(sourceentities, targetentities, sourcelines, targetlines)
-        print(json.dumps({'sourceentities':sourceentities, 'targetentities': targetentities, 'evaluation': evaluation}, indent=4,ensure_ascii=False))
-        print("PRECISION=" + str(evaluation['precision']), "RECALL=" + str(evaluation['recall']), file=sys.stderr) #summary
+        evaluation = evaluate(sourceentities, targetentities, sourcelines, targetlines, args.recall, args.targetlang, args.apikey, None if cache is None else cache['synsets_source'])
     else:
         print("Extracting source entities...",file=sys.stderr)
         sourceentities = [ entity for  entity in findentities(sourcelines, args.sourcelang, args, None if cache is None else cache['source']) if entity['isEntity'] and 'babelSynsetID' in entity ] #with sanity check
@@ -354,11 +375,17 @@ def main():
             targetentities = [ entity for  entity in findentities(targetlines, args.targetlang, args, None if cache is None else cache['target']) if entity['isEntity'] and 'babelSynsetID' in entity ] #with sanity check
 
             print("Evaluating...",file=sys.stderr)
-            evaluation = evaluate(sourceentities, targetentities, sourcelines, targetlines)
-            print(json.dumps({'sourceentities':sourceentities, 'targetentities': targetentities, 'evaluation': evaluation}, indent=4,ensure_ascii=False))
-            print("PRECISION=" + str(evaluation['precision']), "RECALL=" + str(evaluation['recall']), file=sys.stderr) #summary
+            evaluation = evaluate(sourceentities, targetentities, sourcelines, targetlines, args.recall, args.targetlang, args.apikey, None if cache is None else cache['synsets_target'])
         else:
             print(json.dumps({'entities':sourceentities}, indent=4,ensure_ascii=False)) #MAYBE TODO: add coverage?
+
+    if evaluation is not None:
+        print(json.dumps({'sourceentities':sourceentities, 'targetentities': targetentities, 'evaluation': evaluation}, indent=4,ensure_ascii=False))
+        #output summary to stderr (info is all in JSON stdout output as well)
+        print("PRECISION=" + str(evaluation['precision']), "RECALL=" + str(evaluation['recall']), file=sys.stderr)
+        print("SOURCECOVERAGE=" + str(evaluation['sourcecoverage']), "TARGETCOVERAGE=" + str(evaluation['targetcoverage']), file=sys.stderr)
+        print("SOURCEENTITIES=" + str(len(sourceentities)), "TARGETENTITIES=" + str(len(targetentities)), file=sys.stderr)
+        print("LINKABLESYNSETS=" + str(evaluation['linkablesynsets']), file=sys.stderr)
 
     if cache is not None:
         with open(args.cache,'wb') as f:
