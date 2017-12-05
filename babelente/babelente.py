@@ -6,10 +6,12 @@
 # GNU Public License v3
 
 import sys
+import os.path
 import argparse
 import json
 import requests
 import numpy as np
+import pickle
 from babelpy.babelfy import BabelfyClient
 
 
@@ -71,7 +73,7 @@ def resolveoffset(offsetmap, offset, lines, entity):
         if maxoffset is None or end > maxoffset: maxoffset = end
     raise ValueError("Unable to resolve offset " + str(offset) + "; minoffset=" + str(minoffset) + ", maxoffset=" + str(maxoffset) + ", lines=" + str(len(offsetmap)) )
 
-def findentities(lines, lang, args):
+def findentities(lines, lang, args, cache=None):
     """Find entities using BabelFy given a set of input lines"""
     babelfy_params = dict()
     babelfy_params['lang'] = lang.upper()
@@ -98,9 +100,16 @@ def findentities(lines, lang, args):
         if args.dryrun:
             print("---\nCHUNK #" + str(i) + ". Would run query for firstlinenr=" + str(firstlinenr) + ", lastlinenr=" + str(lastlinenr), " text=" + text,file=sys.stderr)
             print("Offsetmap:", repr(offsetmap), file=sys.stderr)
+        elif cache is not None and text in cache:
+            entities = cache[text]
+            print("@chunk #" + str(i) + " -- retrieved from cache",file=sys.stderr)
         else:
+            print("@chunk #" + str(i) + " -- querying BabelFy",file=sys.stderr)
             babelclient.babelfy(text)
-            for j, entity in enumerate(resolveoverlap(babelclient.entities, args.overlap)):
+            entities = babelclient.entities
+            if cache is not None: cache[text] = entities #put in cache
+        if not args.dryrun:
+            for j, entity in enumerate(resolveoverlap(entities, args.overlap)):
                 try:
                     entity['linenr'], entity['offset'] = resolveoffset(offsetmap, entity['start'], lines, entity)
                     if 'ignore' not in entity or not entity['ignore']:
@@ -288,6 +297,7 @@ def main():
     parser.add_argument('--postag', type=str,help="Use this parameter to change the tokenization and pos-tagging pipeline for your input text. Values: STANDARD, NOMINALIZE_ADJECTIVES, INPUT_FRAGMENTS_AS_NOUNS, CHAR_BASED_TOKENIZATION_ALL_NOUN", action='store',required=False)
     parser.add_argument('--extaida', help="Extend the candidates sets with the aida_means relations from YAGO.", action='store_true',required=False)
     parser.add_argument('--overlap',type=str, help="Resolve overlapping entities, can be set to allow (default), longest, score, globalscore, coherencescore", action='store',default='allow',required=False)
+    parser.add_argument('--cache',type=str, help="Cache file, stores queries to prevent excessive querying of BabelFy (warning: not suitable for parallel usage!)", action='store',required=False)
     parser.add_argument('--dryrun', help="Do not query", action='store_true',required=False)
     args = parser.parse_args()
 
@@ -314,6 +324,17 @@ def main():
             print("ERROR: Expected the same number of line in source and target files, but got " + str(len(sourcelines)) + " vs " + str(len(targetlines)) ,file=sys.stderr)
             sys.exit(2)
 
+    if args.cache:
+        if os.path.exists(args.cache):
+            print("Loading cache from " + args.cache,file=sys.stderr)
+            with open(args.cache, 'rb') as f:
+                cache = pickle.load(f)
+        else:
+            print("Creating new cache " + args.cache,file=sys.stderr)
+            cache = {'source':{}, 'target': {}}
+    else:
+        cache = None
+
     if args.evalfile:
         with open(args.evalfile,'rb') as f:
             data = json.load(f)
@@ -326,11 +347,11 @@ def main():
         print("PRECISION=" + str(evaluation['precision']), "RECALL=" + str(evaluation['recall']), file=sys.stderr) #summary
     else:
         print("Extracting source entities...",file=sys.stderr)
-        sourceentities = [ entity for  entity in findentities(sourcelines, args.sourcelang, args) if entity['isEntity'] and 'babelSynsetID' in entity ] #with sanity check
+        sourceentities = [ entity for  entity in findentities(sourcelines, args.sourcelang, args, None if cache is None else cache['source']) if entity['isEntity'] and 'babelSynsetID' in entity ] #with sanity check
 
         if args.target:
             print("Extracting target entities...",file=sys.stderr)
-            targetentities = [ entity for  entity in findentities(targetlines, args.targetlang, args) if entity['isEntity'] and 'babelSynsetID' in entity ] #with sanity check
+            targetentities = [ entity for  entity in findentities(targetlines, args.targetlang, args, None if cache is None else cache['target']) if entity['isEntity'] and 'babelSynsetID' in entity ] #with sanity check
 
             print("Evaluating...",file=sys.stderr)
             evaluation = evaluate(sourceentities, targetentities, sourcelines, targetlines)
@@ -338,6 +359,11 @@ def main():
             print("PRECISION=" + str(evaluation['precision']), "RECALL=" + str(evaluation['recall']), file=sys.stderr) #summary
         else:
             print(json.dumps({'entities':sourceentities}, indent=4,ensure_ascii=False)) #MAYBE TODO: add coverage?
+
+    if cache is not None:
+        with open(args.cache,'wb') as f:
+            pickle.dump(cache,f)
+
 
 if __name__ == '__main__':
     main()
