@@ -44,22 +44,27 @@ def gettextchunks(lines, maxchunksize=4096):
     if text:
         yield text, firstlinenr, lastlinenr, offsetmap
 
-def resolveoffset(offsetmap, offset, lines, entity_text):
+def resolveoffset(offsetmap, offset, lines, entity):
     """Convert a relative character offset in a chunk to an absolute line number"""
+    assert offset == entity['start']
     minoffset = maxoffset = None
     for linenr, (begin, end) in offsetmap.items():
         if offset >= begin and offset <= end:
             offset = offset-begin
             try:
-                if lines[linenr][offset:offset+len(entity_text)] != entity_text:
-                    print("--ERROR--",file=sys.stderr)
-                    print("Line #" + str(linenr) + ": " + lines[linenr],file=sys.stderr)
-                    print("Got '" +   lines[linenr][offset:offset+len(entity_text)] + "', expected: '" + entity_text + "'",file=sys.stderr)
-                    raise ValueError("Resolved offset does not match text " + str(offset) + "; minoffset=" + str(minoffset) + ", maxoffset=" + str(maxoffset) + ", lines=" + str(len(offsetmap)) )
+                if lines[linenr][offset:offset+len(entity['text'])] != entity['text']:
+                    if offset+len(entity['text']) > len(lines[linenr]):
+                        print("NOTICE: Entity '" + entity['text'] + "' exceeds line boundary; marking as invalid",file=sys.stderr)
+                        entity['ignore'] = True
+                    else:
+                        print("--ERROR--",file=sys.stderr)
+                        print("Line #" + str(linenr) + ": " + lines[linenr],file=sys.stderr)
+                        print("Got '" +   lines[linenr][offset:offset+len(entity['text'])] + "', expected: '" + entity['text'] + "'",file=sys.stderr)
+                        raise ValueError("Resolved offset does not match text " + str(offset) + "; minoffset=" + str(minoffset) + ", maxoffset=" + str(maxoffset) + ", lines=" + str(len(offsetmap)) )
             except IndexError:
                 print("--ERROR--",file=sys.stderr)
                 print("Line #" + str(linenr) + ": " + lines[linenr],file=sys.stderr)
-                print("Out of bounds, expected: '" + entity_text + "'",file=sys.stderr)
+                print("Out of bounds, expected: '" + entity['text'] + "'",file=sys.stderr)
                 raise ValueError("Resolved offset does not match text " + str(offset) + "; minoffset=" + str(minoffset) + ", maxoffset=" + str(maxoffset) + ", lines=" + str(len(offsetmap)) )
             return linenr, offset
         if minoffset is None or begin < minoffset: minoffset = begin
@@ -97,8 +102,9 @@ def findentities(lines, lang, args):
             babelclient.babelfy(text)
             for j, entity in enumerate(resolveoverlap(babelclient.entities, args.overlap)):
                 try:
-                    entity['linenr'], entity['offset'] = resolveoffset(offsetmap, entity['start'], lines, entity['text'])
-                    yield entity
+                    entity['linenr'], entity['offset'] = resolveoffset(offsetmap, entity['start'], lines, entity)
+                    if 'ignore' not in entity or not entity['ignore']:
+                        yield entity
                 except ValueError as e:
                     print("---\nCHUNK #" + str(i) + " ENTITY #" + str(j) + ". Ran query for firstlinenr=" + str(firstlinenr) + ", lastlinenr=" + str(lastlinenr), " text=" + text,file=sys.stderr)
                     print("Entity:", repr(entity), file=sys.stderr)
