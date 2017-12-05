@@ -227,7 +227,6 @@ def evaluate(sourceentities, targetentities, sourcelines, targetlines, do_recall
     overallsourcecoverage = []
     overalllinkablesynsets = set()
     linenumbers = set( sorted( ( entity['linenr'] for entity in sourceentities) ) )
-    print(linenumbers,file=sys.stderr)
     for linenr in  linenumbers:
         #check for each synset ID whether it is present in the target sentence
         sourcesynsets = set( entity['babelSynsetID'] for entity in sourceentities if entity['linenr'] == linenr  )
