@@ -210,12 +210,14 @@ def findtranslations(synset_id, lang, apikey, cache=None):
     data = r.json()
     #print("DEBUG getsynset id="+synset_id+",filterLangs=" + lang,file=sys.stderr)
     #print(json.dumps(data,indent=4, ensure_ascii=False),file=sys.stderr)
-    for sense in data['senses']:
-        yield sense['lemma']
-        if cache is not None:
-            if synset_id not in cache: cache[synset_id] = {}
-            if lang not in cache[synset_id]: cache[synset_id][lang] = set()
-            cache[synset_id][lang].add(sense['lemma'])
+    if 'senses' in data:
+        for sense in data['senses']:
+            if 'lemma' in sense:
+                yield sense['lemma']
+                if cache is not None:
+                    if synset_id not in cache: cache[synset_id] = {}
+                    if lang not in cache[synset_id]: cache[synset_id][lang] = set()
+                    cache[synset_id][lang].add(sense['lemma'])
 
 def evaluate(sourceentities, targetentities, sourcelines, targetlines, do_recall, targetlang, apikey, cache=None):
     evaluation = {'perline':{} }
