@@ -387,7 +387,7 @@ def main():
         #output summary to stderr (info is all in JSON stdout output as well)
         print("PRECISION=" + str(evaluation['precision']), "RECALL=" + str(evaluation['recall']), file=sys.stderr)
         print("SOURCECOVERAGE=" + str(evaluation['sourcecoverage']), "TARGETCOVERAGE=" + str(evaluation['targetcoverage']), file=sys.stderr)
-        print("SOURCEENTITIES=" + str(len(sourceentities)), "TARGETENTITIES=" + str(len(targetentities)), file=sys.stderr)
+        print("SOURCEENTITIES=" + str(len(sourceentities)), "TARGETENTITIES=" + str(len(targetentities)), file=sys.stderr +print("MATCHES=" + str(len(matches)),)
         print("LINKABLESYNSETS=" + str(evaluation['linkablesynsets']), file=sys.stderr)
 
     if cache is not None:
