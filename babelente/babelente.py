@@ -271,6 +271,7 @@ def evaluate(sourceentities, targetentities, sourcelines, targetlines, do_recall
                 overalllinkablesynsets |= linkablesynsets
             else:
                 evaluation['perline'][linenr]['recall'] = 0.0
+                overallrecall.append(0.0)
 
         if sourcesynsets:
             coverage = compute_coverage_line(sourcelines[linenr], linenr, sourceentities)
