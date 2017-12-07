@@ -226,14 +226,20 @@ def evaluate(sourceentities, targetentities, sourcelines, targetlines, do_recall
     overallrecall = []
     overalltargetcoverage = []
     overallsourcecoverage = []
-    overalllinkablesynsets = set()
-    overallmatches = 0
+    overallmatches = 0 #macro
+    #sets for micro-averages:
+    allmatches = set()
+    alltargetsynsets = set()
+    alllinkablesynsets = set()
+
     linenumbers = set( sorted( ( entity['linenr'] for entity in sourceentities) ) )
     for linenr in  linenumbers:
         #check for each synset ID whether it is present in the target sentence
         sourcesynsets = set( entity['babelSynsetID'] for entity in sourceentities if entity['linenr'] == linenr  )
         targetsynsets = set( entity['babelSynsetID'] for entity in targetentities if entity['linenr'] == linenr  )
         matches = sourcesynsets & targetsynsets #intersection
+        allmatches |= matches
+        alltargetsynsets |= targetsynsets
         overallmatches += len(matches)
 
         evaluation['perline'][linenr] = {'matches': len(matches), 'sources': len(sourcesynsets), 'targets': len(targetsynsets) }
@@ -269,7 +275,7 @@ def evaluate(sourceentities, targetentities, sourcelines, targetlines, do_recall
                 overallrecall.append(recall)
                 evaluation['perline'][linenr]['recall'] = recall
                 evaluation['perline'][linenr]['linkablesynsets'] = len(linkablesynsets)
-                overalllinkablesynsets |= linkablesynsets
+                alllinkablesynsets |= linkablesynsets
             else:
                 evaluation['perline'][linenr]['recall'] = 0.0
                 overallrecall.append(0.0)
@@ -299,8 +305,17 @@ def evaluate(sourceentities, targetentities, sourcelines, targetlines, do_recall
         evaluation['targetcoverage'] = sum(overalltargetcoverage) / len(overalltargetcoverage)
     else:
         evaluation['targetcoverage'] = 0
-    evaluation['linkablesynsets'] = len(overalllinkablesynsets)
-    evaluation['matches'] = overallmatches
+    if alltargetsynsets:
+        evaluation['microprecision'] = len(allmatches) / len(alltargetsynsets)
+    else:
+        evaluation['microprecision'] = 0
+    if alllinkablesynsets:
+        evaluation['microrecall'] = len(allmatches) / len(alllinkablesynsets)
+    else:
+        evaluation['microrecall'] = 0
+    evaluation['linkablesynsets'] = len(alllinkablesynsets) #macro
+    evaluation['matches'] = overallmatches #macro
+    evaluation['micromatches'] = len(allmatches)
     return evaluation
 
 def stripmultispace(line):
@@ -390,9 +405,11 @@ def main():
     if evaluation is not None:
         print(json.dumps({'sourceentities':sourceentities, 'targetentities': targetentities, 'evaluation': evaluation}, indent=4,ensure_ascii=False))
         #output summary to stderr (info is all in JSON stdout output as well)
-        print("PRECISION=" + str(evaluation['precision']), "RECALL=" + str(evaluation['recall']), file=sys.stderr)
+        print("PRECISION(macro)=" + str(evaluation['precision']), "RECALL(macro)=" + str(evaluation['recall']), file=sys.stderr)
+        print("PRECISION(micro)=" + str(evaluation['microprecision']), "RECALL(micro)=" + str(evaluation['microrecall']), file=sys.stderr)
         print("SOURCECOVERAGE=" + str(evaluation['sourcecoverage']), "TARGETCOVERAGE=" + str(evaluation['targetcoverage']), file=sys.stderr)
-        print("SOURCEENTITIES=" + str(len(sourceentities)), "TARGETENTITIES=" + str(len(targetentities)) , "MATCHES=" + str(evaluation['matches']), file=sys.stderr)
+        print("SOURCEENTITIES=" + str(len(sourceentities)), "TARGETENTITIES=" + str(len(targetentities)))
+        print("MATCHES(macro)=" + str(evaluation['matches']), "MATCHES(micro)=" + str(evaluation['micromatches']), file=sys.stderr)
         print("LINKABLESYNSETS=" + str(evaluation['linkablesynsets']), file=sys.stderr)
 
     if cache is not None:
