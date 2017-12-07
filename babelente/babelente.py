@@ -249,6 +249,7 @@ def evaluate(sourceentities, targetentities, sourcelines, targetlines, do_recall
         else:
             evaluation['perline'][linenr]['targetcoverage'] = 0.0
             overalltargetcoverage.append(0.0)
+            overallprecision.append(0.0)
 
         if do_recall:
             #compute how many of the source synsets have corresponding translations in the target language
