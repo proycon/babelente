@@ -405,9 +405,9 @@ def main():
     if evaluation is not None:
         print(json.dumps({'sourceentities':sourceentities, 'targetentities': targetentities, 'evaluation': evaluation}, indent=4,ensure_ascii=False))
         #output summary to stderr (info is all in JSON stdout output as well)
-        print("PRECISION(macro)=" + str(evaluation['precision']), "RECALL(macro)=" + str(evaluation['recall']), file=sys.stderr)
-        print("PRECISION(micro)=" + str(evaluation['microprecision']), "RECALL(micro)=" + str(evaluation['microrecall']), file=sys.stderr)
-        print("SOURCECOVERAGE=" + str(evaluation['sourcecoverage']), "TARGETCOVERAGE=" + str(evaluation['targetcoverage']), file=sys.stderr)
+        print("PRECISION(macro)=" + str(round(evaluation['precision'],3)), "RECALL(macro)=" + str(round(evaluation['recall'],3)), file=sys.stderr)
+        print("PRECISION(micro)=" + str(round(evaluation['microprecision'], 3)), "RECALL(micro)=" + str(round(evaluation['microrecall'],3)), file=sys.stderr)
+        print("SOURCECOVERAGE=" + str(round(evaluation['sourcecoverage'],3)), "TARGETCOVERAGE=" + str(round(evaluation['targetcoverage'],3)), file=sys.stderr)
         print("SOURCEENTITIES=" + str(len(sourceentities)), "TARGETENTITIES=" + str(len(targetentities)))
         print("MATCHES(macro)=" + str(evaluation['matches']), "MATCHES(micro)=" + str(evaluation['micromatches']), file=sys.stderr)
         print("LINKABLESYNSETS=" + str(evaluation['linkablesynsets']), file=sys.stderr)
