@@ -12,6 +12,7 @@ import json
 import requests
 import numpy as np
 import pickle
+from collections import Counter
 from babelpy.babelfy import BabelfyClient
 
 
@@ -228,25 +229,31 @@ def evaluate(sourceentities, targetentities, sourcelines, targetlines, do_recall
     overallsourcecoverage = []
     overallmatches = 0 #macro
     #sets for micro-averages:
-    allmatches = set()
-    alltargetsynsets = set()
-    alllinkablesynsets = set()
+    allmatches = Counter()
+    alltargetsynsets = Counter()
+    alltranslatableentities = Counter()
 
     linenumbers = set( sorted( ( entity['linenr'] for entity in sourceentities) ) )
     for linenr in  linenumbers:
         #check for each synset ID whether it is present in the target sentence
-        sourcesynsets = set( entity['babelSynsetID'] for entity in sourceentities if entity['linenr'] == linenr  )
-        targetsynsets = set( entity['babelSynsetID'] for entity in targetentities if entity['linenr'] == linenr  )
+        sourcesynsets = Counter()
+        targetsynsets = Counter()
+        for entity in sourceentities:
+            if entity['linenr'] == linenr:
+                sourcesynsets[entity['babelSynsetID']] += 1
+        for entity in targetentities:
+            if entity['linenr'] == linenr:
+                targetsynsets[entity['babelSynsetID']] += 1
         matches = sourcesynsets & targetsynsets #intersection
         allmatches |= matches
         alltargetsynsets |= targetsynsets
         overallmatches += len(matches)
 
-        evaluation['perline'][linenr] = {'matches': len(matches), 'sources': len(sourcesynsets), 'targets': len(targetsynsets) }
+        evaluation['perline'][linenr] = {'matches': sum(matches.values()), 'sources': sum(sourcesynsets.values()), 'targets': sum(targetsynsets.values()) }
         #precision (how many of the target synsets are correct?)
         #TODO: alternative precision only on the basis of source synsets?
         if targetsynsets:
-            precision = len(matches)/len(targetsynsets)
+            precision = sum(matches.values())/sum(targetsynsets.values())
             overallprecision.append(precision)
             evaluation['perline'][linenr]['precision'] = precision
             coverage = compute_coverage_line(targetlines[linenr], linenr, targetentities)
@@ -262,20 +269,20 @@ def evaluate(sourceentities, targetentities, sourcelines, targetlines, do_recall
             #this creates a hypothetical upper bound for recall computation
             #(will query babel.net extensively, hence optional!)
             print("\t@L" + str(linenr+1) + " - Computing recall...",end="", file=sys.stderr)
-            linkablesynsets = set()
-            for synset_id in sourcesynsets:
+            translatableentities = Counter()
+            for synset_id, freq in sourcesynsets.items():
                 targetlemmas = set(findtranslations(synset_id, targetlang, apikey, cache,debug))
                 if len(targetlemmas) > 0:
                     #we have a link
-                    linkablesynsets.add(synset_id)
-            print(len(linkablesynsets),file=sys.stderr)
+                    translatableentities[synset_id] += freq
+            print(sum(translatableentities.values()),file=sys.stderr)
 
-            if linkablesynsets:
-                recall = len(matches)/len(linkablesynsets)
+            if translatableentities:
+                recall = sum(matches.values())/sum(translatableentities.values())
                 overallrecall.append(recall)
                 evaluation['perline'][linenr]['recall'] = recall
-                evaluation['perline'][linenr]['linkablesynsets'] = len(linkablesynsets)
-                alllinkablesynsets |= linkablesynsets
+                evaluation['perline'][linenr]['translatableentities'] = sum(translatableentities.values())
+                alltranslatableentities |= translatableentities
             else:
                 evaluation['perline'][linenr]['recall'] = 0.0
                 overallrecall.append(0.0)
@@ -306,16 +313,16 @@ def evaluate(sourceentities, targetentities, sourcelines, targetlines, do_recall
     else:
         evaluation['targetcoverage'] = 0
     if alltargetsynsets:
-        evaluation['microprecision'] = len(allmatches) / len(alltargetsynsets)
+        evaluation['microprecision'] = sum(allmatches.values()) / sum(alltargetsynsets.values())
     else:
         evaluation['microprecision'] = 0
-    if alllinkablesynsets:
-        evaluation['microrecall'] = len(allmatches) / len(alllinkablesynsets)
+    if alltranslatableentities:
+        evaluation['microrecall'] = sum(allmatches.values()) / sum(alltranslatableentities.values())
     else:
         evaluation['microrecall'] = 0
-    evaluation['linkablesynsets'] = len(alllinkablesynsets) #macro
+    evaluation['translatableentities'] = sum(alltranslatableentities.values()) #macro
     evaluation['matches'] = overallmatches #macro
-    evaluation['micromatches'] = len(allmatches)
+    evaluation['micromatches'] = sum(allmatches.values())
     return evaluation
 
 def stripmultispace(line):
@@ -410,7 +417,7 @@ def main():
         print("SOURCECOVERAGE=" + str(round(evaluation['sourcecoverage'],3)), "TARGETCOVERAGE=" + str(round(evaluation['targetcoverage'],3)), file=sys.stderr)
         print("SOURCEENTITIES=" + str(len(sourceentities)), "TARGETENTITIES=" + str(len(targetentities)))
         print("MATCHES(macro)=" + str(evaluation['matches']), "MATCHES(micro)=" + str(evaluation['micromatches']), file=sys.stderr)
-        print("LINKABLESYNSETS=" + str(evaluation['linkablesynsets']), file=sys.stderr)
+        print("TRANSLATABLEENTITIES=" + str(evaluation['translatableentities']), file=sys.stderr)
 
     if cache is not None:
         with open(args.cache,'wb') as f:
