@@ -247,7 +247,7 @@ def evaluate(sourceentities, targetentities, sourcelines, targetlines, do_recall
         matches = sourcesynsets & targetsynsets #intersection
         allmatches |= matches
         alltargetsynsets |= targetsynsets
-        overallmatches += len(matches)
+        overallmatches += sum(matches.values())
 
         evaluation['perline'][linenr] = {'matches': sum(matches.values()), 'sources': sum(sourcesynsets.values()), 'targets': sum(targetsynsets.values()) }
         #precision (how many of the target synsets are correct?)
