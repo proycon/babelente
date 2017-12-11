@@ -245,8 +245,8 @@ def evaluate(sourceentities, targetentities, sourcelines, targetlines, do_recall
             if entity['linenr'] == linenr:
                 targetsynsets[entity['babelSynsetID']] += 1
         matches = sourcesynsets & targetsynsets #intersection
-        allmatches |= matches
-        alltargetsynsets |= targetsynsets
+        allmatches += matches
+        alltargetsynsets += targetsynsets
         overallmatches += sum(matches.values())
 
         evaluation['perline'][linenr] = {'matches': sum(matches.values()), 'sources': sum(sourcesynsets.values()), 'targets': sum(targetsynsets.values()) }
@@ -282,7 +282,7 @@ def evaluate(sourceentities, targetentities, sourcelines, targetlines, do_recall
                 overallrecall.append(recall)
                 evaluation['perline'][linenr]['recall'] = recall
                 evaluation['perline'][linenr]['translatableentities'] = sum(translatableentities.values())
-                alltranslatableentities |= translatableentities
+                alltranslatableentities += translatableentities
             else:
                 evaluation['perline'][linenr]['recall'] = 0.0
                 overallrecall.append(0.0)
@@ -321,8 +321,7 @@ def evaluate(sourceentities, targetentities, sourcelines, targetlines, do_recall
     else:
         evaluation['microrecall'] = 0
     evaluation['translatableentities'] = sum(alltranslatableentities.values()) #macro
-    evaluation['matches'] = overallmatches #macro
-    evaluation['micromatches'] = sum(allmatches.values())
+    evaluation['matches'] = sum(allmatches.values())  #macro
     return evaluation
 
 def stripmultispace(line):
@@ -416,7 +415,7 @@ def main():
         print("PRECISION(micro)=" + str(round(evaluation['microprecision'], 3)), "RECALL(micro)=" + str(round(evaluation['microrecall'],3)), file=sys.stderr)
         print("SOURCECOVERAGE=" + str(round(evaluation['sourcecoverage'],3)), "TARGETCOVERAGE=" + str(round(evaluation['targetcoverage'],3)), file=sys.stderr)
         print("SOURCEENTITIES=" + str(len(sourceentities)), "TARGETENTITIES=" + str(len(targetentities)))
-        print("MATCHES(macro)=" + str(evaluation['matches']), "MATCHES(micro)=" + str(evaluation['micromatches']), file=sys.stderr)
+        print("MATCHES=" + str(evaluation['matches']), file=sys.stderr)
         print("TRANSLATABLEENTITIES=" + str(evaluation['translatableentities']), file=sys.stderr)
 
     if cache is not None:
