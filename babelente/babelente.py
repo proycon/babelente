@@ -227,7 +227,6 @@ def evaluate(sourceentities, targetentities, sourcelines, targetlines, do_recall
     overallrecall = []
     overalltargetcoverage = []
     overallsourcecoverage = []
-    overallmatches = 0 #macro
     #sets for micro-averages:
     allmatches = Counter()
     alltargetsynsets = Counter()
@@ -247,11 +246,9 @@ def evaluate(sourceentities, targetentities, sourcelines, targetlines, do_recall
         matches = sourcesynsets & targetsynsets #intersection
         allmatches += matches
         alltargetsynsets += targetsynsets
-        overallmatches += sum(matches.values())
 
         evaluation['perline'][linenr] = {'matches': sum(matches.values()), 'sources': sum(sourcesynsets.values()), 'targets': sum(targetsynsets.values()) }
         #precision (how many of the target synsets are correct?)
-        #TODO: alternative precision only on the basis of source synsets?
         if targetsynsets:
             precision = sum(matches.values())/sum(targetsynsets.values())
             overallprecision.append(precision)
