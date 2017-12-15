@@ -244,6 +244,19 @@ def evaluate(sourceentities, targetentities, sourcelines, targetlines, do_recall
             if entity['linenr'] == linenr:
                 targetsynsets[entity['babelSynsetID']] += 1
         matches = sourcesynsets & targetsynsets #intersection
+
+#Besides the scores and the full JSON output, it would be very helpful to get a focused list of the matchting pairs like this:
+# purpose:printing a list of all matching items (tab separated):
+# sentence-nr babelsynsetid source-text-id target-text-id
+# example: 684 bn:00019586n classroom Klassenraum
+
+## my attempt (that obviously wont work)
+#        for currentmatch in matches
+#            entityobject = sourcesynsets[entity['currentmatch']]
+#            sourcestring-die-ik-wil-printen = entityobject['text']
+#            entityobject = targetsynsets[entity['currentmatch']]
+#            targetstring-die-ik-wil-printen = entityobject['text']
+
         allmatches += matches
         alltargetsynsets += targetsynsets
 
