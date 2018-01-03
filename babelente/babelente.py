@@ -103,9 +103,9 @@ def findentities(lines, lang, args, cache=None):
             print("Offsetmap:", repr(offsetmap), file=sys.stderr)
         elif cache is not None and text in cache:
             entities = cache[text]
-            print("@chunk #" + str(i) + " -- retrieved from cache",file=sys.stderr)
+            print("chunk #" + str(i) + " -- retrieved from cache",file=sys.stderr)
         else:
-            print("@chunk #" + str(i) + " -- querying BabelFy",file=sys.stderr)
+            print("chunk #" + str(i) + " -- querying BabelFy",file=sys.stderr)
             babelclient.babelfy(text)
             entities = babelclient.entities
             if cache is not None: cache[text] = entities #put in cache
@@ -291,7 +291,7 @@ def evaluate(sourceentities, targetentities, sourcelines, targetlines, do_recall
             #compute how many of the source synsets have corresponding translations in the target language
             #this creates a hypothetical upper bound for recall computation
             #(will query babel.net extensively, hence optional!)
-            print("\t@L" + str(linenr+1) + " - Computing recall...",end="", file=sys.stderr)
+            print("\tL" + str(linenr+1) + " - Computing recall...",end="", file=sys.stderr)
             translatableentities = Counter()
             for synset_id, freq in sourcesynsets.items():
                 targetlemmas = set(findtranslations(synset_id, targetlang, apikey, cache,debug))
@@ -360,7 +360,7 @@ def main():
     parser.add_argument('-T','--target', type=str,help="Target sentences (plain text, one per line, utf-8)", action='store',default="",required=False)
     parser.add_argument('-r', '--recall',help="Compute recall as well using Babel.net (results in many extra queries!)", action='store_true',required=False)
     parser.add_argument('-d', '--debug',help="Debug", action='store_true',required=False)
-    parser.add_argument('--nodup', type=bool,help="Filter out duplicate entities in evaluation", action='store_true',required=False)
+    parser.add_argument('--nodup', help="Filter out duplicate entities in evaluation", action='store_true',required=False)
     parser.add_argument('--evalfile', type=str,help="(Re)evaluate the supplied json file (output of babelente)", action='store',default="",required=False)
     parser.add_argument('--anntype', type=str,help="Annotation Type: Allows to restrict the disambiguated entries to only named entities (NAMED_ENTITIES), word senses (CONCEPTS) or both (ALL).", action='store',required=False)
     parser.add_argument('--annres', type=str,help="Annotation Resource: Allows to restrict the disambiguated entries to only WordNet (WN), Wikipedia (WIKI) or BabelNet (BN)", action='store',required=False)
