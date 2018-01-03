@@ -221,7 +221,7 @@ def findtranslations(synset_id, lang, apikey, cache=None, debug=False):
                     if lang not in cache[synset_id]: cache[synset_id][lang] = set()
                     cache[synset_id][lang].add(sense['lemma'])
 
-def evaluate(sourceentities, targetentities, sourcelines, targetlines, do_recall, targetlang, apikey, cache=None, debug=False):
+def evaluate(sourceentities, targetentities, sourcelines, targetlines, do_recall, targetlang, apikey, nodup, cache=None, debug=False):
     evaluation = {'perline':{} }
     overallprecision = []
     overallrecall = []
@@ -244,6 +244,13 @@ def evaluate(sourceentities, targetentities, sourcelines, targetlines, do_recall
             if entity['linenr'] == linenr:
                 targetsynsets[entity['babelSynsetID']] += 1
         matches = sourcesynsets & targetsynsets #intersection
+
+        if nodup:
+            #normalize, no duplicates:
+            sourcesynsets = Counter({ k:1 for k,v in sourcesynsets.items()})
+            targetsynsets = Counter({ k:1 for k,v in targetsynsets.items()})
+            matches = Counter({ k:1 for k,v in matches.items()})
+
 
 #Besides the scores and the full JSON output, it would be very helpful to get a focused list of the matchting pairs like this:
 # purpose:printing a list of all matching items (tab separated):
@@ -347,6 +354,7 @@ def main():
     parser.add_argument('-T','--target', type=str,help="Target sentences (plain text, one per line, utf-8)", action='store',default="",required=False)
     parser.add_argument('-r', '--recall',help="Compute recall as well using Babel.net (results in many extra queries!)", action='store_true',required=False)
     parser.add_argument('-d', '--debug',help="Debug", action='store_true',required=False)
+    parser.add_argument('--nodup', type=bool,help="Filter out duplicate entities in evaluation", action='store_true',required=False)
     parser.add_argument('--evalfile', type=str,help="(Re)evaluate the supplied json file (output of babelente)", action='store',default="",required=False)
     parser.add_argument('--anntype', type=str,help="Annotation Type: Allows to restrict the disambiguated entries to only named entities (NAMED_ENTITIES), word senses (CONCEPTS) or both (ALL).", action='store',required=False)
     parser.add_argument('--annres', type=str,help="Annotation Resource: Allows to restrict the disambiguated entries to only WordNet (WN), Wikipedia (WIKI) or BabelNet (BN)", action='store',required=False)
@@ -404,7 +412,7 @@ def main():
         targetentities = data['targetentities']
 
         print("Evaluating...",file=sys.stderr)
-        evaluation = evaluate(sourceentities, targetentities, sourcelines, targetlines, args.recall, args.targetlang, args.apikey, None if cache is None else cache['synsets_source'], args.debug)
+        evaluation = evaluate(sourceentities, targetentities, sourcelines, targetlines, args.recall, args.targetlang, args.apikey, args.nodup, None if cache is None else cache['synsets_source'], args.debug)
     else:
         print("Extracting source entities...",file=sys.stderr)
         sourceentities = [ entity for  entity in findentities(sourcelines, args.sourcelang, args, None if cache is None else cache['source']) if entity['isEntity'] and 'babelSynsetID' in entity ] #with sanity check
@@ -414,7 +422,7 @@ def main():
             targetentities = [ entity for  entity in findentities(targetlines, args.targetlang, args, None if cache is None else cache['target']) if entity['isEntity'] and 'babelSynsetID' in entity ] #with sanity check
 
             print("Evaluating...",file=sys.stderr)
-            evaluation = evaluate(sourceentities, targetentities, sourcelines, targetlines, args.recall, args.targetlang, args.apikey, None if cache is None else cache['synsets_target'], args.debug)
+            evaluation = evaluate(sourceentities, targetentities, sourcelines, targetlines, args.recall, args.targetlang, args.apikey, args.nodup, None if cache is None else cache['synsets_target'], args.debug)
         else:
             print(json.dumps({'entities':sourceentities}, indent=4,ensure_ascii=False)) #MAYBE TODO: add coverage?
 
