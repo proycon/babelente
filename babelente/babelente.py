@@ -252,17 +252,23 @@ def evaluate(sourceentities, targetentities, sourcelines, targetlines, do_recall
             matches = Counter({ k:1 for k,v in matches.items()})
 
 
-#Besides the scores and the full JSON output, it would be very helpful to get a focused list of the matchting pairs like this:
-# purpose:printing a list of all matching items (tab separated):
-# sentence-nr babelsynsetid source-text-id target-text-id
-# example: 684 bn:00019586n classroom Klassenraum
+        #Besides the scores and the full JSON output, it would be very helpful to get a focused list of the matching pairs like this:
+        # purpose:printing a list of all matching items (tab separated):
+        # sentence-nr babelsynsetid source-text-id target-text-id
+        # example: 684 bn:00019586n classroom Klassenraum
+        for match, freq in matches.items():
+            sourcetext = "{?}"
+            for entity in sourceentities:
+                if entity['linenr'] == linenr and entity['babelSynsetID'] == match:
+                    sourcetext = entity['text']
+                    break
+            targettext = "{?}"
+            for entity in targetentities:
+                if entity['linenr'] == linenr and entity['babelSynsetID'] == match:
+                    targettext = entity['text']
+                    break
+            print("@" + str(linenr) + "\t" + match + "\t" + sourcetext + "\t" + targettext + "\t" + str(freq), file=sys.stderr)
 
-## my attempt (that obviously wont work)
-#        for currentmatch in matches
-#            entityobject = sourcesynsets[entity['currentmatch']]
-#            sourcestring-die-ik-wil-printen = entityobject['text']
-#            entityobject = targetsynsets[entity['currentmatch']]
-#            targetstring-die-ik-wil-printen = entityobject['text']
 
         allmatches += matches
         alltargetsynsets += targetsynsets
