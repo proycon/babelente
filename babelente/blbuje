@@ -1,0 +1,5852 @@
+{
+    "sourceentities": [
+        {
+            "start": 8,
+            "end": 17,
+            "text": "first unit",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 2,
+                "end": 3
+            },
+            "charFragment": {
+                "start": 8,
+                "end": 17
+            },
+            "babelSynsetID": "bn:13745434n",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s13745434n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 0,
+            "offset": 8
+        },
+        {
+            "start": 14,
+            "end": 17,
+            "text": "unit",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 3,
+                "end": 3
+            },
+            "charFragment": {
+                "start": 14,
+                "end": 17
+            },
+            "babelSynsetID": "bn:00079106n",
+            "DBpediaURL": "http://dbpedia.org/resource/Units_of_measurement",
+            "BabelNetURL": "http://babelnet.org/rdf/s00079106n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 0,
+            "offset": 14
+        },
+        {
+            "start": 27,
+            "end": 29,
+            "text": "try",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 6,
+                "end": 6
+            },
+            "charFragment": {
+                "start": 27,
+                "end": 29
+            },
+            "babelSynsetID": "bn:00087731v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00087731v",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 0,
+            "offset": 27
+        },
+        {
+            "start": 41,
+            "end": 46,
+            "text": "visual",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 10,
+                "end": 10
+            },
+            "charFragment": {
+                "start": 41,
+                "end": 46
+            },
+            "babelSynsetID": "bn:00107731a",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00107731a",
+            "score": 0.8333333333333334,
+            "coherenceScore": 0.027777777777777776,
+            "globalScore": 5.792576523556236e-06,
+            "source": "BABELFY",
+            "linenr": 0,
+            "offset": 41
+        },
+        {
+            "start": 48,
+            "end": 55,
+            "text": "overview",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 11,
+                "end": 11
+            },
+            "charFragment": {
+                "start": 48,
+                "end": 55
+            },
+            "babelSynsetID": "bn:00059928n",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00059928n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 0,
+            "offset": 48
+        },
+        {
+            "start": 70,
+            "end": 75,
+            "text": "course",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 15,
+                "end": 15
+            },
+            "charFragment": {
+                "start": 70,
+                "end": 75
+            },
+            "babelSynsetID": "bn:00023285n",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00023285n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 0,
+            "offset": 70
+        },
+        {
+            "start": 81,
+            "end": 84,
+            "text": "road",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 18,
+                "end": 18
+            },
+            "charFragment": {
+                "start": 81,
+                "end": 84
+            },
+            "babelSynsetID": "bn:00067975n",
+            "DBpediaURL": "http://dbpedia.org/resource/Road",
+            "BabelNetURL": "http://babelnet.org/rdf/s00067975n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 0,
+            "offset": 81
+        },
+        {
+            "start": 81,
+            "end": 88,
+            "text": "road map",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 18,
+                "end": 19
+            },
+            "charFragment": {
+                "start": 81,
+                "end": 88
+            },
+            "babelSynsetID": "bn:00067981n",
+            "DBpediaURL": "http://dbpedia.org/resource/Road_map",
+            "BabelNetURL": "http://babelnet.org/rdf/s00067981n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 0,
+            "offset": 81
+        },
+        {
+            "start": 86,
+            "end": 88,
+            "text": "map",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 19,
+                "end": 19
+            },
+            "charFragment": {
+                "start": 86,
+                "end": 88
+            },
+            "babelSynsetID": "bn:00053303n",
+            "DBpediaURL": "http://dbpedia.org/resource/Map",
+            "BabelNetURL": "http://babelnet.org/rdf/s00053303n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 0,
+            "offset": 86
+        },
+        {
+            "start": 103,
+            "end": 110,
+            "text": "actually",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 23,
+                "end": 23
+            },
+            "charFragment": {
+                "start": 103,
+                "end": 110
+            },
+            "babelSynsetID": "bn:00114118r",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00114118r",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 0,
+            "offset": 103
+        },
+        {
+            "start": 112,
+            "end": 119,
+            "text": "download",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 24,
+                "end": 24
+            },
+            "charFragment": {
+                "start": 112,
+                "end": 119
+            },
+            "babelSynsetID": "bn:00087203v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00087203v",
+            "score": 1.0,
+            "coherenceScore": 0.027777777777777776,
+            "globalScore": 4.634061218844989e-06,
+            "source": "BABELFY",
+            "linenr": 0,
+            "offset": 112
+        },
+        {
+            "start": 125,
+            "end": 129,
+            "text": "print",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 26,
+                "end": 26
+            },
+            "charFragment": {
+                "start": 125,
+                "end": 129
+            },
+            "babelSynsetID": "bn:00092024v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00092024v",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 0,
+            "offset": 125
+        },
+        {
+            "start": 140,
+            "end": 143,
+            "text": "link",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 29,
+                "end": 29
+            },
+            "charFragment": {
+                "start": 140,
+                "end": 143
+            },
+            "babelSynsetID": "bn:00051402n",
+            "DBpediaURL": "http://dbpedia.org/resource/Link_(unit)",
+            "BabelNetURL": "http://babelnet.org/rdf/s00051402n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 0,
+            "offset": 140
+        },
+        {
+            "start": 171,
+            "end": 176,
+            "text": "follow",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 37,
+                "end": 37
+            },
+            "charFragment": {
+                "start": 171,
+                "end": 176
+            },
+            "babelSynsetID": "bn:00088421v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00088421v",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 1,
+            "offset": 18
+        },
+        {
+            "start": 183,
+            "end": 190,
+            "text": "progress",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 39,
+                "end": 39
+            },
+            "charFragment": {
+                "start": 183,
+                "end": 190
+            },
+            "babelSynsetID": "bn:00001557n",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00001557n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 1,
+            "offset": 30
+        },
+        {
+            "start": 204,
+            "end": 209,
+            "text": "course",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 42,
+                "end": 42
+            },
+            "charFragment": {
+                "start": 204,
+                "end": 209
+            },
+            "babelSynsetID": "bn:00023285n",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00023285n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 1,
+            "offset": 51
+        },
+        {
+            "start": 225,
+            "end": 234,
+            "text": "understand",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 47,
+                "end": 47
+            },
+            "charFragment": {
+                "start": 225,
+                "end": 234
+            },
+            "babelSynsetID": "bn:00095375v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00095375v",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 1,
+            "offset": 72
+        },
+        {
+            "start": 240,
+            "end": 246,
+            "text": "natural",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 49,
+                "end": 49
+            },
+            "charFragment": {
+                "start": 240,
+                "end": 246
+            },
+            "babelSynsetID": "bn:00107151a",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00107151a",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 1,
+            "offset": 87
+        },
+        {
+            "start": 240,
+            "end": 252,
+            "text": "natural order",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 49,
+                "end": 50
+            },
+            "charFragment": {
+                "start": 240,
+                "end": 252
+            },
+            "babelSynsetID": "bn:00056994n",
+            "DBpediaURL": "http://dbpedia.org/resource/Natural_order_(philosophy)",
+            "BabelNetURL": "http://babelnet.org/rdf/s00056994n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 1,
+            "offset": 87
+        },
+        {
+            "start": 248,
+            "end": 252,
+            "text": "order",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 50,
+                "end": 50
+            },
+            "charFragment": {
+                "start": 248,
+                "end": 252
+            },
+            "babelSynsetID": "bn:00059303n",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00059303n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 1,
+            "offset": 95
+        },
+        {
+            "start": 261,
+            "end": 266,
+            "text": "topics",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 53,
+                "end": 53
+            },
+            "charFragment": {
+                "start": 261,
+                "end": 266
+            },
+            "babelSynsetID": "bn:00074900n",
+            "DBpediaURL": "http://dbpedia.org/resource/Topic–comment",
+            "BabelNetURL": "http://babelnet.org/rdf/s00074900n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 1,
+            "offset": 108
+        },
+        {
+            "start": 275,
+            "end": 280,
+            "text": "follow",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 56,
+                "end": 56
+            },
+            "charFragment": {
+                "start": 275,
+                "end": 280
+            },
+            "babelSynsetID": "bn:00088421v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00088421v",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 1,
+            "offset": 122
+        },
+        {
+            "start": 286,
+            "end": 288,
+            "text": "red",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 58,
+                "end": 58
+            },
+            "charFragment": {
+                "start": 286,
+                "end": 288
+            },
+            "babelSynsetID": "bn:00098581a",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00098581a",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 1,
+            "offset": 133
+        },
+        {
+            "start": 290,
+            "end": 295,
+            "text": "thread",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 59,
+                "end": 59
+            },
+            "charFragment": {
+                "start": 290,
+                "end": 295
+            },
+            "babelSynsetID": "bn:00067703n",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00067703n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 1,
+            "offset": 137
+        },
+        {
+            "start": 302,
+            "end": 306,
+            "text": "links",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 61,
+                "end": 61
+            },
+            "charFragment": {
+                "start": 302,
+                "end": 306
+            },
+            "babelSynsetID": "bn:00082868v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00082868v",
+            "score": 0.9676025917926566,
+            "coherenceScore": 0.09722222222222222,
+            "globalScore": 0.0001297537141276597,
+            "source": "BABELFY",
+            "linenr": 1,
+            "offset": 149
+        },
+        {
+            "start": 330,
+            "end": 341,
+            "text": "introductory",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 67,
+                "end": 67
+            },
+            "charFragment": {
+                "start": 330,
+                "end": 341
+            },
+            "babelSynsetID": "bn:00105352a",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00105352a",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 2,
+            "offset": 11
+        },
+        {
+            "start": 330,
+            "end": 349,
+            "text": "introductory chapter",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 67,
+                "end": 68
+            },
+            "charFragment": {
+                "start": 330,
+                "end": 349
+            },
+            "babelSynsetID": "bn:01836590n",
+            "DBpediaURL": "http://dbpedia.org/resource/White_Album_2",
+            "BabelNetURL": "http://babelnet.org/rdf/s01836590n",
+            "score": 1.0,
+            "coherenceScore": 0.10416666666666667,
+            "globalScore": 7.819978306800919e-05,
+            "source": "BABELFY",
+            "linenr": 2,
+            "offset": 11
+        },
+        {
+            "start": 343,
+            "end": 349,
+            "text": "chapter",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 68,
+                "end": 68
+            },
+            "charFragment": {
+                "start": 343,
+                "end": 349
+            },
+            "babelSynsetID": "bn:00017730n",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00017730n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 2,
+            "offset": 24
+        },
+        {
+            "start": 356,
+            "end": 363,
+            "text": "continue",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 70,
+                "end": 70
+            },
+            "charFragment": {
+                "start": 356,
+                "end": 363
+            },
+            "babelSynsetID": "bn:00085716v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00085716v",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 2,
+            "offset": 37
+        },
+        {
+            "start": 379,
+            "end": 383,
+            "text": "units",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 74,
+                "end": 74
+            },
+            "charFragment": {
+                "start": 379,
+                "end": 383
+            },
+            "babelSynsetID": "bn:00079106n",
+            "DBpediaURL": "http://dbpedia.org/resource/Units_of_measurement",
+            "BabelNetURL": "http://babelnet.org/rdf/s00079106n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 2,
+            "offset": 60
+        },
+        {
+            "start": 403,
+            "end": 405,
+            "text": "try",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 80,
+                "end": 80
+            },
+            "charFragment": {
+                "start": 403,
+                "end": 405
+            },
+            "babelSynsetID": "bn:00087731v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00087731v",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 2,
+            "offset": 84
+        },
+        {
+            "start": 410,
+            "end": 414,
+            "text": "argue",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 82,
+                "end": 82
+            },
+            "charFragment": {
+                "start": 410,
+                "end": 414
+            },
+            "babelSynsetID": "bn:00082754v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00082754v",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 2,
+            "offset": 91
+        },
+        {
+            "start": 420,
+            "end": 427,
+            "text": "studying",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 84,
+                "end": 84
+            },
+            "charFragment": {
+                "start": 420,
+                "end": 427
+            },
+            "babelSynsetID": "bn:00094501v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00094501v",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 2,
+            "offset": 101
+        },
+        {
+            "start": 438,
+            "end": 445,
+            "text": "Thinking",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 86,
+                "end": 86
+            },
+            "charFragment": {
+                "start": 438,
+                "end": 445
+            },
+            "babelSynsetID": "bn:00083370v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00083370v",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 2,
+            "offset": 119
+        },
+        {
+            "start": 450,
+            "end": 458,
+            "text": "important",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 88,
+                "end": 88
+            },
+            "charFragment": {
+                "start": 450,
+                "end": 458
+            },
+            "babelSynsetID": "bn:00100716a",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00100716a",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 2,
+            "offset": 131
+        },
+        {
+            "start": 462,
+            "end": 467,
+            "text": "define",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 90,
+                "end": 90
+            },
+            "charFragment": {
+                "start": 462,
+                "end": 467
+            },
+            "babelSynsetID": "bn:00086465v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00086465v",
+            "score": 0.7932203389830509,
+            "coherenceScore": 0.09027777777777778,
+            "globalScore": 6.777314532560797e-05,
+            "source": "BABELFY",
+            "linenr": 2,
+            "offset": 143
+        },
+        {
+            "start": 478,
+            "end": 484,
+            "text": "outline",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 94,
+                "end": 94
+            },
+            "charFragment": {
+                "start": 478,
+                "end": 484
+            },
+            "babelSynsetID": "bn:00082392v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00082392v",
+            "score": 0.7936507936507936,
+            "coherenceScore": 0.06944444444444445,
+            "globalScore": 2.8962882617781184e-05,
+            "source": "BABELFY",
+            "linenr": 2,
+            "offset": 159
+        },
+        {
+            "start": 490,
+            "end": 499,
+            "text": "millennial",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 96,
+                "end": 96
+            },
+            "charFragment": {
+                "start": 490,
+                "end": 499
+            },
+            "babelSynsetID": "bn:00106734a",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00106734a",
+            "score": 1.0,
+            "coherenceScore": 0.027777777777777776,
+            "globalScore": 4.634061218844989e-06,
+            "source": "BABELFY",
+            "linenr": 2,
+            "offset": 171
+        },
+        {
+            "start": 501,
+            "end": 507,
+            "text": "history",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 97,
+                "end": 97
+            },
+            "charFragment": {
+                "start": 501,
+                "end": 507
+            },
+            "babelSynsetID": "bn:00044267n",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00044267n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 2,
+            "offset": 182
+        },
+        {
+            "start": 515,
+            "end": 520,
+            "text": "second",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 100,
+                "end": 100
+            },
+            "charFragment": {
+                "start": 515,
+                "end": 520
+            },
+            "babelSynsetID": "bn:00095974a",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00095974a",
+            "score": 0.9411764705882353,
+            "coherenceScore": 0.05555555555555555,
+            "globalScore": 1.8536244875379956e-05,
+            "source": "BABELFY",
+            "linenr": 3,
+            "offset": 4
+        },
+        {
+            "start": 522,
+            "end": 528,
+            "text": "chapter",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 101,
+                "end": 101
+            },
+            "charFragment": {
+                "start": 522,
+                "end": 528
+            },
+            "babelSynsetID": "bn:00017730n",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00017730n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 3,
+            "offset": 11
+        },
+        {
+            "start": 532,
+            "end": 540,
+            "text": "Arguments",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 103,
+                "end": 103
+            },
+            "charFragment": {
+                "start": 532,
+                "end": 540
+            },
+            "babelSynsetID": "bn:00005600n",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00005600n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 3,
+            "offset": 21
+        },
+        {
+            "start": 553,
+            "end": 556,
+            "text": "help",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 107,
+                "end": 107
+            },
+            "charFragment": {
+                "start": 553,
+                "end": 556
+            },
+            "babelSynsetID": "bn:00082481v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00082481v",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 3,
+            "offset": 42
+        },
+        {
+            "start": 561,
+            "end": 570,
+            "text": "understand",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 109,
+                "end": 109
+            },
+            "charFragment": {
+                "start": 561,
+                "end": 570
+            },
+            "babelSynsetID": "bn:00095375v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00095375v",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 3,
+            "offset": 50
+        },
+        {
+            "start": 572,
+            "end": 580,
+            "text": "arguments",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 110,
+                "end": 110
+            },
+            "charFragment": {
+                "start": 572,
+                "end": 580
+            },
+            "babelSynsetID": "bn:00005600n",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00005600n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 3,
+            "offset": 61
+        },
+        {
+            "start": 585,
+            "end": 590,
+            "text": "reason",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 112,
+                "end": 112
+            },
+            "charFragment": {
+                "start": 585,
+                "end": 590
+            },
+            "babelSynsetID": "bn:00041881n",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00041881n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 3,
+            "offset": 74
+        },
+        {
+            "start": 593,
+            "end": 602,
+            "text": "s building",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 113,
+                "end": 114
+            },
+            "charFragment": {
+                "start": 593,
+                "end": 602
+            },
+            "babelSynsetID": "bn:03605223n",
+            "DBpediaURL": "http://dbpedia.org/resource/J_&_S_Building",
+            "BabelNetURL": "http://babelnet.org/rdf/s03605223n",
+            "score": 1.0,
+            "coherenceScore": 0.041666666666666664,
+            "globalScore": 2.0853275484802452e-05,
+            "source": "BABELFY",
+            "linenr": 3,
+            "offset": 82
+        },
+        {
+            "start": 595,
+            "end": 602,
+            "text": "building",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 114,
+                "end": 114
+            },
+            "charFragment": {
+                "start": 595,
+                "end": 602
+            },
+            "babelSynsetID": "bn:00084198v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00084198v",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 3,
+            "offset": 84
+        },
+        {
+            "start": 604,
+            "end": 609,
+            "text": "blocks",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 115,
+                "end": 115
+            },
+            "charFragment": {
+                "start": 604,
+                "end": 609
+            },
+            "babelSynsetID": "bn:00011308n",
+            "DBpediaURL": "http://dbpedia.org/resource/Block_(district_subdivision)",
+            "BabelNetURL": "http://babelnet.org/rdf/s00011308n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 3,
+            "offset": 93
+        },
+        {
+            "start": 621,
+            "end": 623,
+            "text": "see",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 119,
+                "end": 119
+            },
+            "charFragment": {
+                "start": 621,
+                "end": 623
+            },
+            "babelSynsetID": "bn:00093430v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00093430v",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 4,
+            "offset": 8
+        },
+        {
+            "start": 658,
+            "end": 665,
+            "text": "evaluate",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 128,
+                "end": 128
+            },
+            "charFragment": {
+                "start": 658,
+                "end": 665
+            },
+            "babelSynsetID": "bn:00082720v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00082720v",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 4,
+            "offset": 45
+        },
+        {
+            "start": 678,
+            "end": 690,
+            "text": "third chapter",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 132,
+                "end": 133
+            },
+            "charFragment": {
+                "start": 678,
+                "end": 690
+            },
+            "babelSynsetID": "bn:14076312n",
+            "DBpediaURL": "http://dbpedia.org/resource/The_Legend_of_Heroes:_Trails_in_the_Sky_Third_Chapter",
+            "BabelNetURL": "http://babelnet.org/rdf/s14076312n",
+            "score": 1.0,
+            "coherenceScore": 0.1527777777777778,
+            "globalScore": 0.00021664236198100324,
+            "source": "BABELFY",
+            "linenr": 5,
+            "offset": 4
+        },
+        {
+            "start": 684,
+            "end": 690,
+            "text": "chapter",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 133,
+                "end": 133
+            },
+            "charFragment": {
+                "start": 684,
+                "end": 690
+            },
+            "babelSynsetID": "bn:00017730n",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00017730n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 5,
+            "offset": 10
+        },
+        {
+            "start": 694,
+            "end": 702,
+            "text": "Deductive",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 135,
+                "end": 135
+            },
+            "charFragment": {
+                "start": 694,
+                "end": 702
+            },
+            "babelSynsetID": "bn:00025801n",
+            "DBpediaURL": "http://dbpedia.org/resource/Deductive_reasoning",
+            "BabelNetURL": "http://babelnet.org/rdf/s00025801n",
+            "score": 0.9885057471264368,
+            "coherenceScore": 0.2986111111111111,
+            "globalScore": 0.001619025138333968,
+            "source": "BABELFY",
+            "linenr": 5,
+            "offset": 20
+        },
+        {
+            "start": 759,
+            "end": 768,
+            "text": "accustomed",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 147,
+                "end": 147
+            },
+            "charFragment": {
+                "start": 759,
+                "end": 768
+            },
+            "babelSynsetID": "bn:00082251v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00082251v",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 5,
+            "offset": 85
+        },
+        {
+            "start": 781,
+            "end": 784,
+            "text": "main",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 151,
+                "end": 151
+            },
+            "charFragment": {
+                "start": 781,
+                "end": 784
+            },
+            "babelSynsetID": "bn:00106327a",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00106327a",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 5,
+            "offset": 107
+        },
+        {
+            "start": 786,
+            "end": 791,
+            "text": "breeds",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 152,
+                "end": 152
+            },
+            "charFragment": {
+                "start": 786,
+                "end": 791
+            },
+            "babelSynsetID": "bn:00012986n",
+            "DBpediaURL": "http://dbpedia.org/resource/Breed",
+            "BabelNetURL": "http://babelnet.org/rdf/s00012986n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 5,
+            "offset": 112
+        },
+        {
+            "start": 796,
+            "end": 804,
+            "text": "arguments",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 154,
+                "end": 154
+            },
+            "charFragment": {
+                "start": 796,
+                "end": 804
+            },
+            "babelSynsetID": "bn:00005600n",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00005600n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 5,
+            "offset": 122
+        },
+        {
+            "start": 819,
+            "end": 833,
+            "text": "particularities",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 158,
+                "end": 158
+            },
+            "charFragment": {
+                "start": 819,
+                "end": 833
+            },
+            "babelSynsetID": "bn:00060810n",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00060810n",
+            "score": 1.0,
+            "coherenceScore": 0.034722222222222224,
+            "globalScore": 8.688864785334355e-06,
+            "source": "BABELFY",
+            "linenr": 5,
+            "offset": 145
+        },
+        {
+            "start": 847,
+            "end": 854,
+            "text": "chapters",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 162,
+                "end": 162
+            },
+            "charFragment": {
+                "start": 847,
+                "end": 854
+            },
+            "babelSynsetID": "bn:00017730n",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00017730n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 6,
+            "offset": 10
+        },
+        {
+            "start": 862,
+            "end": 870,
+            "text": "arguments",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 164,
+                "end": 164
+            },
+            "charFragment": {
+                "start": 862,
+                "end": 870
+            },
+            "babelSynsetID": "bn:00005600n",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00005600n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 6,
+            "offset": 25
+        },
+        {
+            "start": 885,
+            "end": 887,
+            "text": "bit",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 168,
+                "end": 168
+            },
+            "charFragment": {
+                "start": 885,
+                "end": 887
+            },
+            "babelSynsetID": "bn:00010729n",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00010729n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 6,
+            "offset": 48
+        },
+        {
+            "start": 889,
+            "end": 899,
+            "text": "theoretical",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 169,
+                "end": 169
+            },
+            "charFragment": {
+                "start": 889,
+                "end": 899
+            },
+            "babelSynsetID": "bn:00111806a",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00111806a",
+            "score": 0.874439461883408,
+            "coherenceScore": 0.09027777777777778,
+            "globalScore": 5.64776211046733e-05,
+            "source": "BABELFY",
+            "linenr": 6,
+            "offset": 52
+        },
+        {
+            "start": 920,
+            "end": 924,
+            "text": "tools",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 175,
+                "end": 175
+            },
+            "charFragment": {
+                "start": 920,
+                "end": 924
+            },
+            "babelSynsetID": "bn:00077585n",
+            "DBpediaURL": "http://dbpedia.org/resource/Tool",
+            "BabelNetURL": "http://babelnet.org/rdf/s00077585n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 6,
+            "offset": 83
+        },
+        {
+            "start": 934,
+            "end": 941,
+            "text": "language",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 178,
+                "end": 178
+            },
+            "charFragment": {
+                "start": 934,
+                "end": 941
+            },
+            "babelSynsetID": "bn:00049910n",
+            "DBpediaURL": "http://dbpedia.org/resource/Language",
+            "BabelNetURL": "http://babelnet.org/rdf/s00049910n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 6,
+            "offset": 97
+        },
+        {
+            "start": 946,
+            "end": 953,
+            "text": "critical",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 180,
+                "end": 180
+            },
+            "charFragment": {
+                "start": 946,
+                "end": 953
+            },
+            "babelSynsetID": "bn:00100672a",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00100672a",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 6,
+            "offset": 109
+        },
+        {
+            "start": 955,
+            "end": 962,
+            "text": "thinking",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 181,
+                "end": 181
+            },
+            "charFragment": {
+                "start": 955,
+                "end": 962
+            },
+            "babelSynsetID": "bn:00083370v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00083370v",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 6,
+            "offset": 118
+        },
+        {
+            "start": 970,
+            "end": 974,
+            "text": "forth",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 184,
+                "end": 184
+            },
+            "charFragment": {
+                "start": 970,
+                "end": 974
+            },
+            "babelSynsetID": "bn:00114455r",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00114455r",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 7,
+            "offset": 4
+        },
+        {
+            "start": 976,
+            "end": 982,
+            "text": "chapter",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 185,
+                "end": 185
+            },
+            "charFragment": {
+                "start": 976,
+                "end": 982
+            },
+            "babelSynsetID": "bn:00017730n",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00017730n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 7,
+            "offset": 10
+        },
+        {
+            "start": 989,
+            "end": 995,
+            "text": "explain",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 187,
+                "end": 187
+            },
+            "charFragment": {
+                "start": 989,
+                "end": 995
+            },
+            "babelSynsetID": "bn:00087870v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00087870v",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 7,
+            "offset": 23
+        },
+        {
+            "start": 1005,
+            "end": 1023,
+            "text": "Inductive Reasoning",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 190,
+                "end": 191
+            },
+            "charFragment": {
+                "start": 1005,
+                "end": 1023
+            },
+            "babelSynsetID": "bn:00037671n",
+            "DBpediaURL": "http://dbpedia.org/resource/Generalization",
+            "BabelNetURL": "http://babelnet.org/rdf/s00037671n",
+            "score": 1.0,
+            "coherenceScore": 0.3541666666666667,
+            "globalScore": 0.002968985097148749,
+            "source": "BABELFY",
+            "linenr": 7,
+            "offset": 39
+        },
+        {
+            "start": 1015,
+            "end": 1023,
+            "text": "Reasoning",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 191,
+                "end": 191
+            },
+            "charFragment": {
+                "start": 1015,
+                "end": 1023
+            },
+            "babelSynsetID": "bn:00092456v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00092456v",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 7,
+            "offset": 49
+        },
+        {
+            "start": 1043,
+            "end": 1047,
+            "text": "basis",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 197,
+                "end": 197
+            },
+            "charFragment": {
+                "start": 1043,
+                "end": 1047
+            },
+            "babelSynsetID": "bn:00008786n",
+            "DBpediaURL": "http://dbpedia.org/resource/Basis_(linear_algebra)",
+            "BabelNetURL": "http://babelnet.org/rdf/s00008786n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 7,
+            "offset": 77
+        },
+        {
+            "start": 1056,
+            "end": 1065,
+            "text": "scientific",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 200,
+                "end": 200
+            },
+            "charFragment": {
+                "start": 1056,
+                "end": 1065
+            },
+            "babelSynsetID": "bn:00110175a",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00110175a",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 7,
+            "offset": 90
+        },
+        {
+            "start": 1056,
+            "end": 1075,
+            "text": "scientific knowledge",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 200,
+                "end": 201
+            },
+            "charFragment": {
+                "start": 1056,
+                "end": 1075
+            },
+            "babelSynsetID": "bn:00069677n",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00069677n",
+            "score": 0.7037263286499694,
+            "coherenceScore": 0.16666666666666666,
+            "globalScore": 0.00033365240775683924,
+            "source": "BABELFY",
+            "linenr": 7,
+            "offset": 90
+        },
+        {
+            "start": 1067,
+            "end": 1075,
+            "text": "knowledge",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 201,
+                "end": 201
+            },
+            "charFragment": {
+                "start": 1067,
+                "end": 1075
+            },
+            "babelSynsetID": "bn:00020452n",
+            "DBpediaURL": "http://dbpedia.org/resource/Cognition",
+            "BabelNetURL": "http://babelnet.org/rdf/s00020452n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 7,
+            "offset": 101
+        },
+        {
+            "start": 1087,
+            "end": 1092,
+            "text": "wonder",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 205,
+                "end": 205
+            },
+            "charFragment": {
+                "start": 1087,
+                "end": 1092
+            },
+            "babelSynsetID": "bn:00092265v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00092265v",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 8,
+            "offset": 8
+        },
+        {
+            "start": 1094,
+            "end": 1108,
+            "text": "philosophically",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 206,
+                "end": 206
+            },
+            "charFragment": {
+                "start": 1094,
+                "end": 1108
+            },
+            "babelSynsetID": "bn:00116591r",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00116591r",
+            "score": 0.7954545454545454,
+            "coherenceScore": 0.034722222222222224,
+            "globalScore": 1.0137008916223415e-05,
+            "source": "BABELFY",
+            "linenr": 8,
+            "offset": 15
+        },
+        {
+            "start": 1120,
+            "end": 1125,
+            "text": "limits",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 209,
+                "end": 209
+            },
+            "charFragment": {
+                "start": 1120,
+                "end": 1125
+            },
+            "babelSynsetID": "bn:00012419n",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00012419n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 8,
+            "offset": 41
+        },
+        {
+            "start": 1120,
+            "end": 1138,
+            "text": "limits of knowledge",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 209,
+                "end": 211
+            },
+            "charFragment": {
+                "start": 1120,
+                "end": 1138
+            },
+            "babelSynsetID": "bn:00031237n",
+            "DBpediaURL": "http://dbpedia.org/resource/Epistemology",
+            "BabelNetURL": "http://babelnet.org/rdf/s00031237n",
+            "score": 1.0,
+            "coherenceScore": 0.5277777777777778,
+            "globalScore": 0.008254421546067637,
+            "source": "BABELFY",
+            "linenr": 8,
+            "offset": 41
+        },
+        {
+            "start": 1130,
+            "end": 1138,
+            "text": "knowledge",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 211,
+                "end": 211
+            },
+            "charFragment": {
+                "start": 1130,
+                "end": 1138
+            },
+            "babelSynsetID": "bn:00020452n",
+            "DBpediaURL": "http://dbpedia.org/resource/Cognition",
+            "BabelNetURL": "http://babelnet.org/rdf/s00020452n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 8,
+            "offset": 51
+        },
+        {
+            "start": 1159,
+            "end": 1163,
+            "text": "study",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 217,
+                "end": 217
+            },
+            "charFragment": {
+                "start": 1159,
+                "end": 1163
+            },
+            "babelSynsetID": "bn:00094501v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00094501v",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 8,
+            "offset": 80
+        },
+        {
+            "start": 1171,
+            "end": 1179,
+            "text": "important",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 219,
+                "end": 219
+            },
+            "charFragment": {
+                "start": 1171,
+                "end": 1179
+            },
+            "babelSynsetID": "bn:00100716a",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00100716a",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 8,
+            "offset": 92
+        },
+        {
+            "start": 1181,
+            "end": 1185,
+            "text": "types",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 220,
+                "end": 220
+            },
+            "charFragment": {
+                "start": 1181,
+                "end": 1185
+            },
+            "babelSynsetID": "bn:00078798n",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00078798n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 8,
+            "offset": 102
+        },
+        {
+            "start": 1190,
+            "end": 1198,
+            "text": "inductive",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 222,
+                "end": 222
+            },
+            "charFragment": {
+                "start": 1190,
+                "end": 1198
+            },
+            "babelSynsetID": "bn:00104990a",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00104990a",
+            "score": 0.9863013698630136,
+            "coherenceScore": 0.125,
+            "globalScore": 0.00012511965290881472,
+            "source": "BABELFY",
+            "linenr": 8,
+            "offset": 111
+        },
+        {
+            "start": 1200,
+            "end": 1208,
+            "text": "reasoning",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 223,
+                "end": 223
+            },
+            "charFragment": {
+                "start": 1200,
+                "end": 1208
+            },
+            "babelSynsetID": "bn:00092456v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00092456v",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 8,
+            "offset": 121
+        },
+        {
+            "start": 1216,
+            "end": 1220,
+            "text": "fifth",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 226,
+                "end": 226
+            },
+            "charFragment": {
+                "start": 1216,
+                "end": 1220
+            },
+            "babelSynsetID": "bn:00096043a",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00096043a",
+            "score": 1.0,
+            "coherenceScore": 0.020833333333333332,
+            "globalScore": 2.6066594356003065e-06,
+            "source": "BABELFY",
+            "linenr": 9,
+            "offset": 4
+        },
+        {
+            "start": 1216,
+            "end": 1228,
+            "text": "fifth chapter",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 226,
+                "end": 227
+            },
+            "charFragment": {
+                "start": 1216,
+                "end": 1228
+            },
+            "babelSynsetID": "bn:13961014n",
+            "DBpediaURL": "http://dbpedia.org/resource/The_Fifth_Chapter",
+            "BabelNetURL": "http://babelnet.org/rdf/s13961014n",
+            "score": 1.0,
+            "coherenceScore": 0.013888888888888888,
+            "globalScore": 2.3170306094224945e-06,
+            "source": "BABELFY",
+            "linenr": 9,
+            "offset": 4
+        },
+        {
+            "start": 1222,
+            "end": 1228,
+            "text": "chapter",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 227,
+                "end": 227
+            },
+            "charFragment": {
+                "start": 1222,
+                "end": 1228
+            },
+            "babelSynsetID": "bn:00017730n",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00017730n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 9,
+            "offset": 10
+        },
+        {
+            "start": 1232,
+            "end": 1240,
+            "text": "Fallacies",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 229,
+                "end": 229
+            },
+            "charFragment": {
+                "start": 1232,
+                "end": 1240
+            },
+            "babelSynsetID": "bn:00032817n",
+            "DBpediaURL": "http://dbpedia.org/resource/Fallacy",
+            "BabelNetURL": "http://babelnet.org/rdf/s00032817n",
+            "score": 0.7259507016650912,
+            "coherenceScore": 0.3611111111111111,
+            "globalScore": 0.002891654200559273,
+            "source": "BABELFY",
+            "linenr": 9,
+            "offset": 20
+        },
+        {
+            "start": 1260,
+            "end": 1267,
+            "text": "students",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 235,
+                "end": 235
+            },
+            "charFragment": {
+                "start": 1260,
+                "end": 1267
+            },
+            "babelSynsetID": "bn:00029806n",
+            "DBpediaURL": "http://dbpedia.org/resource/Student",
+            "BabelNetURL": "http://babelnet.org/rdf/s00029806n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 9,
+            "offset": 48
+        },
+        {
+            "start": 1269,
+            "end": 1275,
+            "text": "usually",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 236,
+                "end": 236
+            },
+            "charFragment": {
+                "start": 1269,
+                "end": 1275
+            },
+            "babelSynsetID": "bn:00114778r",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00114778r",
+            "score": 1.0,
+            "coherenceScore": 0.16666666666666666,
+            "globalScore": 0.00041706550969604903,
+            "source": "BABELFY",
+            "linenr": 9,
+            "offset": 57
+        },
+        {
+            "start": 1277,
+            "end": 1280,
+            "text": "love",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 237,
+                "end": 237
+            },
+            "charFragment": {
+                "start": 1277,
+                "end": 1280
+            },
+            "babelSynsetID": "bn:00090504v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00090504v",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 9,
+            "offset": 65
+        },
+        {
+            "start": 1282,
+            "end": 1285,
+            "text": "best",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 238,
+                "end": 238
+            },
+            "charFragment": {
+                "start": 1282,
+                "end": 1285
+            },
+            "babelSynsetID": "bn:00098274a",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00098274a",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 9,
+            "offset": 70
+        },
+        {
+            "start": 1292,
+            "end": 1297,
+            "text": "starts",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 241,
+                "end": 241
+            },
+            "charFragment": {
+                "start": 1292,
+                "end": 1297
+            },
+            "babelSynsetID": "bn:00083342v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00083342v",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 10,
+            "offset": 3
+        },
+        {
+            "start": 1304,
+            "end": 1307,
+            "text": "fair",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 243,
+                "end": 243
+            },
+            "charFragment": {
+                "start": 1304,
+                "end": 1307
+            },
+            "babelSynsetID": "bn:00102720a",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00102720a",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 10,
+            "offset": 15
+        },
+        {
+            "start": 1309,
+            "end": 1312,
+            "text": "play",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 244,
+                "end": 244
+            },
+            "charFragment": {
+                "start": 1309,
+                "end": 1312
+            },
+            "babelSynsetID": "bn:00028604n",
+            "DBpediaURL": "http://dbpedia.org/resource/Play_(theatre)",
+            "BabelNetURL": "http://babelnet.org/rdf/s00028604n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 10,
+            "offset": 20
+        },
+        {
+            "start": 1314,
+            "end": 1323,
+            "text": "principles",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 245,
+                "end": 245
+            },
+            "charFragment": {
+                "start": 1314,
+                "end": 1323
+            },
+            "babelSynsetID": "bn:00064426n",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00064426n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 10,
+            "offset": 25
+        },
+        {
+            "start": 1381,
+            "end": 1384,
+            "text": "list",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 257,
+                "end": 257
+            },
+            "charFragment": {
+                "start": 1381,
+                "end": 1384
+            },
+            "babelSynsetID": "bn:00051508n",
+            "DBpediaURL": "http://dbpedia.org/resource/Listing_(computer)",
+            "BabelNetURL": "http://babelnet.org/rdf/s00051508n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 10,
+            "offset": 92
+        },
+        {
+            "start": 1381,
+            "end": 1396,
+            "text": "list of the most",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 257,
+                "end": 260
+            },
+            "charFragment": {
+                "start": 1381,
+                "end": 1396
+            },
+            "babelSynsetID": "bn:00359004n",
+            "DBpediaURL": "http://dbpedia.org/resource/Forbes'_list_of_the_most_valuable_football_clubs",
+            "BabelNetURL": "http://babelnet.org/rdf/s00359004n",
+            "score": 1.0,
+            "coherenceScore": 0.034722222222222224,
+            "globalScore": 1.1585153047112473e-05,
+            "source": "BABELFY",
+            "linenr": 10,
+            "offset": 92
+        },
+        {
+            "start": 1393,
+            "end": 1403,
+            "text": "most common",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 260,
+                "end": 261
+            },
+            "charFragment": {
+                "start": 1393,
+                "end": 1403
+            },
+            "babelSynsetID": "bn:00100095a",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00100095a",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 10,
+            "offset": 104
+        },
+        {
+            "start": 1398,
+            "end": 1403,
+            "text": "common",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 261,
+                "end": 261
+            },
+            "charFragment": {
+                "start": 1398,
+                "end": 1403
+            },
+            "babelSynsetID": "bn:00100090a",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00100090a",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 10,
+            "offset": 109
+        },
+        {
+            "start": 1405,
+            "end": 1413,
+            "text": "fallacies",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 262,
+                "end": 262
+            },
+            "charFragment": {
+                "start": 1405,
+                "end": 1413
+            },
+            "babelSynsetID": "bn:00032817n",
+            "DBpediaURL": "http://dbpedia.org/resource/Fallacy",
+            "BabelNetURL": "http://babelnet.org/rdf/s00032817n",
+            "score": 0.7259507016650912,
+            "coherenceScore": 0.3611111111111111,
+            "globalScore": 0.002891654200559273,
+            "source": "BABELFY",
+            "linenr": 10,
+            "offset": 116
+        },
+        {
+            "start": 1422,
+            "end": 1432,
+            "text": "illustrated",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 265,
+                "end": 265
+            },
+            "charFragment": {
+                "start": 1422,
+                "end": 1432
+            },
+            "babelSynsetID": "bn:00087826v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00087826v",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 10,
+            "offset": 133
+        },
+        {
+            "start": 1439,
+            "end": 1443,
+            "text": "witty",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 267,
+                "end": 267
+            },
+            "charFragment": {
+                "start": 1439,
+                "end": 1443
+            },
+            "babelSynsetID": "bn:00113911a",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00113911a",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 10,
+            "offset": 150
+        },
+        {
+            "start": 1460,
+            "end": 1464,
+            "text": "sixth",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 271,
+                "end": 271
+            },
+            "charFragment": {
+                "start": 1460,
+                "end": 1464
+            },
+            "babelSynsetID": "bn:00096059a",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00096059a",
+            "score": 1.0,
+            "coherenceScore": 0.041666666666666664,
+            "globalScore": 1.0426637742401226e-05,
+            "source": "BABELFY",
+            "linenr": 11,
+            "offset": 4
+        },
+        {
+            "start": 1466,
+            "end": 1472,
+            "text": "chapter",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 272,
+                "end": 272
+            },
+            "charFragment": {
+                "start": 1466,
+                "end": 1472
+            },
+            "babelSynsetID": "bn:00017730n",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00017730n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 11,
+            "offset": 10
+        },
+        {
+            "start": 1505,
+            "end": 1513,
+            "text": "practical",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 279,
+                "end": 279
+            },
+            "charFragment": {
+                "start": 1505,
+                "end": 1513
+            },
+            "babelSynsetID": "bn:00108880a",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00108880a",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 11,
+            "offset": 49
+        },
+        {
+            "start": 1515,
+            "end": 1519,
+            "text": "tools",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 280,
+                "end": 280
+            },
+            "charFragment": {
+                "start": 1515,
+                "end": 1519
+            },
+            "babelSynsetID": "bn:00077585n",
+            "DBpediaURL": "http://dbpedia.org/resource/Tool",
+            "BabelNetURL": "http://babelnet.org/rdf/s00077585n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 11,
+            "offset": 59
+        },
+        {
+            "start": 1524,
+            "end": 1532,
+            "text": "structure",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 282,
+                "end": 282
+            },
+            "charFragment": {
+                "start": 1524,
+                "end": 1532
+            },
+            "babelSynsetID": "bn:00022071n",
+            "DBpediaURL": "http://dbpedia.org/resource/Structure_(mathematical_logic)",
+            "BabelNetURL": "http://babelnet.org/rdf/s00022071n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 11,
+            "offset": 68
+        },
+        {
+            "start": 1534,
+            "end": 1546,
+            "text": "argumentative",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 283,
+                "end": 283
+            },
+            "charFragment": {
+                "start": 1534,
+                "end": 1546
+            },
+            "babelSynsetID": "bn:00097486a",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00097486a",
+            "score": 1.0,
+            "coherenceScore": 0.06944444444444445,
+            "globalScore": 4.634061218844989e-05,
+            "source": "BABELFY",
+            "linenr": 11,
+            "offset": 78
+        },
+        {
+            "start": 1548,
+            "end": 1553,
+            "text": "essays",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 284,
+                "end": 284
+            },
+            "charFragment": {
+                "start": 1548,
+                "end": 1553
+            },
+            "babelSynsetID": "bn:00031622n",
+            "DBpediaURL": "http://dbpedia.org/resource/Essay",
+            "BabelNetURL": "http://babelnet.org/rdf/s00031622n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 11,
+            "offset": 92
+        },
+        {
+            "start": 1557,
+            "end": 1569,
+            "text": "presentations",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 286,
+                "end": 286
+            },
+            "charFragment": {
+                "start": 1557,
+                "end": 1569
+            },
+            "babelSynsetID": "bn:00064213n",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00064213n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 11,
+            "offset": 101
+        },
+        {
+            "start": 1577,
+            "end": 1583,
+            "text": "debates",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 289,
+                "end": 289
+            },
+            "charFragment": {
+                "start": 1577,
+                "end": 1583
+            },
+            "babelSynsetID": "bn:00005601n",
+            "DBpediaURL": "http://dbpedia.org/resource/Argumentation_theory",
+            "BabelNetURL": "http://babelnet.org/rdf/s00005601n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 11,
+            "offset": 121
+        },
+        {
+            "start": 1596,
+            "end": 1602,
+            "text": "chapter",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 293,
+                "end": 293
+            },
+            "charFragment": {
+                "start": 1596,
+                "end": 1602
+            },
+            "babelSynsetID": "bn:00017730n",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00017730n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 12,
+            "offset": 9
+        },
+        {
+            "start": 1610,
+            "end": 1616,
+            "text": "seventh",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 296,
+                "end": 296
+            },
+            "charFragment": {
+                "start": 1610,
+                "end": 1616
+            },
+            "babelSynsetID": "bn:00096074a",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00096074a",
+            "score": 1.0,
+            "coherenceScore": 0.034722222222222224,
+            "globalScore": 7.240720654445296e-06,
+            "source": "BABELFY",
+            "linenr": 12,
+            "offset": 23
+        },
+        {
+            "start": 1640,
+            "end": 1643,
+            "text": "dark",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 303,
+                "end": 303
+            },
+            "charFragment": {
+                "start": 1640,
+                "end": 1643
+            },
+            "babelSynsetID": "bn:00100902a",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00100902a",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 12,
+            "offset": 53
+        },
+        {
+            "start": 1645,
+            "end": 1648,
+            "text": "side",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 304,
+                "end": 304
+            },
+            "charFragment": {
+                "start": 1645,
+                "end": 1648
+            },
+            "babelSynsetID": "bn:00071431n",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00071431n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 12,
+            "offset": 58
+        },
+        {
+            "start": 1660,
+            "end": 1664,
+            "text": "study",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 308,
+                "end": 308
+            },
+            "charFragment": {
+                "start": 1660,
+                "end": 1664
+            },
+            "babelSynsetID": "bn:00094501v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00094501v",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 13,
+            "offset": 8
+        },
+        {
+            "start": 1666,
+            "end": 1678,
+            "text": "Irrationality",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 309,
+                "end": 309
+            },
+            "charFragment": {
+                "start": 1666,
+                "end": 1678
+            },
+            "babelSynsetID": "bn:00047542n",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00047542n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 13,
+            "offset": 14
+        },
+        {
+            "start": 1682,
+            "end": 1697,
+            "text": "Cognitive Biases",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 311,
+                "end": 312
+            },
+            "charFragment": {
+                "start": 1682,
+                "end": 1697
+            },
+            "babelSynsetID": "bn:17011373n",
+            "DBpediaURL": "http://dbpedia.org/resource/Cognitive_bias",
+            "BabelNetURL": "http://babelnet.org/rdf/s17011373n",
+            "score": 1.0,
+            "coherenceScore": 0.2222222222222222,
+            "globalScore": 0.0007507179174528882,
+            "source": "BABELFY",
+            "linenr": 13,
+            "offset": 30
+        },
+        {
+            "start": 1692,
+            "end": 1697,
+            "text": "Biases",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 312,
+                "end": 312
+            },
+            "charFragment": {
+                "start": 1692,
+                "end": 1697
+            },
+            "babelSynsetID": "bn:00010211n",
+            "DBpediaURL": "http://dbpedia.org/resource/Bias_(textile)",
+            "BabelNetURL": "http://babelnet.org/rdf/s00010211n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 13,
+            "offset": 40
+        },
+        {
+            "start": 1717,
+            "end": 1724,
+            "text": "Approach",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 316,
+                "end": 316
+            },
+            "charFragment": {
+                "start": 1717,
+                "end": 1724
+            },
+            "babelSynsetID": "bn:00005141n",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00005141n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 13,
+            "offset": 65
+        },
+        {
+            "start": 1729,
+            "end": 1738,
+            "text": "Persuasion",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 318,
+                "end": 318
+            },
+            "charFragment": {
+                "start": 1729,
+                "end": 1738
+            },
+            "babelSynsetID": "bn:00061750n",
+            "DBpediaURL": "http://dbpedia.org/resource/Persuasion",
+            "BabelNetURL": "http://babelnet.org/rdf/s00061750n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 13,
+            "offset": 77
+        },
+        {
+            "start": 1744,
+            "end": 1749,
+            "text": "really",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 321,
+                "end": 321
+            },
+            "charFragment": {
+                "start": 1744,
+                "end": 1749
+            },
+            "babelSynsetID": "bn:00114117r",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00114117r",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 14,
+            "offset": 2
+        },
+        {
+            "start": 1751,
+            "end": 1754,
+            "text": "hope",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 322,
+                "end": 322
+            },
+            "charFragment": {
+                "start": 1751,
+                "end": 1754
+            },
+            "babelSynsetID": "bn:00089472v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00089472v",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 14,
+            "offset": 9
+        },
+        {
+            "start": 1770,
+            "end": 1773,
+            "text": "find",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 326,
+                "end": 326
+            },
+            "charFragment": {
+                "start": 1770,
+                "end": 1773
+            },
+            "babelSynsetID": "bn:00084231v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00084231v",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 14,
+            "offset": 28
+        },
+        {
+            "start": 1785,
+            "end": 1792,
+            "text": "chapters",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 329,
+                "end": 329
+            },
+            "charFragment": {
+                "start": 1785,
+                "end": 1792
+            },
+            "babelSynsetID": "bn:00017730n",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00017730n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 14,
+            "offset": 43
+        },
+        {
+            "start": 1794,
+            "end": 1804,
+            "text": "interesting",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 330,
+                "end": 330
+            },
+            "charFragment": {
+                "start": 1794,
+                "end": 1804
+            },
+            "babelSynsetID": "bn:00089814v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00089814v",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 14,
+            "offset": 52
+        }
+    ],
+    "targetentities": [
+        {
+            "start": 16,
+            "end": 22,
+            "text": "sezione",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 3,
+                "end": 3
+            },
+            "charFragment": {
+                "start": 16,
+                "end": 22
+            },
+            "babelSynsetID": "bn:00070190n",
+            "DBpediaURL": "http://dbpedia.org/resource/Section_(music)",
+            "BabelNetURL": "http://babelnet.org/rdf/s00070190n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 0,
+            "offset": 16
+        },
+        {
+            "start": 24,
+            "end": 33,
+            "text": "cercheremo",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 4,
+                "end": 4
+            },
+            "charFragment": {
+                "start": 24,
+                "end": 33
+            },
+            "babelSynsetID": "bn:00090460v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00090460v",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 0,
+            "offset": 24
+        },
+        {
+            "start": 38,
+            "end": 41,
+            "text": "dare",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 6,
+                "end": 6
+            },
+            "charFragment": {
+                "start": 38,
+                "end": 41
+            },
+            "babelSynsetID": "bn:00088817v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00088817v",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 0,
+            "offset": 38
+        },
+        {
+            "start": 70,
+            "end": 74,
+            "text": "corso",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 12,
+                "end": 12
+            },
+            "charFragment": {
+                "start": 70,
+                "end": 74
+            },
+            "babelSynsetID": "bn:00088134v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00088134v",
+            "score": 0.9545454545454546,
+            "coherenceScore": 0.02459016393442623,
+            "globalScore": 5.078437679105615e-05,
+            "source": "BABELFY",
+            "linenr": 0,
+            "offset": 70
+        },
+        {
+            "start": 81,
+            "end": 85,
+            "text": "piano",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 15,
+                "end": 15
+            },
+            "charFragment": {
+                "start": 81,
+                "end": 85
+            },
+            "babelSynsetID": "bn:00035305n",
+            "DBpediaURL": "http://dbpedia.org/resource/Storey",
+            "BabelNetURL": "http://babelnet.org/rdf/s00035305n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 0,
+            "offset": 81
+        },
+        {
+            "start": 91,
+            "end": 96,
+            "text": "azione",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 17,
+                "end": 17
+            },
+            "charFragment": {
+                "start": 91,
+                "end": 96
+            },
+            "babelSynsetID": "bn:00001130n",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00001130n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 0,
+            "offset": 91
+        },
+        {
+            "start": 102,
+            "end": 108,
+            "text": "potrete",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 19,
+                "end": 19
+            },
+            "charFragment": {
+                "start": 102,
+                "end": 108
+            },
+            "babelSynsetID": "bn:13601970v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s13601970v",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 0,
+            "offset": 102
+        },
+        {
+            "start": 110,
+            "end": 123,
+            "text": "effettivamente",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 20,
+                "end": 20
+            },
+            "charFragment": {
+                "start": 110,
+                "end": 123
+            },
+            "babelSynsetID": "bn:00114357r",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00114357r",
+            "score": 0.8129032258064516,
+            "coherenceScore": 0.07377049180327869,
+            "globalScore": 0.00030470626074633687,
+            "source": "BABELFY",
+            "linenr": 0,
+            "offset": 110
+        },
+        {
+            "start": 125,
+            "end": 133,
+            "text": "scaricare",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 21,
+                "end": 21
+            },
+            "charFragment": {
+                "start": 125,
+                "end": 133
+            },
+            "babelSynsetID": "bn:00087203v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00087203v",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 0,
+            "offset": 125
+        },
+        {
+            "start": 137,
+            "end": 144,
+            "text": "stampare",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 23,
+                "end": 23
+            },
+            "charFragment": {
+                "start": 137,
+                "end": 144
+            },
+            "babelSynsetID": "bn:00092023v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00092023v",
+            "score": 0.8333333333333334,
+            "coherenceScore": 0.040983606557377046,
+            "globalScore": 7.254910970150878e-05,
+            "source": "BABELFY",
+            "linenr": 0,
+            "offset": 137
+        },
+        {
+            "start": 150,
+            "end": 153,
+            "text": "link",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 25,
+                "end": 25
+            },
+            "charFragment": {
+                "start": 150,
+                "end": 153
+            },
+            "babelSynsetID": "bn:00041020n",
+            "DBpediaURL": "http://dbpedia.org/resource/Links_(golf)",
+            "BabelNetURL": "http://babelnet.org/rdf/s00041020n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 0,
+            "offset": 150
+        },
+        {
+            "start": 170,
+            "end": 176,
+            "text": "potrete",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 30,
+                "end": 30
+            },
+            "charFragment": {
+                "start": 170,
+                "end": 176
+            },
+            "babelSynsetID": "bn:13601970v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s13601970v",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 1,
+            "offset": 3
+        },
+        {
+            "start": 178,
+            "end": 182,
+            "text": "usare",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 31,
+                "end": 31
+            },
+            "charFragment": {
+                "start": 178,
+                "end": 182
+            },
+            "babelSynsetID": "bn:00089140v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00089140v",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 1,
+            "offset": 11
+        },
+        {
+            "start": 188,
+            "end": 194,
+            "text": "seguire",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 33,
+                "end": 33
+            },
+            "charFragment": {
+                "start": 188,
+                "end": 194
+            },
+            "babelSynsetID": "bn:00082139v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00082139v",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 1,
+            "offset": 21
+        },
+        {
+            "start": 205,
+            "end": 213,
+            "text": "progressi",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 36,
+                "end": 36
+            },
+            "charFragment": {
+                "start": 205,
+                "end": 213
+            },
+            "babelSynsetID": "bn:00970321n",
+            "DBpediaURL": "http://dbpedia.org/resource/Progress_(history)",
+            "BabelNetURL": "http://babelnet.org/rdf/s00970321n",
+            "score": 0.8459770114942529,
+            "coherenceScore": 0.13114754098360656,
+            "globalScore": 0.000889935745671841,
+            "source": "BABELFY",
+            "linenr": 1,
+            "offset": 38
+        },
+        {
+            "start": 219,
+            "end": 223,
+            "text": "corso",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 38,
+                "end": 38
+            },
+            "charFragment": {
+                "start": 219,
+                "end": 223
+            },
+            "babelSynsetID": "bn:00023287n",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00023287n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 1,
+            "offset": 52
+        },
+        {
+            "start": 240,
+            "end": 245,
+            "text": "capire",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 43,
+                "end": 43
+            },
+            "charFragment": {
+                "start": 240,
+                "end": 245
+            },
+            "babelSynsetID": "bn:00095375v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00095375v",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 1,
+            "offset": 73
+        },
+        {
+            "start": 251,
+            "end": 256,
+            "text": "ordine",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 45,
+                "end": 45
+            },
+            "charFragment": {
+                "start": 251,
+                "end": 256
+            },
+            "babelSynsetID": "bn:00059306n",
+            "DBpediaURL": "http://dbpedia.org/resource/Ordered_geometry",
+            "BabelNetURL": "http://babelnet.org/rdf/s00059306n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 1,
+            "offset": 84
+        },
+        {
+            "start": 251,
+            "end": 265,
+            "text": "ordine naturale",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 45,
+                "end": 46
+            },
+            "charFragment": {
+                "start": 251,
+                "end": 265
+            },
+            "babelSynsetID": "bn:00056994n",
+            "DBpediaURL": "http://dbpedia.org/resource/Natural_order_(philosophy)",
+            "BabelNetURL": "http://babelnet.org/rdf/s00056994n",
+            "score": 1.0,
+            "coherenceScore": 0.09016393442622951,
+            "globalScore": 0.0003458174229105252,
+            "source": "BABELFY",
+            "linenr": 1,
+            "offset": 84
+        },
+        {
+            "start": 258,
+            "end": 265,
+            "text": "naturale",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 46,
+                "end": 46
+            },
+            "charFragment": {
+                "start": 258,
+                "end": 265
+            },
+            "babelSynsetID": "bn:00107151a",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00107151a",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 1,
+            "offset": 91
+        },
+        {
+            "start": 273,
+            "end": 279,
+            "text": "materie",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 48,
+                "end": 48
+            },
+            "charFragment": {
+                "start": 273,
+                "end": 279
+            },
+            "babelSynsetID": "bn:00053867n",
+            "DBpediaURL": "http://dbpedia.org/resource/Matter",
+            "BabelNetURL": "http://babelnet.org/rdf/s00053867n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 1,
+            "offset": 106
+        },
+        {
+            "start": 287,
+            "end": 293,
+            "text": "seguire",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 51,
+                "end": 51
+            },
+            "charFragment": {
+                "start": 287,
+                "end": 293
+            },
+            "babelSynsetID": "bn:00082139v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00082139v",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 1,
+            "offset": 120
+        },
+        {
+            "start": 298,
+            "end": 301,
+            "text": "filo",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 53,
+                "end": 53
+            },
+            "charFragment": {
+                "start": 298,
+                "end": 301
+            },
+            "babelSynsetID": "bn:00021675n",
+            "DBpediaURL": "http://dbpedia.org/resource/Wire",
+            "BabelNetURL": "http://babelnet.org/rdf/s00021675n",
+            "score": 1.0,
+            "coherenceScore": 0.04918032786885246,
+            "globalScore": 8.705893164181054e-05,
+            "source": "BABELFY",
+            "linenr": 1,
+            "offset": 131
+        },
+        {
+            "start": 303,
+            "end": 307,
+            "text": "rosso",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 54,
+                "end": 54
+            },
+            "charFragment": {
+                "start": 303,
+                "end": 307
+            },
+            "babelSynsetID": "bn:00100654a",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00100654a",
+            "score": 0.9375,
+            "coherenceScore": 0.02459016393442623,
+            "globalScore": 3.627455485075439e-05,
+            "source": "BABELFY",
+            "linenr": 1,
+            "offset": 136
+        },
+        {
+            "start": 316,
+            "end": 322,
+            "text": "collega",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 57,
+                "end": 57
+            },
+            "charFragment": {
+                "start": 316,
+                "end": 322
+            },
+            "babelSynsetID": "bn:00082868v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00082868v",
+            "score": 0.9642857142857143,
+            "coherenceScore": 0.07377049180327869,
+            "globalScore": 0.0003264709936567895,
+            "source": "BABELFY",
+            "linenr": 1,
+            "offset": 149
+        },
+        {
+            "start": 345,
+            "end": 352,
+            "text": "capitolo",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 62,
+                "end": 62
+            },
+            "charFragment": {
+                "start": 345,
+                "end": 352
+            },
+            "babelSynsetID": "bn:00017730n",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00017730n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 2,
+            "offset": 13
+        },
+        {
+            "start": 367,
+            "end": 376,
+            "text": "continuerà",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 64,
+                "end": 64
+            },
+            "charFragment": {
+                "start": 367,
+                "end": 376
+            },
+            "babelSynsetID": "bn:00084594v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00084594v",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 2,
+            "offset": 35
+        },
+        {
+            "start": 396,
+            "end": 402,
+            "text": "sezioni",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 68,
+                "end": 68
+            },
+            "charFragment": {
+                "start": 396,
+                "end": 402
+            },
+            "babelSynsetID": "bn:00070190n",
+            "DBpediaURL": "http://dbpedia.org/resource/Section_(music)",
+            "BabelNetURL": "http://babelnet.org/rdf/s00070190n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 2,
+            "offset": 64
+        },
+        {
+            "start": 418,
+            "end": 425,
+            "text": "cercherò",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 72,
+                "end": 72
+            },
+            "charFragment": {
+                "start": 418,
+                "end": 425
+            },
+            "babelSynsetID": "bn:00090460v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00090460v",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 2,
+            "offset": 86
+        },
+        {
+            "start": 430,
+            "end": 436,
+            "text": "fornire",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 74,
+                "end": 74
+            },
+            "charFragment": {
+                "start": 430,
+                "end": 436
+            },
+            "babelSynsetID": "bn:00088643v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00088643v",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 2,
+            "offset": 98
+        },
+        {
+            "start": 441,
+            "end": 447,
+            "text": "ragioni",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 76,
+                "end": 76
+            },
+            "charFragment": {
+                "start": 441,
+                "end": 447
+            },
+            "babelSynsetID": "bn:00066443n",
+            "DBpediaURL": "http://dbpedia.org/resource/Reason_(argument)",
+            "BabelNetURL": "http://babelnet.org/rdf/s00066443n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 2,
+            "offset": 109
+        },
+        {
+            "start": 462,
+            "end": 471,
+            "text": "importante",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 80,
+                "end": 80
+            },
+            "charFragment": {
+                "start": 462,
+                "end": 471
+            },
+            "babelSynsetID": "bn:00104680a",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00104680a",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 2,
+            "offset": 130
+        },
+        {
+            "start": 473,
+            "end": 480,
+            "text": "studiare",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 81,
+                "end": 81
+            },
+            "charFragment": {
+                "start": 473,
+                "end": 480
+            },
+            "babelSynsetID": "bn:00090266v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00090266v",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 2,
+            "offset": 141
+        },
+        {
+            "start": 485,
+            "end": 492,
+            "text": "Pensiero",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 83,
+                "end": 83
+            },
+            "charFragment": {
+                "start": 485,
+                "end": 492
+            },
+            "babelSynsetID": "bn:00017339n",
+            "DBpediaURL": "http://dbpedia.org/resource/Thought",
+            "BabelNetURL": "http://babelnet.org/rdf/s00017339n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 2,
+            "offset": 153
+        },
+        {
+            "start": 485,
+            "end": 500,
+            "text": "Pensiero Critico",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 83,
+                "end": 84
+            },
+            "charFragment": {
+                "start": 485,
+                "end": 500
+            },
+            "babelSynsetID": "bn:00023859n",
+            "DBpediaURL": "http://dbpedia.org/resource/Critical_thinking",
+            "BabelNetURL": "http://babelnet.org/rdf/s00023859n",
+            "score": 1.0,
+            "coherenceScore": 0.26229508196721313,
+            "globalScore": 0.005803928776120702,
+            "source": "BABELFY",
+            "linenr": 2,
+            "offset": 153
+        },
+        {
+            "start": 494,
+            "end": 500,
+            "text": "Critico",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 84,
+                "end": 84
+            },
+            "charFragment": {
+                "start": 494,
+                "end": 500
+            },
+            "babelSynsetID": "bn:00023857n",
+            "DBpediaURL": "http://dbpedia.org/resource/Critic",
+            "BabelNetURL": "http://babelnet.org/rdf/s00023857n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 2,
+            "offset": 162
+        },
+        {
+            "start": 516,
+            "end": 524,
+            "text": "delineare",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 88,
+                "end": 88
+            },
+            "charFragment": {
+                "start": 516,
+                "end": 524
+            },
+            "babelSynsetID": "bn:00086525v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00086525v",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 2,
+            "offset": 184
+        },
+        {
+            "start": 533,
+            "end": 538,
+            "text": "storia",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 91,
+                "end": 91
+            },
+            "charFragment": {
+                "start": 533,
+                "end": 538
+            },
+            "babelSynsetID": "bn:00044268n",
+            "DBpediaURL": "http://dbpedia.org/resource/History",
+            "BabelNetURL": "http://babelnet.org/rdf/s00044268n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 2,
+            "offset": 201
+        },
+        {
+            "start": 540,
+            "end": 549,
+            "text": "millenaria",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 92,
+                "end": 92
+            },
+            "charFragment": {
+                "start": 540,
+                "end": 549
+            },
+            "babelSynsetID": "bn:00106734a",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00106734a",
+            "score": 1.0,
+            "coherenceScore": 0.02459016393442623,
+            "globalScore": 2.1764732910452634e-05,
+            "source": "BABELFY",
+            "linenr": 2,
+            "offset": 208
+        },
+        {
+            "start": 564,
+            "end": 571,
+            "text": "capitolo",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 96,
+                "end": 96
+            },
+            "charFragment": {
+                "start": 564,
+                "end": 571
+            },
+            "babelSynsetID": "bn:00017730n",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00017730n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 3,
+            "offset": 11
+        },
+        {
+            "start": 575,
+            "end": 588,
+            "text": "Argomentazioni",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 98,
+                "end": 98
+            },
+            "charFragment": {
+                "start": 575,
+                "end": 588
+            },
+            "babelSynsetID": "bn:00005601n",
+            "DBpediaURL": "http://dbpedia.org/resource/Argumentation_theory",
+            "BabelNetURL": "http://babelnet.org/rdf/s00005601n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 3,
+            "offset": 22
+        },
+        {
+            "start": 599,
+            "end": 605,
+            "text": "aiuterà",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 102,
+                "end": 102
+            },
+            "charFragment": {
+                "start": 599,
+                "end": 605
+            },
+            "babelSynsetID": "bn:00082481v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00082481v",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 3,
+            "offset": 46
+        },
+        {
+            "start": 609,
+            "end": 614,
+            "text": "capire",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 104,
+                "end": 104
+            },
+            "charFragment": {
+                "start": 609,
+                "end": 614
+            },
+            "babelSynsetID": "bn:00095375v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00095375v",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 3,
+            "offset": 56
+        },
+        {
+            "start": 619,
+            "end": 632,
+            "text": "argomentazioni",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 106,
+                "end": 106
+            },
+            "charFragment": {
+                "start": 619,
+                "end": 632
+            },
+            "babelSynsetID": "bn:00005601n",
+            "DBpediaURL": "http://dbpedia.org/resource/Argumentation_theory",
+            "BabelNetURL": "http://babelnet.org/rdf/s00005601n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 3,
+            "offset": 66
+        },
+        {
+            "start": 639,
+            "end": 646,
+            "text": "elementi",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 108,
+                "end": 108
+            },
+            "charFragment": {
+                "start": 639,
+                "end": 646
+            },
+            "babelSynsetID": "bn:00021394n",
+            "DBpediaURL": "http://dbpedia.org/resource/Aspect_of_music",
+            "BabelNetURL": "http://babelnet.org/rdf/s00021394n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 3,
+            "offset": 86
+        },
+        {
+            "start": 666,
+            "end": 672,
+            "text": "ragione",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 111,
+                "end": 111
+            },
+            "charFragment": {
+                "start": 666,
+                "end": 672
+            },
+            "babelSynsetID": "bn:00066443n",
+            "DBpediaURL": "http://dbpedia.org/resource/Reason_(argument)",
+            "BabelNetURL": "http://babelnet.org/rdf/s00066443n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 3,
+            "offset": 113
+        },
+        {
+            "start": 725,
+            "end": 732,
+            "text": "capitolo",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 122,
+                "end": 122
+            },
+            "charFragment": {
+                "start": 725,
+                "end": 732
+            },
+            "babelSynsetID": "bn:00017730n",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00017730n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 5,
+            "offset": 9
+        },
+        {
+            "start": 736,
+            "end": 744,
+            "text": "Deduttivo",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 124,
+                "end": 124
+            },
+            "charFragment": {
+                "start": 736,
+                "end": 744
+            },
+            "babelSynsetID": "bn:00025801n",
+            "DBpediaURL": "http://dbpedia.org/resource/Deductive_reasoning",
+            "BabelNetURL": "http://babelnet.org/rdf/s00025801n",
+            "score": 1.0,
+            "coherenceScore": 0.30327868852459017,
+            "globalScore": 0.007068701588583672,
+            "source": "BABELFY",
+            "linenr": 5,
+            "offset": 20
+        },
+        {
+            "start": 760,
+            "end": 767,
+            "text": "Certezza",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 128,
+                "end": 128
+            },
+            "charFragment": {
+                "start": 760,
+                "end": 767
+            },
+            "babelSynsetID": "bn:00017377n",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00017377n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 5,
+            "offset": 44
+        },
+        {
+            "start": 771,
+            "end": 781,
+            "text": "Probabilità",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 130,
+                "end": 130
+            },
+            "charFragment": {
+                "start": 771,
+                "end": 781
+            },
+            "babelSynsetID": "bn:00017624n",
+            "DBpediaURL": "http://dbpedia.org/resource/Probability",
+            "BabelNetURL": "http://babelnet.org/rdf/s00017624n",
+            "score": 0.97911227154047,
+            "coherenceScore": 0.2459016393442623,
+            "globalScore": 0.003627455485075439,
+            "source": "BABELFY",
+            "linenr": 5,
+            "offset": 55
+        },
+        {
+            "start": 788,
+            "end": 798,
+            "text": "abitueranno",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 133,
+                "end": 133
+            },
+            "charFragment": {
+                "start": 788,
+                "end": 798
+            },
+            "babelSynsetID": "bn:00082251v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00082251v",
+            "score": 0.8,
+            "coherenceScore": 0.03278688524590164,
+            "globalScore": 3.869285850747135e-05,
+            "source": "BABELFY",
+            "linenr": 5,
+            "offset": 72
+        },
+        {
+            "start": 807,
+            "end": 812,
+            "text": "generi",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 136,
+                "end": 136
+            },
+            "charFragment": {
+                "start": 807,
+                "end": 812
+            },
+            "babelSynsetID": "bn:00062910n",
+            "DBpediaURL": "http://dbpedia.org/resource/Plato",
+            "BabelNetURL": "http://babelnet.org/rdf/s00062910n",
+            "score": 0.8858656964328087,
+            "coherenceScore": 0.5245901639344263,
+            "globalScore": 0.027085000955229945,
+            "source": "BABELFY",
+            "linenr": 5,
+            "offset": 91
+        },
+        {
+            "start": 817,
+            "end": 830,
+            "text": "argomentazione",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 138,
+                "end": 138
+            },
+            "charFragment": {
+                "start": 817,
+                "end": 830
+            },
+            "babelSynsetID": "bn:00005601n",
+            "DBpediaURL": "http://dbpedia.org/resource/Argumentation_theory",
+            "BabelNetURL": "http://babelnet.org/rdf/s00005601n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 5,
+            "offset": 101
+        },
+        {
+            "start": 832,
+            "end": 841,
+            "text": "principali",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 139,
+                "end": 139
+            },
+            "charFragment": {
+                "start": 832,
+                "end": 841
+            },
+            "babelSynsetID": "bn:00099598a",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00099598a",
+            "score": 0.7128712871287128,
+            "coherenceScore": 0.09836065573770492,
+            "globalScore": 0.0005223535898508632,
+            "source": "BABELFY",
+            "linenr": 5,
+            "offset": 116
+        },
+        {
+            "start": 855,
+            "end": 867,
+            "text": "particolarità",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 143,
+                "end": 143
+            },
+            "charFragment": {
+                "start": 855,
+                "end": 867
+            },
+            "babelSynsetID": "bn:00060810n",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00060810n",
+            "score": 0.9375,
+            "coherenceScore": 0.040983606557377046,
+            "globalScore": 7.254910970150878e-05,
+            "source": "BABELFY",
+            "linenr": 5,
+            "offset": 139
+        },
+        {
+            "start": 882,
+            "end": 889,
+            "text": "capitoli",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 147,
+                "end": 147
+            },
+            "charFragment": {
+                "start": 882,
+                "end": 889
+            },
+            "babelSynsetID": "bn:00017730n",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00017730n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 6,
+            "offset": 11
+        },
+        {
+            "start": 897,
+            "end": 910,
+            "text": "argomentazioni",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 149,
+                "end": 149
+            },
+            "charFragment": {
+                "start": 897,
+                "end": 910
+            },
+            "babelSynsetID": "bn:00005601n",
+            "DBpediaURL": "http://dbpedia.org/resource/Argumentation_theory",
+            "BabelNetURL": "http://babelnet.org/rdf/s00005601n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 6,
+            "offset": 26
+        },
+        {
+            "start": 930,
+            "end": 936,
+            "text": "teorici",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 154,
+                "end": 154
+            },
+            "charFragment": {
+                "start": 930,
+                "end": 936
+            },
+            "babelSynsetID": "bn:00045812n",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00045812n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 6,
+            "offset": 59
+        },
+        {
+            "start": 943,
+            "end": 949,
+            "text": "daranno",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 157,
+                "end": 157
+            },
+            "charFragment": {
+                "start": 943,
+                "end": 949
+            },
+            "babelSynsetID": "bn:00088817v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00088817v",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 6,
+            "offset": 72
+        },
+        {
+            "start": 955,
+            "end": 963,
+            "text": "strumenti",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 159,
+                "end": 159
+            },
+            "charFragment": {
+                "start": 955,
+                "end": 963
+            },
+            "babelSynsetID": "bn:00046961n",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00046961n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 6,
+            "offset": 84
+        },
+        {
+            "start": 970,
+            "end": 979,
+            "text": "linguaggio",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 162,
+                "end": 162
+            },
+            "charFragment": {
+                "start": 970,
+                "end": 979
+            },
+            "babelSynsetID": "bn:00049910n",
+            "DBpediaURL": "http://dbpedia.org/resource/Language",
+            "BabelNetURL": "http://babelnet.org/rdf/s00049910n",
+            "score": 0.7187234764895604,
+            "coherenceScore": 0.5983606557377049,
+            "globalScore": 0.03071729304761882,
+            "source": "BABELFY",
+            "linenr": 6,
+            "offset": 99
+        },
+        {
+            "start": 970,
+            "end": 992,
+            "text": "linguaggio del Pensiero",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 162,
+                "end": 164
+            },
+            "charFragment": {
+                "start": 970,
+                "end": 992
+            },
+            "babelSynsetID": "bn:03497543n",
+            "DBpediaURL": "http://dbpedia.org/resource/Language_of_thought_hypothesis",
+            "BabelNetURL": "http://babelnet.org/rdf/s03497543n",
+            "score": 1.0,
+            "coherenceScore": 0.10655737704918032,
+            "globalScore": 0.0006287589507464094,
+            "source": "BABELFY",
+            "linenr": 6,
+            "offset": 99
+        },
+        {
+            "start": 985,
+            "end": 992,
+            "text": "Pensiero",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 164,
+                "end": 164
+            },
+            "charFragment": {
+                "start": 985,
+                "end": 992
+            },
+            "babelSynsetID": "bn:00017339n",
+            "DBpediaURL": "http://dbpedia.org/resource/Thought",
+            "BabelNetURL": "http://babelnet.org/rdf/s00017339n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 6,
+            "offset": 114
+        },
+        {
+            "start": 985,
+            "end": 1000,
+            "text": "Pensiero Critico",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 164,
+                "end": 165
+            },
+            "charFragment": {
+                "start": 985,
+                "end": 1000
+            },
+            "babelSynsetID": "bn:00023859n",
+            "DBpediaURL": "http://dbpedia.org/resource/Critical_thinking",
+            "BabelNetURL": "http://babelnet.org/rdf/s00023859n",
+            "score": 1.0,
+            "coherenceScore": 0.26229508196721313,
+            "globalScore": 0.005803928776120702,
+            "source": "BABELFY",
+            "linenr": 6,
+            "offset": 114
+        },
+        {
+            "start": 994,
+            "end": 1000,
+            "text": "Critico",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 165,
+                "end": 165
+            },
+            "charFragment": {
+                "start": 994,
+                "end": 1000
+            },
+            "babelSynsetID": "bn:00023857n",
+            "DBpediaURL": "http://dbpedia.org/resource/Critic",
+            "BabelNetURL": "http://babelnet.org/rdf/s00023857n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 6,
+            "offset": 123
+        },
+        {
+            "start": 1007,
+            "end": 1012,
+            "text": "quarto",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 168,
+                "end": 168
+            },
+            "charFragment": {
+                "start": 1007,
+                "end": 1012
+            },
+            "babelSynsetID": "bn:00096026a",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00096026a",
+            "score": 1.0,
+            "coherenceScore": 0.01639344262295082,
+            "globalScore": 1.4509821940301756e-05,
+            "source": "BABELFY",
+            "linenr": 7,
+            "offset": 3
+        },
+        {
+            "start": 1014,
+            "end": 1021,
+            "text": "capitolo",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 169,
+                "end": 169
+            },
+            "charFragment": {
+                "start": 1014,
+                "end": 1021
+            },
+            "babelSynsetID": "bn:00017730n",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00017730n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 7,
+            "offset": 10
+        },
+        {
+            "start": 1023,
+            "end": 1030,
+            "text": "chiarirà",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 170,
+                "end": 170
+            },
+            "charFragment": {
+                "start": 1023,
+                "end": 1030
+            },
+            "babelSynsetID": "bn:00085042v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00085042v",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 7,
+            "offset": 19
+        },
+        {
+            "start": 1046,
+            "end": 1057,
+            "text": "Ragionamento",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 175,
+                "end": 175
+            },
+            "charFragment": {
+                "start": 1046,
+                "end": 1057
+            },
+            "babelSynsetID": "bn:00000494n",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00000494n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 7,
+            "offset": 42
+        },
+        {
+            "start": 1046,
+            "end": 1067,
+            "text": "Ragionamento Induttivo",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 175,
+                "end": 176
+            },
+            "charFragment": {
+                "start": 1046,
+                "end": 1067
+            },
+            "babelSynsetID": "bn:00037671n",
+            "DBpediaURL": "http://dbpedia.org/resource/Generalization",
+            "BabelNetURL": "http://babelnet.org/rdf/s00037671n",
+            "score": 1.0,
+            "coherenceScore": 0.3360655737704918,
+            "globalScore": 0.010807399041868091,
+            "source": "BABELFY",
+            "linenr": 7,
+            "offset": 42
+        },
+        {
+            "start": 1071,
+            "end": 1076,
+            "text": "perché",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 178,
+                "end": 178
+            },
+            "charFragment": {
+                "start": 1071,
+                "end": 1076
+            },
+            "babelSynsetID": "bn:13757536r",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s13757536r",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 7,
+            "offset": 67
+        },
+        {
+            "start": 1083,
+            "end": 1086,
+            "text": "base",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 181,
+                "end": 181
+            },
+            "charFragment": {
+                "start": 1083,
+                "end": 1086
+            },
+            "babelSynsetID": "bn:00008786n",
+            "DBpediaURL": "http://dbpedia.org/resource/Basis_(linear_algebra)",
+            "BabelNetURL": "http://babelnet.org/rdf/s00008786n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 7,
+            "offset": 79
+        },
+        {
+            "start": 1102,
+            "end": 1107,
+            "text": "sapere",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 184,
+                "end": 184
+            },
+            "charFragment": {
+                "start": 1102,
+                "end": 1107
+            },
+            "babelSynsetID": "bn:00086933v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00086933v",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 7,
+            "offset": 98
+        },
+        {
+            "start": 1109,
+            "end": 1119,
+            "text": "scientifico",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 185,
+                "end": 185
+            },
+            "charFragment": {
+                "start": 1109,
+                "end": 1119
+            },
+            "babelSynsetID": "bn:00110175a",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00110175a",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 7,
+            "offset": 105
+        },
+        {
+            "start": 1126,
+            "end": 1139,
+            "text": "interrogheremo",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 188,
+                "end": 188
+            },
+            "charFragment": {
+                "start": 1126,
+                "end": 1139
+            },
+            "babelSynsetID": "bn:00089845v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00089845v",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 8,
+            "offset": 3
+        },
+        {
+            "start": 1141,
+            "end": 1155,
+            "text": "filosoficamente",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 189,
+                "end": 189
+            },
+            "charFragment": {
+                "start": 1141,
+                "end": 1155
+            },
+            "babelSynsetID": "bn:00116590r",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00116590r",
+            "score": 1.0,
+            "coherenceScore": 0.02459016393442623,
+            "globalScore": 2.9019643880603513e-05,
+            "source": "BABELFY",
+            "linenr": 8,
+            "offset": 18
+        },
+        {
+            "start": 1161,
+            "end": 1166,
+            "text": "limiti",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 191,
+                "end": 191
+            },
+            "charFragment": {
+                "start": 1161,
+                "end": 1166
+            },
+            "babelSynsetID": "bn:00012419n",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00012419n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 8,
+            "offset": 38
+        },
+        {
+            "start": 1174,
+            "end": 1183,
+            "text": "conoscenza",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 193,
+                "end": 193
+            },
+            "charFragment": {
+                "start": 1174,
+                "end": 1183
+            },
+            "babelSynsetID": "bn:00020452n",
+            "DBpediaURL": "http://dbpedia.org/resource/Cognition",
+            "BabelNetURL": "http://babelnet.org/rdf/s00020452n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 8,
+            "offset": 51
+        },
+        {
+            "start": 1193,
+            "end": 1202,
+            "text": "studieremo",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 197,
+                "end": 197
+            },
+            "charFragment": {
+                "start": 1193,
+                "end": 1202
+            },
+            "babelSynsetID": "bn:00090266v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00090266v",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 8,
+            "offset": 70
+        },
+        {
+            "start": 1208,
+            "end": 1217,
+            "text": "importanti",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 199,
+                "end": 199
+            },
+            "charFragment": {
+                "start": 1208,
+                "end": 1217
+            },
+            "babelSynsetID": "bn:00104680a",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00104680a",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 8,
+            "offset": 85
+        },
+        {
+            "start": 1219,
+            "end": 1222,
+            "text": "tipi",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 200,
+                "end": 200
+            },
+            "charFragment": {
+                "start": 1219,
+                "end": 1222
+            },
+            "babelSynsetID": "bn:00016413n",
+            "DBpediaURL": "http://dbpedia.org/resource/Data_type",
+            "BabelNetURL": "http://babelnet.org/rdf/s00016413n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 8,
+            "offset": 96
+        },
+        {
+            "start": 1227,
+            "end": 1238,
+            "text": "ragionamento",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 202,
+                "end": 202
+            },
+            "charFragment": {
+                "start": 1227,
+                "end": 1238
+            },
+            "babelSynsetID": "bn:00000494n",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00000494n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 8,
+            "offset": 104
+        },
+        {
+            "start": 1227,
+            "end": 1248,
+            "text": "ragionamento induttivo",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 202,
+                "end": 203
+            },
+            "charFragment": {
+                "start": 1227,
+                "end": 1248
+            },
+            "babelSynsetID": "bn:00037671n",
+            "DBpediaURL": "http://dbpedia.org/resource/Generalization",
+            "BabelNetURL": "http://babelnet.org/rdf/s00037671n",
+            "score": 1.0,
+            "coherenceScore": 0.3360655737704918,
+            "globalScore": 0.010807399041868091,
+            "source": "BABELFY",
+            "linenr": 8,
+            "offset": 104
+        },
+        {
+            "start": 1255,
+            "end": 1260,
+            "text": "quinto",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 206,
+                "end": 206
+            },
+            "charFragment": {
+                "start": 1255,
+                "end": 1260
+            },
+            "babelSynsetID": "bn:00096043a",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00096043a",
+            "score": 1.0,
+            "coherenceScore": 0.01639344262295082,
+            "globalScore": 1.4509821940301756e-05,
+            "source": "BABELFY",
+            "linenr": 9,
+            "offset": 3
+        },
+        {
+            "start": 1262,
+            "end": 1269,
+            "text": "capitolo",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 207,
+                "end": 207
+            },
+            "charFragment": {
+                "start": 1262,
+                "end": 1269
+            },
+            "babelSynsetID": "bn:00017730n",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00017730n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 9,
+            "offset": 10
+        },
+        {
+            "start": 1273,
+            "end": 1280,
+            "text": "Credenze",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 209,
+                "end": 209
+            },
+            "charFragment": {
+                "start": 1273,
+                "end": 1280
+            },
+            "babelSynsetID": "bn:00023666n",
+            "DBpediaURL": "http://dbpedia.org/resource/Credenza",
+            "BabelNetURL": "http://babelnet.org/rdf/s00023666n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 9,
+            "offset": 21
+        },
+        {
+            "start": 1282,
+            "end": 1288,
+            "text": "Erronee",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 210,
+                "end": 210
+            },
+            "charFragment": {
+                "start": 1282,
+                "end": 1288
+            },
+            "babelSynsetID": "bn:00190011n",
+            "DBpediaURL": "http://dbpedia.org/resource/Your_Erroneous_Zones",
+            "BabelNetURL": "http://babelnet.org/rdf/s00190011n",
+            "score": 1.0,
+            "coherenceScore": 0.040983606557377046,
+            "globalScore": 0.00010882366455226317,
+            "source": "BABELFY",
+            "linenr": 9,
+            "offset": 30
+        },
+        {
+            "start": 1309,
+            "end": 1316,
+            "text": "studenti",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 216,
+                "end": 216
+            },
+            "charFragment": {
+                "start": 1309,
+                "end": 1316
+            },
+            "babelSynsetID": "bn:00029806n",
+            "DBpediaURL": "http://dbpedia.org/resource/Student",
+            "BabelNetURL": "http://babelnet.org/rdf/s00029806n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 9,
+            "offset": 57
+        },
+        {
+            "start": 1328,
+            "end": 1332,
+            "text": "amano",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 219,
+                "end": 219
+            },
+            "charFragment": {
+                "start": 1328,
+                "end": 1332
+            },
+            "babelSynsetID": "bn:00087646v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00087646v",
+            "score": 0.7843137254901961,
+            "coherenceScore": 0.06557377049180328,
+            "globalScore": 0.00019346429253735674,
+            "source": "BABELFY",
+            "linenr": 9,
+            "offset": 76
+        },
+        {
+            "start": 1337,
+            "end": 1339,
+            "text": "più",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 221,
+                "end": 221
+            },
+            "charFragment": {
+                "start": 1337,
+                "end": 1339
+            },
+            "babelSynsetID": "bn:00116284r",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00116284r",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 9,
+            "offset": 85
+        },
+        {
+            "start": 1356,
+            "end": 1363,
+            "text": "principi",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 226,
+                "end": 226
+            },
+            "charFragment": {
+                "start": 1356,
+                "end": 1363
+            },
+            "babelSynsetID": "bn:00064405n",
+            "DBpediaURL": "http://dbpedia.org/resource/Prince",
+            "BabelNetURL": "http://babelnet.org/rdf/s00064405n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 10,
+            "offset": 13
+        },
+        {
+            "start": 1369,
+            "end": 1377,
+            "text": "fair play",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 228,
+                "end": 229
+            },
+            "charFragment": {
+                "start": 1369,
+                "end": 1377
+            },
+            "babelSynsetID": "bn:00073587n",
+            "DBpediaURL": "http://dbpedia.org/resource/Sportsmanship",
+            "BabelNetURL": "http://babelnet.org/rdf/s00073587n",
+            "score": 1.0,
+            "coherenceScore": 0.01639344262295082,
+            "globalScore": 9.673214626867838e-06,
+            "source": "BABELFY",
+            "linenr": 10,
+            "offset": 26
+        },
+        {
+            "start": 1386,
+            "end": 1399,
+            "text": "argomentazione",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 231,
+                "end": 231
+            },
+            "charFragment": {
+                "start": 1386,
+                "end": 1399
+            },
+            "babelSynsetID": "bn:00005601n",
+            "DBpediaURL": "http://dbpedia.org/resource/Argumentation_theory",
+            "BabelNetURL": "http://babelnet.org/rdf/s00005601n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 10,
+            "offset": 43
+        },
+        {
+            "start": 1412,
+            "end": 1418,
+            "text": "porterà",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 236,
+                "end": 236
+            },
+            "charFragment": {
+                "start": 1412,
+                "end": 1418
+            },
+            "babelSynsetID": "bn:00084058v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00084058v",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 10,
+            "offset": 69
+        },
+        {
+            "start": 1441,
+            "end": 1448,
+            "text": "credenze",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 241,
+                "end": 241
+            },
+            "charFragment": {
+                "start": 1441,
+                "end": 1448
+            },
+            "babelSynsetID": "bn:00023666n",
+            "DBpediaURL": "http://dbpedia.org/resource/Credenza",
+            "BabelNetURL": "http://babelnet.org/rdf/s00023666n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 10,
+            "offset": 98
+        },
+        {
+            "start": 1450,
+            "end": 1456,
+            "text": "erronee",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 242,
+                "end": 242
+            },
+            "charFragment": {
+                "start": 1450,
+                "end": 1456
+            },
+            "babelSynsetID": "bn:00104880a",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00104880a",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 10,
+            "offset": 107
+        },
+        {
+            "start": 1458,
+            "end": 1460,
+            "text": "più",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 243,
+                "end": 243
+            },
+            "charFragment": {
+                "start": 1458,
+                "end": 1460
+            },
+            "babelSynsetID": "bn:00116284r",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00116284r",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 10,
+            "offset": 115
+        },
+        {
+            "start": 1462,
+            "end": 1467,
+            "text": "comuni",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 244,
+                "end": 244
+            },
+            "charFragment": {
+                "start": 1462,
+                "end": 1467
+            },
+            "babelSynsetID": "bn:00100091a",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00100091a",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 10,
+            "offset": 119
+        },
+        {
+            "start": 1493,
+            "end": 1498,
+            "text": "esempi",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 249,
+                "end": 249
+            },
+            "charFragment": {
+                "start": 1493,
+                "end": 1498
+            },
+            "babelSynsetID": "bn:00032100n",
+            "DBpediaURL": "http://dbpedia.org/resource/Conceptual_model",
+            "BabelNetURL": "http://babelnet.org/rdf/s00032100n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 10,
+            "offset": 150
+        },
+        {
+            "start": 1500,
+            "end": 1508,
+            "text": "spiritosi",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 250,
+                "end": 250
+            },
+            "charFragment": {
+                "start": 1500,
+                "end": 1508
+            },
+            "babelSynsetID": "bn:00015918n",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00015918n",
+            "score": 1.0,
+            "coherenceScore": 0.05737704918032787,
+            "globalScore": 0.00013542500477614972,
+            "source": "BABELFY",
+            "linenr": 10,
+            "offset": 157
+        },
+        {
+            "start": 1521,
+            "end": 1528,
+            "text": "capitolo",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 254,
+                "end": 254
+            },
+            "charFragment": {
+                "start": 1521,
+                "end": 1528
+            },
+            "babelSynsetID": "bn:00017730n",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00017730n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 11,
+            "offset": 9
+        },
+        {
+            "start": 1532,
+            "end": 1541,
+            "text": "Dialettica",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 256,
+                "end": 256
+            },
+            "charFragment": {
+                "start": 1532,
+                "end": 1541
+            },
+            "babelSynsetID": "bn:00026827n",
+            "DBpediaURL": "http://dbpedia.org/resource/Dialectic",
+            "BabelNetURL": "http://babelnet.org/rdf/s00026827n",
+            "score": 0.7060155239327296,
+            "coherenceScore": 0.30327868852459017,
+            "globalScore": 0.010558313765226245,
+            "source": "BABELFY",
+            "linenr": 11,
+            "offset": 20
+        },
+        {
+            "start": 1548,
+            "end": 1551,
+            "text": "darà",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 259,
+                "end": 259
+            },
+            "charFragment": {
+                "start": 1548,
+                "end": 1551
+            },
+            "babelSynsetID": "bn:00088817v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00088817v",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 11,
+            "offset": 36
+        },
+        {
+            "start": 1557,
+            "end": 1565,
+            "text": "strumenti",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 261,
+                "end": 261
+            },
+            "charFragment": {
+                "start": 1557,
+                "end": 1565
+            },
+            "babelSynsetID": "bn:00046961n",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00046961n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 11,
+            "offset": 45
+        },
+        {
+            "start": 1581,
+            "end": 1585,
+            "text": "saggi",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 265,
+                "end": 265
+            },
+            "charFragment": {
+                "start": 1581,
+                "end": 1585
+            },
+            "babelSynsetID": "bn:00031622n",
+            "DBpediaURL": "http://dbpedia.org/resource/Essay",
+            "BabelNetURL": "http://babelnet.org/rdf/s00031622n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 11,
+            "offset": 69
+        },
+        {
+            "start": 1601,
+            "end": 1613,
+            "text": "presentazioni",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 269,
+                "end": 269
+            },
+            "charFragment": {
+                "start": 1601,
+                "end": 1613
+            },
+            "babelSynsetID": "bn:00064213n",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00064213n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 11,
+            "offset": 89
+        },
+        {
+            "start": 1619,
+            "end": 1627,
+            "text": "dibattiti",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 272,
+                "end": 272
+            },
+            "charFragment": {
+                "start": 1619,
+                "end": 1627
+            },
+            "babelSynsetID": "bn:00005601n",
+            "DBpediaURL": "http://dbpedia.org/resource/Argumentation_theory",
+            "BabelNetURL": "http://babelnet.org/rdf/s00005601n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 11,
+            "offset": 107
+        },
+        {
+            "start": 1642,
+            "end": 1649,
+            "text": "capitolo",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 276,
+                "end": 276
+            },
+            "charFragment": {
+                "start": 1642,
+                "end": 1649
+            },
+            "babelSynsetID": "bn:00017730n",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00017730n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 12,
+            "offset": 11
+        },
+        {
+            "start": 1669,
+            "end": 1675,
+            "text": "porterà",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 282,
+                "end": 282
+            },
+            "charFragment": {
+                "start": 1669,
+                "end": 1675
+            },
+            "babelSynsetID": "bn:00084058v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00084058v",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 12,
+            "offset": 38
+        },
+        {
+            "start": 1689,
+            "end": 1694,
+            "text": "oscura",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 285,
+                "end": 285
+            },
+            "charFragment": {
+                "start": 1689,
+                "end": 1694
+            },
+            "babelSynsetID": "bn:00107878a",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00107878a",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 12,
+            "offset": 58
+        },
+        {
+            "start": 1713,
+            "end": 1725,
+            "text": "Irrazionalità",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 289,
+                "end": 289
+            },
+            "charFragment": {
+                "start": 1713,
+                "end": 1725
+            },
+            "babelSynsetID": "bn:00047538n",
+            "DBpediaURL": "http://dbpedia.org/resource/Irrationality",
+            "BabelNetURL": "http://babelnet.org/rdf/s00047538n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 13,
+            "offset": 15
+        },
+        {
+            "start": 1731,
+            "end": 1740,
+            "text": "Pregiudizi",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 292,
+                "end": 292
+            },
+            "charFragment": {
+                "start": 1731,
+                "end": 1740
+            },
+            "babelSynsetID": "bn:00064144n",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00064144n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 13,
+            "offset": 33
+        },
+        {
+            "start": 1758,
+            "end": 1766,
+            "text": "Approccio",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 296,
+                "end": 296
+            },
+            "charFragment": {
+                "start": 1758,
+                "end": 1766
+            },
+            "babelSynsetID": "bn:00005141n",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00005141n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 13,
+            "offset": 60
+        },
+        {
+            "start": 1768,
+            "end": 1777,
+            "text": "Emozionale",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 297,
+                "end": 297
+            },
+            "charFragment": {
+                "start": 1768,
+                "end": 1777
+            },
+            "babelSynsetID": "bn:14278489n",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s14278489n",
+            "score": 1.0,
+            "coherenceScore": 0.00819672131147541,
+            "globalScore": 2.4183036567169595e-06,
+            "source": "BABELFY",
+            "linenr": 13,
+            "offset": 70
+        },
+        {
+            "start": 1782,
+            "end": 1790,
+            "text": "relazione",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 299,
+                "end": 299
+            },
+            "charFragment": {
+                "start": 1782,
+                "end": 1790
+            },
+            "babelSynsetID": "bn:00067181n",
+            "DBpediaURL": "http://dbpedia.org/resource/Report",
+            "BabelNetURL": "http://babelnet.org/rdf/s00067181n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 13,
+            "offset": 84
+        },
+        {
+            "start": 1797,
+            "end": 1807,
+            "text": "Persuasione",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 301,
+                "end": 301
+            },
+            "charFragment": {
+                "start": 1797,
+                "end": 1807
+            },
+            "babelSynsetID": "bn:00061750n",
+            "DBpediaURL": "http://dbpedia.org/resource/Persuasion",
+            "BabelNetURL": "http://babelnet.org/rdf/s00061750n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 13,
+            "offset": 99
+        },
+        {
+            "start": 1829,
+            "end": 1837,
+            "text": "troverete",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 306,
+                "end": 306
+            },
+            "charFragment": {
+                "start": 1829,
+                "end": 1837
+            },
+            "babelSynsetID": "bn:00084231v",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00084231v",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 14,
+            "offset": 18
+        },
+        {
+            "start": 1846,
+            "end": 1853,
+            "text": "capitoli",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 308,
+                "end": 308
+            },
+            "charFragment": {
+                "start": 1846,
+                "end": 1853
+            },
+            "babelSynsetID": "bn:00017730n",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00017730n",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 14,
+            "offset": 35
+        },
+        {
+            "start": 1855,
+            "end": 1866,
+            "text": "interessanti",
+            "isEntity": true,
+            "tokenFragment": {
+                "start": 309,
+                "end": 309
+            },
+            "charFragment": {
+                "start": 1855,
+                "end": 1866
+            },
+            "babelSynsetID": "bn:00105276a",
+            "DBpediaURL": "",
+            "BabelNetURL": "http://babelnet.org/rdf/s00105276a",
+            "score": 0.0,
+            "coherenceScore": 0.0,
+            "globalScore": 0.0,
+            "source": "MCS",
+            "linenr": 14,
+            "offset": 44
+        }
+    ],
+    "evaluation": {
+        "perline": {
+            "0": {
+                "matches": 1,
+                "sources": 13,
+                "targets": 11,
+                "precision": 0.09090909090909091,
+                "targetcoverage": 0.4759036144578313,
+                "recall": 0.07692307692307693,
+                "sourcecoverage": 0.4342105263157895
+            },
+            "1": {
+                "matches": 4,
+                "sources": 11,
+                "targets": 13,
+                "precision": 0.3076923076923077,
+                "targetcoverage": 0.5121951219512195,
+                "recall": 0.36363636363636365,
+                "sourcecoverage": 0.41818181818181815
+            },
+            "2": {
+                "matches": 2,
+                "sources": 14,
+                "targets": 14,
+                "precision": 0.14285714285714285,
+                "targetcoverage": 0.4818181818181818,
+                "recall": 0.14285714285714285,
+                "sourcecoverage": 0.5026178010471204
+            },
+            "3": {
+                "matches": 3,
+                "sources": 9,
+                "targets": 6,
+                "precision": 0.5,
+                "targetcoverage": 0.5245901639344263,
+                "recall": 0.3333333333333333,
+                "sourcecoverage": 0.6633663366336634
+            },
+            "4": {
+                "matches": 0,
+                "sources": 2,
+                "targets": 0,
+                "targetcoverage": 0.0,
+                "recall": 0.0,
+                "sourcecoverage": 0.18333333333333332
+            },
+            "5": {
+                "matches": 4,
+                "sources": 8,
+                "targets": 9,
+                "precision": 0.4444444444444444,
+                "targetcoverage": 0.5844155844155844,
+                "recall": 0.5,
+                "sourcecoverage": 0.4074074074074074
+            },
+            "6": {
+                "matches": 2,
+                "sources": 8,
+                "targets": 10,
+                "precision": 0.2,
+                "targetcoverage": 0.5757575757575758,
+                "recall": 0.25,
+                "sourcecoverage": 0.46875
+            },
+            "7": {
+                "matches": 4,
+                "sources": 9,
+                "targets": 9,
+                "precision": 0.4444444444444444,
+                "targetcoverage": 0.6016949152542372,
+                "recall": 0.4444444444444444,
+                "sourcecoverage": 0.5625
+            },
+            "8": {
+                "matches": 2,
+                "sources": 10,
+                "targets": 9,
+                "precision": 0.2222222222222222,
+                "targetcoverage": 0.7109375,
+                "recall": 0.2,
+                "sourcecoverage": 0.5833333333333334
+            },
+            "9": {
+                "matches": 3,
+                "sources": 8,
+                "targets": 7,
+                "precision": 0.42857142857142855,
+                "targetcoverage": 0.5,
+                "recall": 0.375,
+                "sourcecoverage": 0.5921052631578947
+            },
+            "10": {
+                "matches": 0,
+                "sources": 11,
+                "targets": 10,
+                "precision": 0.0,
+                "targetcoverage": 0.4583333333333333,
+                "recall": 0.0,
+                "sourcecoverage": 0.43373493975903615
+            },
+            "11": {
+                "matches": 4,
+                "sources": 9,
+                "targets": 7,
+                "precision": 0.5714285714285714,
+                "targetcoverage": 0.4915254237288136,
+                "recall": 0.4444444444444444,
+                "sourcecoverage": 0.5692307692307692
+            },
+            "12": {
+                "matches": 1,
+                "sources": 4,
+                "targets": 3,
+                "precision": 0.3333333333333333,
+                "targetcoverage": 0.3181818181818182,
+                "recall": 0.25,
+                "sourcecoverage": 0.34375
+            },
+            "13": {
+                "matches": 2,
+                "sources": 6,
+                "targets": 6,
+                "precision": 0.3333333333333333,
+                "targetcoverage": 0.5535714285714286,
+                "recall": 0.3333333333333333,
+                "sourcecoverage": 0.5842696629213483
+            },
+            "14": {
+                "matches": 2,
+                "sources": 5,
+                "targets": 3,
+                "precision": 0.6666666666666666,
+                "targetcoverage": 0.5,
+                "recall": 0.4,
+                "sourcecoverage": 0.5076923076923077
+            }
+        },
+        "precision": 0.303070857401566,
+        "recall": 0.26896875734085013,
+        "overallsourcecoverage": 0.5012021192420298,
+        "overalltargetcoverage": 0.5169768254203143
+    }
+}

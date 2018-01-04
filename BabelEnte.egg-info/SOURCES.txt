@@ -1,0 +1,11 @@
+README.rst
+setup.py
+BabelEnte.egg-info/PKG-INFO
+BabelEnte.egg-info/SOURCES.txt
+BabelEnte.egg-info/dependency_links.txt
+BabelEnte.egg-info/entry_points.txt
+BabelEnte.egg-info/not-zip-safe
+BabelEnte.egg-info/requires.txt
+BabelEnte.egg-info/top_level.txt
+babelente/__init__.py
+babelente/babelente.py

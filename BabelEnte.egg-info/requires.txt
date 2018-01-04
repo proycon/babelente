@@ -1,0 +1,2 @@
+babelpy>=1.0
+numpy
