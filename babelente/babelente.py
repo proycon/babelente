@@ -232,9 +232,7 @@ def evaluate(sourceentities, targetentities, sourcelines, targetlines, do_recall
     alltargetsynsets = Counter()
     alltranslatableentities = Counter()
 
-    linenumbers = set( sorted( ( entity['linenr'] for entity in sourceentities) ) )
-    print( "linenumbers:" + str(len(linenumbers)),file=sys.stderr)
-    for linenr in  linenumbers:
+    for linenr in range(0,len(sourcelines)):
         #check for each synset ID whether it is present in the target sentence
         sourcesynsets = Counter()
         targetsynsets = Counter()
@@ -350,7 +348,7 @@ def evaluate(sourceentities, targetentities, sourcelines, targetlines, do_recall
         evaluation['microrecall'] = 0
     evaluation['translatableentities'] = sum(alltranslatableentities.values()) #macro
     evaluation['matches'] = sum(allmatches.values())  #macro
-    print( "linenumbers:" + str(len(linenumbers)), "sourcesynsets " + str(len(sourcesynsets)), "targetsynsets " + str(len(targetsynsets)), file=sys.stderr)
+    print( "lines:" + str(len(sourcelines)), "sourcesynsets " + str(len(sourcesynsets)), "targetsynsets " + str(len(targetsynsets)), file=sys.stderr)
     return evaluation
 
 def stripmultispace(line):
