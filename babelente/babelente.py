@@ -233,6 +233,7 @@ def evaluate(sourceentities, targetentities, sourcelines, targetlines, do_recall
     alltranslatableentities = Counter()
 
     linenumbers = set( sorted( ( entity['linenr'] for entity in sourceentities) ) )
+    print( "linenumbers:" + str(len(linenumbers)),file=sys.stderr)
     for linenr in  linenumbers:
         #check for each synset ID whether it is present in the target sentence
         sourcesynsets = Counter()
@@ -291,7 +292,7 @@ def evaluate(sourceentities, targetentities, sourcelines, targetlines, do_recall
             #compute how many of the source synsets have corresponding translations in the target language
             #this creates a hypothetical upper bound for recall computation
             #(will query babel.net extensively, hence optional!)
-            print("\tL" + str(linenr+1) + " - Computing recall...",end="", file=sys.stderr)
+            #print("\tL" + str(linenr+1) + " - Computing recall...",end="", file=sys.stderr)
             translatableentities = Counter()
             for synset_id, freq in sourcesynsets.items():
                 targetlemmas = set(findtranslations(synset_id, targetlang, apikey, cache,debug))
@@ -318,9 +319,11 @@ def evaluate(sourceentities, targetentities, sourcelines, targetlines, do_recall
             evaluation['perline'][linenr]['sourcecoverage'] = 0.0
             overallsourcecoverage.append(0.0)
 
+
     #macro averages of precision and recall
     if overallprecision:
         evaluation['precision'] = sum(overallprecision) / len(overallprecision)
+        print( "macroprec = sum-overallprec" + str(sum(overallprecision)), "len_overallprecision)" + str(len(overallprecision)), file=sys.stderr)
     else:
         evaluation['precision'] = 0
     if overallrecall:
@@ -337,14 +340,17 @@ def evaluate(sourceentities, targetentities, sourcelines, targetlines, do_recall
         evaluation['targetcoverage'] = 0
     if alltargetsynsets:
         evaluation['microprecision'] = sum(allmatches.values()) / sum(alltargetsynsets.values())
+        print( "microprec = sum(allmatches" + str(sum(allmatches.values())), "sum(alltargetsynset " + str(sum(alltargetsynsets.values())), file=sys.stderr)
     else:
         evaluation['microprecision'] = 0
     if alltranslatableentities:
         evaluation['microrecall'] = sum(allmatches.values()) / sum(alltranslatableentities.values())
+        print("microrecall=sum(allmatches " + str(sum(allmatches.values())), " / sum(alltranslatableentities" + str(sum(alltranslatableentities.values())), file=sys.stderr)
     else:
         evaluation['microrecall'] = 0
     evaluation['translatableentities'] = sum(alltranslatableentities.values()) #macro
     evaluation['matches'] = sum(allmatches.values())  #macro
+    print( "linenumbers:" + str(len(linenumbers)), "sourcesynsets " + str(len(sourcesynsets)), "targetsynsets " + str(len(targetsynsets)), file=sys.stderr)
     return evaluation
 
 def stripmultispace(line):
