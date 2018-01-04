@@ -338,17 +338,17 @@ def evaluate(sourceentities, targetentities, sourcelines, targetlines, do_recall
         evaluation['targetcoverage'] = 0
     if alltargetsynsets:
         evaluation['microprecision'] = sum(allmatches.values()) / sum(alltargetsynsets.values())
-        print( "microprec = sum(allmatches" + str(sum(allmatches.values())), "sum(alltargetsynset " + str(sum(alltargetsynsets.values())), file=sys.stderr)
+        print( "microprec = sum_allmatches " + str(sum(allmatches.values())), " / sum_alltargetsynset " + str(sum(alltargetsynsets.values())), file=sys.stderr)
     else:
         evaluation['microprecision'] = 0
     if alltranslatableentities:
         evaluation['microrecall'] = sum(allmatches.values()) / sum(alltranslatableentities.values())
-        print("microrecall=sum(allmatches " + str(sum(allmatches.values())), " / sum(alltranslatableentities" + str(sum(alltranslatableentities.values())), file=sys.stderr)
+        print("microrecall=sum_allmatches " + str(sum(allmatches.values())), " / sum_alltranslatableentities " + str(sum(alltranslatableentities.values())), file=sys.stderr)
     else:
         evaluation['microrecall'] = 0
     evaluation['translatableentities'] = sum(alltranslatableentities.values()) #macro
     evaluation['matches'] = sum(allmatches.values())  #macro
-    print( "lines:" + str(len(sourcelines)), "sourcesynsets " + str(len(sourcesynsets)), "targetsynsets " + str(len(targetsynsets)), file=sys.stderr)
+    print( "lines:" + str(len(sourcelines)), file=sys.stderr)
     return evaluation
 
 def stripmultispace(line):
