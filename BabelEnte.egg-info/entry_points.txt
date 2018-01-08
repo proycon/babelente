@@ -1,3 +1,0 @@
-[console_scripts]
-babelente = babelente.babelente:main
-
