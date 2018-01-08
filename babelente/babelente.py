@@ -23,7 +23,9 @@ def gettextchunks(lines, maxchunksize=4096):
     lastlinenr = 0
     text = ""
     for i, line in enumerate(lines):
-        if len(text) + len(line) + 1 >= maxchunksize:
+        s = text + line
+        s = s.encode('utf-8')
+        if len(s) + 1 >= maxchunksize:
             #yield the current chunk
             if text:
                 yield text, firstlinenr, lastlinenr, offsetmap
