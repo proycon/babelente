@@ -23,9 +23,7 @@ def gettextchunks(lines, maxchunksize=4096):
     lastlinenr = 0
     text = ""
     for i, line in enumerate(lines):
-        s = text + line
-        s = s.encode('utf-8')
-        if len(s) + 1 >= maxchunksize:
+        if len(text) + len(line) + 1 >= maxchunksize:
             #yield the current chunk
             if text:
                 yield text, firstlinenr, lastlinenr, offsetmap
@@ -105,9 +103,9 @@ def findentities(lines, lang, args, cache=None):
             print("Offsetmap:", repr(offsetmap), file=sys.stderr)
         elif cache is not None and text in cache:
             entities = cache[text]
-            print("chunk #" + str(i) + " -- retrieved from cache",file=sys.stderr)
+            print("@chunk #" + str(i) + " -- retrieved from cache",file=sys.stderr)
         else:
-            print("chunk #" + str(i) + " -- querying BabelFy",file=sys.stderr)
+            print("@chunk #" + str(i) + " -- querying BabelFy",file=sys.stderr)
             babelclient.babelfy(text)
             entities = babelclient.entities
             if cache is not None: cache[text] = entities #put in cache
@@ -223,18 +221,20 @@ def findtranslations(synset_id, lang, apikey, cache=None, debug=False):
                     if lang not in cache[synset_id]: cache[synset_id][lang] = set()
                     cache[synset_id][lang].add(sense['lemma'])
 
-def evaluate(sourceentities, targetentities, sourcelines, targetlines, do_recall, targetlang, apikey, nodup, cache=None, debug=False):
+def evaluate(sourceentities, targetentities, sourcelines, targetlines, do_recall, targetlang, apikey, cache=None, debug=False):
     evaluation = {'perline':{} }
     overallprecision = []
     overallrecall = []
     overalltargetcoverage = []
     overallsourcecoverage = []
+    overallmatches = 0 #macro
     #sets for micro-averages:
     allmatches = Counter()
     alltargetsynsets = Counter()
     alltranslatableentities = Counter()
 
-    for linenr in range(0,len(sourcelines)):
+    linenumbers = set( sorted( ( entity['linenr'] for entity in sourceentities) ) )
+    for linenr in  linenumbers:
         #check for each synset ID whether it is present in the target sentence
         sourcesynsets = Counter()
         targetsynsets = Counter()
@@ -245,37 +245,13 @@ def evaluate(sourceentities, targetentities, sourcelines, targetlines, do_recall
             if entity['linenr'] == linenr:
                 targetsynsets[entity['babelSynsetID']] += 1
         matches = sourcesynsets & targetsynsets #intersection
-
-        if nodup:
-            #normalize, no duplicates:
-            sourcesynsets = Counter({ k:1 for k,v in sourcesynsets.items()})
-            targetsynsets = Counter({ k:1 for k,v in targetsynsets.items()})
-            matches = Counter({ k:1 for k,v in matches.items()})
-
-
-        #Besides the scores and the full JSON output, it would be very helpful to get a focused list of the matching pairs like this:
-        # purpose:printing a list of all matching items (tab separated):
-        # sentence-nr babelsynsetid source-text-id target-text-id
-        # example: 684 bn:00019586n classroom Klassenraum
-        for match, freq in matches.items():
-            sourcetext = "{?}"
-            for entity in sourceentities:
-                if entity['linenr'] == linenr and entity['babelSynsetID'] == match:
-                    sourcetext = entity['text']
-                    break
-            targettext = "{?}"
-            for entity in targetentities:
-                if entity['linenr'] == linenr and entity['babelSynsetID'] == match:
-                    targettext = entity['text']
-                    break
-            print("@" + str(linenr) + "\t" + match + "\t" + sourcetext + "\t" + targettext + "\t" + str(freq), file=sys.stderr)
-
-
         allmatches += matches
         alltargetsynsets += targetsynsets
+        overallmatches += sum(matches.values())
 
         evaluation['perline'][linenr] = {'matches': sum(matches.values()), 'sources': sum(sourcesynsets.values()), 'targets': sum(targetsynsets.values()) }
         #precision (how many of the target synsets are correct?)
+        #TODO: alternative precision only on the basis of source synsets?
         if targetsynsets:
             precision = sum(matches.values())/sum(targetsynsets.values())
             overallprecision.append(precision)
@@ -292,7 +268,7 @@ def evaluate(sourceentities, targetentities, sourcelines, targetlines, do_recall
             #compute how many of the source synsets have corresponding translations in the target language
             #this creates a hypothetical upper bound for recall computation
             #(will query babel.net extensively, hence optional!)
-            #print("\tL" + str(linenr+1) + " - Computing recall...",end="", file=sys.stderr)
+            print("\t@L" + str(linenr+1) + " - Computing recall...",end="", file=sys.stderr)
             translatableentities = Counter()
             for synset_id, freq in sourcesynsets.items():
                 targetlemmas = set(findtranslations(synset_id, targetlang, apikey, cache,debug))
@@ -319,11 +295,9 @@ def evaluate(sourceentities, targetentities, sourcelines, targetlines, do_recall
             evaluation['perline'][linenr]['sourcecoverage'] = 0.0
             overallsourcecoverage.append(0.0)
 
-
     #macro averages of precision and recall
     if overallprecision:
         evaluation['precision'] = sum(overallprecision) / len(overallprecision)
-        print( "macroprec = sum-overallprec" + str(sum(overallprecision)), "len_overallprecision)" + str(len(overallprecision)), file=sys.stderr)
     else:
         evaluation['precision'] = 0
     if overallrecall:
@@ -340,17 +314,14 @@ def evaluate(sourceentities, targetentities, sourcelines, targetlines, do_recall
         evaluation['targetcoverage'] = 0
     if alltargetsynsets:
         evaluation['microprecision'] = sum(allmatches.values()) / sum(alltargetsynsets.values())
-        print( "microprec = sum_allmatches " + str(sum(allmatches.values())), " / sum_alltargetsynset " + str(sum(alltargetsynsets.values())), file=sys.stderr)
     else:
         evaluation['microprecision'] = 0
     if alltranslatableentities:
         evaluation['microrecall'] = sum(allmatches.values()) / sum(alltranslatableentities.values())
-        print("microrecall=sum_allmatches " + str(sum(allmatches.values())), " / sum_alltranslatableentities " + str(sum(alltranslatableentities.values())), file=sys.stderr)
     else:
         evaluation['microrecall'] = 0
     evaluation['translatableentities'] = sum(alltranslatableentities.values()) #macro
     evaluation['matches'] = sum(allmatches.values())  #macro
-    print( "lines:" + str(len(sourcelines)), file=sys.stderr)
     return evaluation
 
 def stripmultispace(line):
@@ -366,7 +337,6 @@ def main():
     parser.add_argument('-T','--target', type=str,help="Target sentences (plain text, one per line, utf-8)", action='store',default="",required=False)
     parser.add_argument('-r', '--recall',help="Compute recall as well using Babel.net (results in many extra queries!)", action='store_true',required=False)
     parser.add_argument('-d', '--debug',help="Debug", action='store_true',required=False)
-    parser.add_argument('--nodup', help="Filter out duplicate entities in evaluation", action='store_true',required=False)
     parser.add_argument('--evalfile', type=str,help="(Re)evaluate the supplied json file (output of babelente)", action='store',default="",required=False)
     parser.add_argument('--anntype', type=str,help="Annotation Type: Allows to restrict the disambiguated entries to only named entities (NAMED_ENTITIES), word senses (CONCEPTS) or both (ALL).", action='store',required=False)
     parser.add_argument('--annres', type=str,help="Annotation Resource: Allows to restrict the disambiguated entries to only WordNet (WN), Wikipedia (WIKI) or BabelNet (BN)", action='store',required=False)
@@ -424,7 +394,7 @@ def main():
         targetentities = data['targetentities']
 
         print("Evaluating...",file=sys.stderr)
-        evaluation = evaluate(sourceentities, targetentities, sourcelines, targetlines, args.recall, args.targetlang, args.apikey, args.nodup, None if cache is None else cache['synsets_source'], args.debug)
+        evaluation = evaluate(sourceentities, targetentities, sourcelines, targetlines, args.recall, args.targetlang, args.apikey, None if cache is None else cache['synsets_source'], args.debug)
     else:
         print("Extracting source entities...",file=sys.stderr)
         sourceentities = [ entity for  entity in findentities(sourcelines, args.sourcelang, args, None if cache is None else cache['source']) if entity['isEntity'] and 'babelSynsetID' in entity ] #with sanity check
@@ -434,7 +404,7 @@ def main():
             targetentities = [ entity for  entity in findentities(targetlines, args.targetlang, args, None if cache is None else cache['target']) if entity['isEntity'] and 'babelSynsetID' in entity ] #with sanity check
 
             print("Evaluating...",file=sys.stderr)
-            evaluation = evaluate(sourceentities, targetentities, sourcelines, targetlines, args.recall, args.targetlang, args.apikey, args.nodup, None if cache is None else cache['synsets_target'], args.debug)
+            evaluation = evaluate(sourceentities, targetentities, sourcelines, targetlines, args.recall, args.targetlang, args.apikey, None if cache is None else cache['synsets_target'], args.debug)
         else:
             print(json.dumps({'entities':sourceentities}, indent=4,ensure_ascii=False)) #MAYBE TODO: add coverage?
 
