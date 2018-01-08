@@ -11,7 +11,7 @@ def read(fname):
 
 setup(
     name = "BabelEnte",
-    version = "0.3.1",
+    version = "0.3.2",
     author = "Maarten van Gompel, Iris Hendrickx",
     author_email = "proycon@anaproy.nl",
     description = ("Entity extractioN, Translation and Evaluation using BabelFy"),
