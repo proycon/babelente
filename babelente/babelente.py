@@ -12,6 +12,7 @@ import json
 import requests
 import numpy as np
 import pickle
+import random
 from collections import Counter, defaultdict
 from babelpy.babelfy import BabelfyClient
 from pynlpl.formats import folia
@@ -239,12 +240,12 @@ def evaluate(sourceentities, targetentities, sourcelines, targetlines, do_recall
         #check for each synset ID whether it is present in the target sentence
         sourcesynsets = Counter()
         targetsynsets = Counter()
-        sourceentities = defaultdict(list) #synset => text
+        synset2text = defaultdict(list) #synset => text
         for entity in sourceentities:
             if entity['linenr'] == linenr:
                 sourcesynsets[entity['babelSynsetID']] += 1
                 if do_recall:
-                    sourceentities[entity['babelSynsetID']].append(entity['text'])
+                    synset2text[entity['babelSynsetID']].append(entity['text'])
         for entity in targetentities:
             if entity['linenr'] == linenr:
                 targetsynsets[entity['babelSynsetID']] += 1
@@ -306,7 +307,7 @@ def evaluate(sourceentities, targetentities, sourcelines, targetlines, do_recall
                     translatableentities[synset_id] += freq
                     translations[synset_id] = targetlemmas
                     if synset_id not in matches:
-                        print("!" + str(linenr) + "\tMISSED\t"+synset_id+"\t" + ";".join(sourceentities[synset_id]) + "\t" + ";".join(translations[synset_id]) + "\t" + str(freq), file=sys.stderr)
+                        print("!" + str(linenr) + "\tMISSED\t"+synset_id+"\t" + ";".join(synset2text[synset_id]) + "\t" + ";".join(translations[synset_id]) + "\t" + str(freq), file=sys.stderr)
             #print(sum(translatableentities.values()),file=sys.stderr)
 
             if translatableentities:
@@ -361,8 +362,39 @@ def evaluate(sourceentities, targetentities, sourcelines, targetlines, do_recall
     print( "lines:" + str(len(sourcelines)), file=sys.stderr)
     return evaluation
 
-def processfolia(doc):
-    raise NotImplementedError
+def processfolia(doc, args, cache):
+    doc.declare(folia.Entity, set=args.foliaset, annotator='babelente',annotatortype=folia.AnnotatorType.AUTO)
+
+    processed = set()
+    data = []
+    for word in doc.words():
+        parent = word.ancestor(folia.AbstractStructureElement)
+        if not hasattr(parent, '_babelente_processed'):
+            parent._babelente_processed = True
+            words = list(parent.select(folia.Word))
+            data.append( (parent, words, " ".join([ str(word) for word in words]) ) )
+
+    entities = [ entity for  entity in findentities([x[2] for x in data], args.sourcelang, args, None if cache is None else cache['source']) if entity['isEntity'] and 'babelSynsetID' in entity ] #with sanity check
+
+    #add entities to the FoLiA document
+    for entity in entities:
+        linenr = entity['linenr']
+        parent, words, text = data[linenr]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 def stripmultispace(line):
     line = line.strip()
@@ -392,6 +424,7 @@ def main():
     parser.add_argument('--overlap',type=str, help="Resolve overlapping entities, can be set to allow (default), longest, score, globalscore, coherencescore", action='store',default='allow',required=False)
     parser.add_argument('--cache',type=str, help="Cache file, stores queries to prevent excessive querying of BabelFy (warning: not suitable for parallel usage!)", action='store',required=False)
     parser.add_argument('--dryrun', help="Do not query", action='store_true',required=False)
+    parser.add_argument('--foliaset',type=str, help="FoLiA Set to use for extracted entities", action='store',default="https://raw.githubusercontent.com/proycon/babelente/master/babelente.ttl", required=False)
     parser.add_argument('inputfiles', nargs='*', help='FoLiA input documents, use with -s to choose source language. For tramooc style usage: use -S/-T or --evalfile instead of this.')
     args = parser.parse_args()
 
