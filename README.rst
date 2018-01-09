@@ -38,7 +38,7 @@ Each FoLiA document will be outputted to a new file, which includes all the enti
 and DBpedia where possible. At the same time, the ``stdout`` output again consists of a JSON object containing all found
 entities.
 
-Note that this method does not currently not do any translation of entities yet (I'm open to feature request
+Note that this method does currently not do any translation of entities yet (I'm open to feature request
 if you want this).
 
 If you start from plain text but produce FoLiA output, then first use for instance `ucto
