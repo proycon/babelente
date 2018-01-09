@@ -364,6 +364,8 @@ def evaluate(sourceentities, targetentities, sourcelines, targetlines, do_recall
 
 def processfolia(doc, args, cache):
     doc.declare(folia.Entity, set=args.foliaset, annotator='babelente',annotatortype=folia.AnnotatorType.AUTO)
+    doc.declare(folia.Alignment, set=args.foliaalignset, annotator='babelente',annotatortype=folia.AnnotatorType.AUTO)
+    doc.declare(folia.Metric, set=args.foliametricset, annotator='babelente',annotatortype=folia.AnnotatorType.AUTO)
 
     processed = set()
     data = []
@@ -380,21 +382,25 @@ def processfolia(doc, args, cache):
     for entity in entities:
         linenr = entity['linenr']
         parent, words, text = data[linenr]
+        tokenstart = int(entity['tokenFragment']['start'])
+        tokenend = int(entity['tokenFragment']['end'])
+        span = words[tokenstart:tokenend+1]
+        entity['span'] = [ word.id for word in span ]
+        entity['spantext'] = [ str(word) for word in span ]
+        entity['docfile'] = doc.filename
+        entity['docid'] = doc.id
+        print(entity, ",")
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        foliaentity = parent.add(folia.Entity, *span, set=args.foliaset, cls=entity['babelSynsetID'].replace('bn:',''), generate_id_in=parent, confidence=float(entity['score']))
+        foliaentity.add(folia.Description, value=entity['text'])
+        if 'DBpediaURL' in entity and entity['DBpediaURL']:
+            url = entity['DBpediaURL'].replace('/resource/','/data/') + '.rdf'
+            alignment = foliaentity.add(folia.Alignment, cls="dbpedia", href=url, set=args.foliaalignset, format="application/rdf+xml")
+            alignment.add(folia.AlignReference, id=entity['DBpediaURL'])
+        if 'BabelNetURL' in entity and entity['BabelNetURL']:
+            url = entity['BabelNetURL'].replace('/rdf/','/rdf/data/')
+            alignment = foliaentity.add(folia.Alignment, cls="babelnet", href=entity['BabelNetURL'], set=args.foliaalignset, format="application/rdf+xml")
+            alignment.add(folia.AlignReference, id=entity['BabelNetURL'])
 
 def stripmultispace(line):
     line = line.strip()
@@ -424,8 +430,11 @@ def main():
     parser.add_argument('--overlap',type=str, help="Resolve overlapping entities, can be set to allow (default), longest, score, globalscore, coherencescore", action='store',default='allow',required=False)
     parser.add_argument('--cache',type=str, help="Cache file, stores queries to prevent excessive querying of BabelFy (warning: not suitable for parallel usage!)", action='store',required=False)
     parser.add_argument('--dryrun', help="Do not query", action='store_true',required=False)
-    parser.add_argument('--foliaset',type=str, help="FoLiA Set to use for extracted entities", action='store',default="https://raw.githubusercontent.com/proycon/babelente/master/babelente.ttl", required=False)
     parser.add_argument('inputfiles', nargs='*', help='FoLiA input documents, use with -s to choose source language. For tramooc style usage: use -S/-T or --evalfile instead of this.')
+    #hidden power options:
+    parser.add_argument('--foliaset',type=str, help=argparse.SUPPRESS, action='store',default="https://raw.githubusercontent.com/proycon/babelente/master/setdefinitions/babelente.babelnet.ttl", required=False)
+    parser.add_argument('--foliaalignset',type=str, help=argparse.SUPPRESS, action='store',default="https://raw.githubusercontent.com/proycon/babelente/master/setdefinitions/babelente.alignments.ttl", required=False)
+    parser.add_argument('--foliametricset',type=str, help=argparse.SUPPRESS, action='store',default="https://raw.githubusercontent.com/proycon/babelente/master/setdefinitions/babelente.metrics.ttl", required=False)
     args = parser.parse_args()
 
     if not args.source and not args.target and not args.evalfile and not args.inputfiles:
@@ -437,7 +446,7 @@ def main():
     if args.target and not args.source:
         print("ERROR: Specify --source/-S as well when --target/-T is used . See babelente -h for usage instructions.",file=sys.stderr)
         sys.exit(2)
-    if (args.target or args.source or args.file) and not args.apikey:
+    if (args.target or args.source or args.inputfiles) and not args.apikey:
         print("ERROR: Specify an API key (--apikey). Get one on http://babelnet.org/",file=sys.stderr)
         sys.exit(2)
     if args.target and not args.targetlang:
@@ -448,6 +457,7 @@ def main():
         if not args.sourcelang:
             print("ERROR: Specify a source language (-s)",file=sys.stderr)
             sys.exit(2)
+        print("[")
         for filename in args.inputfiles:
             #FoLiA based, extraction only
             if not os.path.exists(filename):
@@ -455,7 +465,7 @@ def main():
                 sys.exit(2)
             print("Loading FoLiA document " + filename + " ...",file=sys.stderr)
             doc = folia.Document(file=filename)
-            processfolia(doc)
+            processfolia(doc, args, None)
             if args.outputdir != '/dev/null':
                 outputname = os.path.basename(filename)
                 if outputname.endswith('.folia.xml'):
@@ -464,7 +474,9 @@ def main():
                     outputname = outputname.replace('.xml','.babelente.folia.xml')
                 else:
                     outputname = outputname + '.babelente.folia.xml'
-                doc.save(os.path.join(args.outpudir,outputname))
+                doc.save(os.path.join(args.outputdir,outputname))
+        print("{}")
+        print("]")
     else:
         #Tramooc-style extraction, translation and evaluation
         with open(args.source, 'r',encoding='utf-8') as f:
