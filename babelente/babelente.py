@@ -301,10 +301,10 @@ def evaluate(sourceentities, targetentities, sourcelines, targetlines, do_recall
                 if len(targetlemmas) > 0:
                     #we have a link
                     translatableentities[synset_id] += freq
-                translations[synset_id] = targetlemmas
+                    translations[synset_id] = targetlemmas
             #print(sum(translatableentities.values()),file=sys.stderr)
 
-            for synset_id, freq in sourcesynsets.items():
+            for synset_id, freq in matches.items():
                 if synset_id not in translatableentities:
                     print("!" + str(linenr) + "\tMISSED\t" + synset_id + "\t" + ";".join(translations[synset_id]) + "\t" + str(freq), file=sys.stderr)
 
