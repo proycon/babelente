@@ -34,7 +34,7 @@ of your FoLiA document(s) and pass them to babelente as follows, multiple docume
 
 ``$ babelente -k "YOUR-API-KEY" -s en yourdocument.folia.xml``
 
-Each FoLiA document will be outputted to a new file, whcih includes all the entities. Entities will be explicitly linked to BabelNet
+Each FoLiA document will be outputted to a new file, which includes all the entities. Entities will be explicitly linked to BabelNet
 and DBpedia where possible. At the same time, the ``stdout`` output again consists of a JSON object containing all found
 entities.
 
