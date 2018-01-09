@@ -41,7 +41,7 @@ entities.
 Note that this method does currently not do any translation of entities yet (I'm open to feature request
 if you want this).
 
-If you start from plain text but produce FoLiA output, then first use for instance `ucto
+If you start from plain text but want to produce FoLiA output, then first use for instance `ucto
 <https://github.com/LanguageMachines/ucto>`_ to tokenise your document and convert it to FoLiA, prior to passing it to
 BabelEnte.
 
