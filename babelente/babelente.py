@@ -12,7 +12,7 @@ import json
 import requests
 import numpy as np
 import pickle
-from collections import Counter
+from collections import Counter, defaultdict
 from babelpy.babelfy import BabelfyClient
 from pynlpl.formats import folia
 
@@ -239,9 +239,12 @@ def evaluate(sourceentities, targetentities, sourcelines, targetlines, do_recall
         #check for each synset ID whether it is present in the target sentence
         sourcesynsets = Counter()
         targetsynsets = Counter()
+        sourceentities = defaultdict(list) #synset => text
         for entity in sourceentities:
             if entity['linenr'] == linenr:
                 sourcesynsets[entity['babelSynsetID']] += 1
+                if do_recall:
+                    sourceentities[entity['babelSynsetID']].append(entity['text'])
         for entity in targetentities:
             if entity['linenr'] == linenr:
                 targetsynsets[entity['babelSynsetID']] += 1
@@ -302,11 +305,9 @@ def evaluate(sourceentities, targetentities, sourcelines, targetlines, do_recall
                     #we have a link
                     translatableentities[synset_id] += freq
                     translations[synset_id] = targetlemmas
+                    if synset_id not in matches:
+                        print("!" + str(linenr) + "\tMISSED\t"+synset_id+"\t" + ";".join(sourceentities[synset_id]) + "\t" + ";".join(translations[synset_id]) + "\t" + str(freq), file=sys.stderr)
             #print(sum(translatableentities.values()),file=sys.stderr)
-
-            for synset_id, freq in matches.items():
-                if synset_id not in translatableentities:
-                    print("!" + str(linenr) + "\tMISSED\t" + synset_id + "\t" + ";".join(translations[synset_id]) + "\t" + str(freq), file=sys.stderr)
 
             if translatableentities:
                 recall = sum(matches.values())/sum(translatableentities.values())
