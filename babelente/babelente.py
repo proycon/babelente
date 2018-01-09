@@ -14,7 +14,7 @@ import numpy as np
 import pickle
 from collections import Counter
 from babelpy.babelfy import BabelfyClient
-from pynlpl import folia
+from pynlpl.formats import folia
 
 
 def gettextchunks(lines, maxchunksize=4096):
