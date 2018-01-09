@@ -28,7 +28,7 @@ For simple entity recognition/linking on plain text documents, invoke BabelEnte 
 
 ``$ babelente -k "YOUR-API-KEY" -s en -S sentences.en.txt > output.json``
 
-BabelEnte comes with `FoLiA <https://github.com/proycon/folia>_` support. Allowing you to read FoLiA documents and
+BabelEnte comes with `FoLiA <https://github.com/proycon/folia>`_ support. Allowing you to read FoLiA documents and
 producing enriched FoLiA documents that include the detected/linked entities. To this end, simply specify the language
 of your FoLiA document(s) and pass them to babelente as follows, multiple documents are allowed:
 
