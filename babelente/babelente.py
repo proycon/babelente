@@ -14,6 +14,7 @@ import numpy as np
 import pickle
 from collections import Counter
 from babelpy.babelfy import BabelfyClient
+from pynlpl import folia
 
 
 def gettextchunks(lines, maxchunksize=4096):
@@ -294,12 +295,18 @@ def evaluate(sourceentities, targetentities, sourcelines, targetlines, do_recall
             #(will query babel.net extensively, hence optional!)
             #print("\tL" + str(linenr+1) + " - Computing recall...",end="", file=sys.stderr)
             translatableentities = Counter()
+            translations = {}
             for synset_id, freq in sourcesynsets.items():
                 targetlemmas = set(findtranslations(synset_id, targetlang, apikey, cache,debug))
                 if len(targetlemmas) > 0:
                     #we have a link
                     translatableentities[synset_id] += freq
-            print(sum(translatableentities.values()),file=sys.stderr)
+                translations[synset_id] = targetlemmas
+            #print(sum(translatableentities.values()),file=sys.stderr)
+
+            for synset_id, freq in sourcesynsets.items():
+                if synset_id not in translatableentities:
+                    print("!" + str(linenr) + "\tMISSED\t" + synset_id + "\t" + ";".join(translations[synset_id]) + "\t" + str(freq), file=sys.stderr)
 
             if translatableentities:
                 recall = sum(matches.values())/sum(translatableentities.values())
@@ -353,6 +360,9 @@ def evaluate(sourceentities, targetentities, sourcelines, targetlines, do_recall
     print( "lines:" + str(len(sourcelines)), file=sys.stderr)
     return evaluation
 
+def processfolia(doc):
+    raise NotImplementedError
+
 def stripmultispace(line):
     line = line.strip()
     return " ".join([ w for w in line.split(" ") if w ])
@@ -365,6 +375,7 @@ def main():
     parser.add_argument('-S','--source', type=str,help="Source sentences (plain text, one per line, utf-8)", action='store',default="",required=False)
     parser.add_argument('-T','--target', type=str,help="Target sentences (plain text, one per line, utf-8)", action='store',default="",required=False)
     parser.add_argument('-r', '--recall',help="Compute recall as well using Babel.net (results in many extra queries!)", action='store_true',required=False)
+    parser.add_argument('-o', '--outputdir',help="Output directory when processing FoLiA documents (set to /dev/null to skip output alltogether)", action='store_true',default="./", required=False)
     parser.add_argument('-d', '--debug',help="Debug", action='store_true',required=False)
     parser.add_argument('--nodup', help="Filter out duplicate entities in evaluation", action='store_true',required=False)
     parser.add_argument('--evalfile', type=str,help="(Re)evaluate the supplied json file (output of babelente)", action='store',default="",required=False)
@@ -380,77 +391,104 @@ def main():
     parser.add_argument('--overlap',type=str, help="Resolve overlapping entities, can be set to allow (default), longest, score, globalscore, coherencescore", action='store',default='allow',required=False)
     parser.add_argument('--cache',type=str, help="Cache file, stores queries to prevent excessive querying of BabelFy (warning: not suitable for parallel usage!)", action='store',required=False)
     parser.add_argument('--dryrun', help="Do not query", action='store_true',required=False)
+    parser.add_argument('inputfiles', nargs='*', help='FoLiA input documents, use with -s to choose source language. For tramooc style usage: use -S/-T or --evalfile instead of this.')
     args = parser.parse_args()
 
-    if not args.source and not args.target and not args.evalfile:
-        print("ERROR: Specify either --source/-S (with or without --target/-T) or --evalfile. See babelente -h for usage instructions.",file=sys.stderr)
+    if not args.source and not args.target and not args.evalfile and not args.inputfiles:
+        print("ERROR: For Tramooc style usage, specify either --source/-S (with or without --target/-T, or --evalfile.", file=sys.stderr)
+        print("       For entity extraction & linking on FoLiA documents, just specify one or more FoLiA documents", file=sys.stderr)
+        print("        along with --sourcelang to choose source language.", file=sys.stderr)
+        print("       See babelente -h for full usage instructions.",file=sys.stderr)
         sys.exit(2)
     if args.target and not args.source:
         print("ERROR: Specify --source/-S as well when --target/-T is used . See babelente -h for usage instructions.",file=sys.stderr)
         sys.exit(2)
-    if (args.target or args.source) and not args.apikey:
+    if (args.target or args.source or args.file) and not args.apikey:
         print("ERROR: Specify an API key (--apikey). Get one on http://babelnet.org/",file=sys.stderr)
         sys.exit(2)
     if args.target and not args.targetlang:
         print("ERROR: Specify a target language (-t).",file=sys.stderr)
         sys.exit(2)
 
-    with open(args.source, 'r',encoding='utf-8') as f:
-        sourcelines = [ stripmultispace(l) for l in f.readlines() ]
-    if args.target:
-        with open(args.target, 'r',encoding='utf-8') as f:
-            targetlines = [ stripmultispace(l) for l in f.readlines() ]
-
-        if len(sourcelines) != len(targetlines):
-            print("ERROR: Expected the same number of line in source and target files, but got " + str(len(sourcelines)) + " vs " + str(len(targetlines)) ,file=sys.stderr)
+    if args.inputfiles:
+        if not args.sourcelang:
+            print("ERROR: Specify a source language (-s)",file=sys.stderr)
             sys.exit(2)
-
-    if args.cache:
-        if os.path.exists(args.cache):
-            print("Loading cache from " + args.cache,file=sys.stderr)
-            with open(args.cache, 'rb') as f:
-                cache = pickle.load(f)
-        else:
-            print("Creating new cache " + args.cache,file=sys.stderr)
-            cache = {'source':{}, 'target': {}, 'synsets_source': {}, 'synsets_target': {}}
+        for filename in args.inputfiles:
+            #FoLiA based, extraction only
+            if not os.path.exists(filename):
+                print("ERROR: No such file: " + filename)
+                sys.exit(2)
+            print("Loading FoLiA document " + filename + " ...",file=sys.stderr)
+            doc = folia.Document(file=filename)
+            processfolia(doc)
+            if args.outputdir != '/dev/null':
+                outputname = os.path.basename(filename)
+                if outputname.endswith('.folia.xml'):
+                    outputname = outputname.replace('.folia.xml','.babelente.folia.xml')
+                elif outputname.endswith('.xml'):
+                    outputname = outputname.replace('.xml','.babelente.folia.xml')
+                else:
+                    outputname = outputname + '.babelente.folia.xml'
+                doc.save(os.path.join(args.outpudir,outputname))
     else:
-        cache = None
-
-    evaluation = None
-    if args.evalfile:
-        with open(args.evalfile,'rb') as f:
-            data = json.load(f)
-        sourceentities = data['sourceentities']
-        targetentities = data['targetentities']
-
-        print("Evaluating...",file=sys.stderr)
-        evaluation = evaluate(sourceentities, targetentities, sourcelines, targetlines, args.recall, args.targetlang, args.apikey, args.nodup, None if cache is None else cache['synsets_source'], args.debug)
-    else:
-        print("Extracting source entities...",file=sys.stderr)
-        sourceentities = [ entity for  entity in findentities(sourcelines, args.sourcelang, args, None if cache is None else cache['source']) if entity['isEntity'] and 'babelSynsetID' in entity ] #with sanity check
-
+        #Tramooc-style extraction, translation and evaluation
+        with open(args.source, 'r',encoding='utf-8') as f:
+            sourcelines = [ stripmultispace(l) for l in f.readlines() ]
         if args.target:
-            print("Extracting target entities...",file=sys.stderr)
-            targetentities = [ entity for  entity in findentities(targetlines, args.targetlang, args, None if cache is None else cache['target']) if entity['isEntity'] and 'babelSynsetID' in entity ] #with sanity check
+            with open(args.target, 'r',encoding='utf-8') as f:
+                targetlines = [ stripmultispace(l) for l in f.readlines() ]
+
+            if len(sourcelines) != len(targetlines):
+                print("ERROR: Expected the same number of line in source and target files, but got " + str(len(sourcelines)) + " vs " + str(len(targetlines)) ,file=sys.stderr)
+                sys.exit(2)
+
+        if args.cache:
+            if os.path.exists(args.cache):
+                print("Loading cache from " + args.cache,file=sys.stderr)
+                with open(args.cache, 'rb') as f:
+                    cache = pickle.load(f)
+            else:
+                print("Creating new cache " + args.cache,file=sys.stderr)
+                cache = {'source':{}, 'target': {}, 'synsets_source': {}, 'synsets_target': {}}
+        else:
+            cache = None
+
+        evaluation = None
+        if args.evalfile:
+            with open(args.evalfile,'rb') as f:
+                data = json.load(f)
+            sourceentities = data['sourceentities']
+            targetentities = data['targetentities']
 
             print("Evaluating...",file=sys.stderr)
-            evaluation = evaluate(sourceentities, targetentities, sourcelines, targetlines, args.recall, args.targetlang, args.apikey, args.nodup, None if cache is None else cache['synsets_target'], args.debug)
+            evaluation = evaluate(sourceentities, targetentities, sourcelines, targetlines, args.recall, args.targetlang, args.apikey, args.nodup, None if cache is None else cache['synsets_source'], args.debug)
         else:
-            print(json.dumps({'entities':sourceentities}, indent=4,ensure_ascii=False)) #MAYBE TODO: add coverage?
+            print("Extracting source entities...",file=sys.stderr)
+            sourceentities = [ entity for  entity in findentities(sourcelines, args.sourcelang, args, None if cache is None else cache['source']) if entity['isEntity'] and 'babelSynsetID' in entity ] #with sanity check
 
-    if evaluation is not None:
-        print(json.dumps({'sourceentities':sourceentities, 'targetentities': targetentities, 'evaluation': evaluation}, indent=4,ensure_ascii=False))
-        #output summary to stderr (info is all in JSON stdout output as well)
-        print("PRECISION(macro)=" + str(round(evaluation['precision'],3)), "RECALL(macro)=" + str(round(evaluation['recall'],3)), file=sys.stderr)
-        print("PRECISION(micro)=" + str(round(evaluation['microprecision'], 3)), "RECALL(micro)=" + str(round(evaluation['microrecall'],3)), file=sys.stderr)
-        print("SOURCECOVERAGE=" + str(round(evaluation['sourcecoverage'],3)), "TARGETCOVERAGE=" + str(round(evaluation['targetcoverage'],3)), file=sys.stderr)
-        print("SOURCEENTITIES=" + str(len(sourceentities)), "TARGETENTITIES=" + str(len(targetentities)))
-        print("MATCHES=" + str(evaluation['matches']), file=sys.stderr)
-        print("TRANSLATABLEENTITIES=" + str(evaluation['translatableentities']), file=sys.stderr)
+            if args.target:
+                print("Extracting target entities...",file=sys.stderr)
+                targetentities = [ entity for  entity in findentities(targetlines, args.targetlang, args, None if cache is None else cache['target']) if entity['isEntity'] and 'babelSynsetID' in entity ] #with sanity check
 
-    if cache is not None:
-        with open(args.cache,'wb') as f:
-            pickle.dump(cache,f)
+                print("Evaluating...",file=sys.stderr)
+                evaluation = evaluate(sourceentities, targetentities, sourcelines, targetlines, args.recall, args.targetlang, args.apikey, args.nodup, None if cache is None else cache['synsets_target'], args.debug)
+            else:
+                print(json.dumps({'entities':sourceentities}, indent=4,ensure_ascii=False)) #MAYBE TODO: add coverage?
+
+        if evaluation is not None:
+            print(json.dumps({'sourceentities':sourceentities, 'targetentities': targetentities, 'evaluation': evaluation}, indent=4,ensure_ascii=False))
+            #output summary to stderr (info is all in JSON stdout output as well)
+            print("PRECISION(macro)=" + str(round(evaluation['precision'],3)), "RECALL(macro)=" + str(round(evaluation['recall'],3)), file=sys.stderr)
+            print("PRECISION(micro)=" + str(round(evaluation['microprecision'], 3)), "RECALL(micro)=" + str(round(evaluation['microrecall'],3)), file=sys.stderr)
+            print("SOURCECOVERAGE=" + str(round(evaluation['sourcecoverage'],3)), "TARGETCOVERAGE=" + str(round(evaluation['targetcoverage'],3)), file=sys.stderr)
+            print("SOURCEENTITIES=" + str(len(sourceentities)), "TARGETENTITIES=" + str(len(targetentities)))
+            print("MATCHES=" + str(evaluation['matches']), file=sys.stderr)
+            print("TRANSLATABLEENTITIES=" + str(evaluation['translatableentities']), file=sys.stderr)
+
+        if cache is not None:
+            with open(args.cache,'wb') as f:
+                pickle.dump(cache,f)
 
 
 if __name__ == '__main__':
