@@ -240,7 +240,7 @@ COMMAND = WEBSERVICEDIR + "/babelente_wrapper.py $DATAFILE $STATUSFILE $OUTPUTDI
 
 PARAMETERS =  [
     ('General', [
-        ChoiceParameter(id='lang',name="Language",description="The language your input documents (or translation output) are in", choices=[('AR','Arabic'), ('BG','Bulgarian'),('ZH','Chinese'),('CS', 'Czech'),('HR','Croatian'),('NL','Dutch'),('EN','English'),('EO','Esperanto'),('FI','Finnish'),('FR','French'),('DE','German'),('EL','Greek'),('HI','Hindi'), ('IT','Italian'),('JA','Japanese'),('RU','Russian'), ('FA','Persian'),('PT','Portuguese'), ('SR','Serbian'), ('ES','Spanish'),('SW','Swahili'), ('SV','Swedish'),('TR','Turkish')],default='EN'), #not exhaustive yet
+        ChoiceParameter(id='lang',name="Language",description="The language your input documents (or translation output) are in", choices=[('AR','Arabic'), ('BG','Bulgarian'),('ZH','Chinese'),('CS', 'Czech'),('HR','Croatian'),('NL','Dutch'),('EN','English'),('EO','Esperanto'),('FI','Finnish'),('FR','French'),('DE','German'),('EL','Greek'),('HI','Hindi'), ('IT','Italian'),('JA','Japanese'),('RU','Russian'), ('FA','Persian'),('PT','Portuguese'), ('SR','Serbian'), ('ES','Spanish'),('SW','Swahili'), ('SV','Swedish'),('TR','Turkish')],default='EN',required=True), #not exhaustive yet
         #StringParameter(id='author',name='Author',description='Sign output metadata with the specified author name',maxlength=255),
     ] ),
     ('BabelEnte Parameters', [

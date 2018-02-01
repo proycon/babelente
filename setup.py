@@ -18,7 +18,7 @@ setup(
     license = "GPL",
     keywords = "nlp computational_linguistics entities wikipedia dbpedia linguistics tramooc",
     url = "https://github.com/proycon/babelente",
-    packages=['babelente'],
+    packages=['babelente','babelente.webservice'],
     long_description=read('README.rst'),
     classifiers=[
         "Development Status :: 4 - Beta",
