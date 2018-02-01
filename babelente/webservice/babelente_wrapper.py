@@ -122,9 +122,9 @@ for inputfile in clamdata.input:
 
 if evalsource and evaltarget:
     #Implicit Evaluation pipeline (TraMOOC)
-   clam.common.status.write(statusfile, "Conducting Implicit Translation Evaluation...") # status update
-   outputjson = os.path.join(outputdir, 'evaluation.json') #remove .folia.xml extension, add .json
-   os.system("babelente " + options + " -s en -t " + shellsafe(clamdata['lang'],'"') + " -S " + shellsafe(evalsource,'"') + " -T " + shellsafe(evaltarget,'"') + " > " + shellsafe(outputjson,'"')) == 0 or sys.exit(2)
+    clam.common.status.write(statusfile, "Conducting Implicit Translation Evaluation...") # status update
+    outputjson = os.path.join(outputdir, 'evaluation.json') #remove .folia.xml extension, add .json
+    os.system("babelente " + options + " -s en -t " + shellsafe(clamdata['lang'],'"') + " -S " + shellsafe(evalsource,'"') + " -T " + shellsafe(evaltarget,'"') + " > " + shellsafe(outputjson,'"')) == 0 or sys.exit(2)
 
 
 
