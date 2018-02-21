@@ -414,7 +414,7 @@ def main():
     parser.add_argument('-S','--source', type=str,help="Source sentences (plain text, one per line, utf-8)", action='store',default="",required=False)
     parser.add_argument('-T','--target', type=str,help="Target sentences (plain text, one per line, utf-8)", action='store',default="",required=False)
     parser.add_argument('-r', '--recall',help="Compute recall as well using Babel.net (results in many extra queries!)", action='store_true',required=False)
-    parser.add_argument('-o', '--outputdir',help="Output directory when processing FoLiA documents (set to /dev/null to skip output alltogether)", action='store_true',default="./", required=False)
+    parser.add_argument('-o', '--outputdir',type=str,help="Output directory when processing FoLiA documents (set to /dev/null to skip output alltogether)", action='store',default="./", required=False)
     parser.add_argument('-d', '--debug',help="Debug", action='store_true',required=False)
     parser.add_argument('--nodup', help="Filter out duplicate entities in evaluation", action='store_true',required=False)
     parser.add_argument('--evalfile', type=str,help="(Re)evaluate the supplied json file (output of babelente)", action='store',default="",required=False)
@@ -457,85 +457,102 @@ def main():
         if not args.sourcelang:
             print("ERROR: Specify a source language (-s)",file=sys.stderr)
             sys.exit(2)
-        print("[")
+        first = True
+        textdoc = False
         for filename in args.inputfiles:
-            #FoLiA based, extraction only
             if not os.path.exists(filename):
                 print("ERROR: No such file: " + filename)
                 sys.exit(2)
-            print("Loading FoLiA document " + filename + " ...",file=sys.stderr)
-            doc = folia.Document(file=filename)
-            processfolia(doc, args, None)
-            if args.outputdir != '/dev/null':
-                outputname = os.path.basename(filename)
-                if outputname.endswith('.folia.xml'):
-                    outputname = outputname.replace('.folia.xml','.babelente.folia.xml')
-                elif outputname.endswith('.xml'):
-                    outputname = outputname.replace('.xml','.babelente.folia.xml')
-                else:
-                    outputname = outputname + '.babelente.folia.xml'
-                doc.save(os.path.join(args.outputdir,outputname))
-        print("{}")
-        print("]")
-    else:
-        #Tramooc-style extraction, translation and evaluation
-        with open(args.source, 'r',encoding='utf-8') as f:
-            sourcelines = [ stripmultispace(l) for l in f.readlines() ]
-        if args.target:
-            with open(args.target, 'r',encoding='utf-8') as f:
-                targetlines = [ stripmultispace(l) for l in f.readlines() ]
+            if filename[-3:].lower() == ".xml":
+                #FoLiA based, extraction only
+                print("Loading FoLiA document " + filename + " ...",file=sys.stderr)
+                doc = folia.Document(file=filename)
+                if first:
+                    print("[")
+                    first = False
+                processfolia(doc, args, None)
 
-            if len(sourcelines) != len(targetlines):
-                print("ERROR: Expected the same number of line in source and target files, but got " + str(len(sourcelines)) + " vs " + str(len(targetlines)) ,file=sys.stderr)
-                sys.exit(2)
-
-        if args.cache:
-            if os.path.exists(args.cache):
-                print("Loading cache from " + args.cache,file=sys.stderr)
-                with open(args.cache, 'rb') as f:
-                    cache = pickle.load(f)
+                if args.outputdir != '/dev/null':
+                    outputname = os.path.basename(filename)
+                    if outputname.endswith('.folia.xml'):
+                        outputname = outputname.replace('.folia.xml','.babelente.folia.xml')
+                    elif outputname.endswith('.xml'):
+                        outputname = outputname.replace('.xml','.babelente.folia.xml')
+                    else:
+                        outputname = outputname + '.babelente.folia.xml'
+                    doc.save(os.path.join(args.outputdir,outputname))
             else:
-                print("Creating new cache " + args.cache,file=sys.stderr)
-                cache = {'source':{}, 'target': {}, 'synsets_source': {}, 'synsets_target': {}}
-        else:
-            cache = None
+                #text-based
+                textdoc = True
+                print("Loading text document " + filename + " ...",file=sys.stderr)
+                args.source = filename
+                break
 
-        evaluation = None
-        if args.evalfile:
-            with open(args.evalfile,'rb') as f:
-                data = json.load(f)
-            sourceentities = data['sourceentities']
-            targetentities = data['targetentities']
+        if not textdoc:
+            print("{}")
+            print("]")
+            return True
+
+    #Tramooc-style extraction, translation and evaluation
+    with open(args.source, 'r',encoding='utf-8') as f:
+        sourcelines = [ stripmultispace(l) for l in f.readlines() ]
+
+    if args.target:
+        with open(args.target, 'r',encoding='utf-8') as f:
+            targetlines = [ stripmultispace(l) for l in f.readlines() ]
+
+        if len(sourcelines) != len(targetlines):
+            print("ERROR: Expected the same number of line in source and target files, but got " + str(len(sourcelines)) + " vs " + str(len(targetlines)) ,file=sys.stderr)
+            sys.exit(2)
+
+    if args.cache:
+        if os.path.exists(args.cache):
+            print("Loading cache from " + args.cache,file=sys.stderr)
+            with open(args.cache, 'rb') as f:
+                cache = pickle.load(f)
+        else:
+            print("Creating new cache " + args.cache,file=sys.stderr)
+            cache = {'source':{}, 'target': {}, 'synsets_source': {}, 'synsets_target': {}}
+    else:
+        cache = None
+
+    evaluation = None
+    if args.evalfile:
+        with open(args.evalfile,'rb') as f:
+            data = json.load(f)
+        sourceentities = data['sourceentities']
+        targetentities = data['targetentities']
+
+        print("Evaluating...",file=sys.stderr)
+        evaluation = evaluate(sourceentities, targetentities, sourcelines, targetlines, args.recall, args.targetlang, args.apikey, args.nodup, None if cache is None else cache['synsets_source'], args.debug)
+    else:
+        print("Extracting source entities...",file=sys.stderr)
+        sourceentities = [ entity for  entity in findentities(sourcelines, args.sourcelang, args, None if cache is None else cache['source']) if entity['isEntity'] and 'babelSynsetID' in entity ] #with sanity check
+
+        if args.target:
+            print("Extracting target entities...",file=sys.stderr)
+            targetentities = [ entity for  entity in findentities(targetlines, args.targetlang, args, None if cache is None else cache['target']) if entity['isEntity'] and 'babelSynsetID' in entity ] #with sanity check
 
             print("Evaluating...",file=sys.stderr)
-            evaluation = evaluate(sourceentities, targetentities, sourcelines, targetlines, args.recall, args.targetlang, args.apikey, args.nodup, None if cache is None else cache['synsets_source'], args.debug)
+            evaluation = evaluate(sourceentities, targetentities, sourcelines, targetlines, args.recall, args.targetlang, args.apikey, args.nodup, None if cache is None else cache['synsets_target'], args.debug)
         else:
-            print("Extracting source entities...",file=sys.stderr)
-            sourceentities = [ entity for  entity in findentities(sourcelines, args.sourcelang, args, None if cache is None else cache['source']) if entity['isEntity'] and 'babelSynsetID' in entity ] #with sanity check
+            print(json.dumps({'entities':sourceentities}, indent=4,ensure_ascii=False)) #MAYBE TODO: add coverage?
 
-            if args.target:
-                print("Extracting target entities...",file=sys.stderr)
-                targetentities = [ entity for  entity in findentities(targetlines, args.targetlang, args, None if cache is None else cache['target']) if entity['isEntity'] and 'babelSynsetID' in entity ] #with sanity check
+    if evaluation is not None:
+        print(json.dumps({'sourceentities':sourceentities, 'targetentities': targetentities, 'evaluation': evaluation}, indent=4,ensure_ascii=False))
+        #output summary to stderr (info is all in JSON stdout output as well)
+        print("PRECISION(macro)=" + str(round(evaluation['precision'],3)), "RECALL(macro)=" + str(round(evaluation['recall'],3)), file=sys.stderr)
+        print("PRECISION(micro)=" + str(round(evaluation['microprecision'], 3)), "RECALL(micro)=" + str(round(evaluation['microrecall'],3)), file=sys.stderr)
+        print("SOURCECOVERAGE=" + str(round(evaluation['sourcecoverage'],3)), "TARGETCOVERAGE=" + str(round(evaluation['targetcoverage'],3)), file=sys.stderr)
+        print("SOURCEENTITIES=" + str(len(sourceentities)), "TARGETENTITIES=" + str(len(targetentities)))
+        print("MATCHES=" + str(evaluation['matches']), file=sys.stderr)
+        print("TRANSLATABLEENTITIES=" + str(evaluation['translatableentities']), file=sys.stderr)
 
-                print("Evaluating...",file=sys.stderr)
-                evaluation = evaluate(sourceentities, targetentities, sourcelines, targetlines, args.recall, args.targetlang, args.apikey, args.nodup, None if cache is None else cache['synsets_target'], args.debug)
-            else:
-                print(json.dumps({'entities':sourceentities}, indent=4,ensure_ascii=False)) #MAYBE TODO: add coverage?
-
-        if evaluation is not None:
-            print(json.dumps({'sourceentities':sourceentities, 'targetentities': targetentities, 'evaluation': evaluation}, indent=4,ensure_ascii=False))
-            #output summary to stderr (info is all in JSON stdout output as well)
-            print("PRECISION(macro)=" + str(round(evaluation['precision'],3)), "RECALL(macro)=" + str(round(evaluation['recall'],3)), file=sys.stderr)
-            print("PRECISION(micro)=" + str(round(evaluation['microprecision'], 3)), "RECALL(micro)=" + str(round(evaluation['microrecall'],3)), file=sys.stderr)
-            print("SOURCECOVERAGE=" + str(round(evaluation['sourcecoverage'],3)), "TARGETCOVERAGE=" + str(round(evaluation['targetcoverage'],3)), file=sys.stderr)
-            print("SOURCEENTITIES=" + str(len(sourceentities)), "TARGETENTITIES=" + str(len(targetentities)))
-            print("MATCHES=" + str(evaluation['matches']), file=sys.stderr)
-            print("TRANSLATABLEENTITIES=" + str(evaluation['translatableentities']), file=sys.stderr)
-
-        if cache is not None:
-            with open(args.cache,'wb') as f:
-                pickle.dump(cache,f)
+    if cache is not None:
+        with open(args.cache,'wb') as f:
+            pickle.dump(cache,f)
 
 
 if __name__ == '__main__':
     main()
+    sys.exit(0)

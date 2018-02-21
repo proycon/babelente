@@ -61,6 +61,7 @@ clamdata = clam.common.data.getclamdata(datafile)
 # clamdata.system_id , clamdata.project, clamdata.user, clamdata.status , clamdata.parameters, clamdata.inputformats, clamdata.outputformats , clamdata.input , clamdata.output
 
 clam.common.status.write(statusfile, "Starting...")
+print("Starting...", file=sys.stderr)
 
 if 'BABELNET_API_KEY' in os.environ:
     BABELNET_API_KEY = os.environ['BABELNET_API_KEY']
@@ -80,27 +81,27 @@ evalsource = evaltarget = None
 
 
 options = "-k " + BABELNET_API_KEY + " --recall -o " + shellsafe(outputdir,'"') + " --cache " + shellsafe(outputdir + "/cache",'"')
-if 'overlap' in clamdata and clamdata['overlap'] is not None:
+if 'overlap' in clamdata and clamdata['overlap']:
     options += " --overlap " + str(clamdata['overlap'])
-if 'anntype' in clamdata and clamdata['anntype'] is not None:
+if 'anntype' in clamdata and clamdata['anntype']:
     options += " --anntype " + str(clamdata['anntype'])
-if 'annres' in clamdata and clamdata['annres'] is not None:
+if 'annres' in clamdata and clamdata['annres'] and clamdata['annres'] != "ALL":
     options += " --annres " + str(clamdata['annres'])
 if 'th' in clamdata and clamdata['th']:
     options += " --th " + str(clamdata['th'])
-if 'cands' in clamdata and clamdata['cands'] is not None:
+if 'cands' in clamdata and clamdata['cands']:
     options += " --cands " + str(clamdata['cands'])
-if 'match' in clamdata and clamdata['match'] is not None:
+if 'match' in clamdata and clamdata['match']:
     options += " --match " + str(clamdata['match'])
-if 'mcs' in clamdata and clamdata['mcs'] is not None:
+if 'mcs' in clamdata and clamdata['mcs']:
     options += " --mcs " + str(clamdata['mcs'])
-if 'postag' in clamdata and clamdata['postag'] is not None:
+if 'postag' in clamdata and clamdata['postag']:
     options += " --postag " + str(clamdata['postag'])
-if 'extaida' in clamdata and clamdata['extaida'] is not None:
+if 'extaida' in clamdata and clamdata['extaida']:
     options += " --extaida"
-if 'dens' in clamdata and clamdata['dens'] is not None:
+if 'dens' in clamdata and clamdata['dens']:
     options += " --dens"
-if 'nodup' in clamdata and clamdata['nodup'] is not None:
+if 'nodup' in clamdata and clamdata['nodup']:
     options += " --nodup"
 
 for inputfile in clamdata.input:
@@ -108,13 +109,21 @@ for inputfile in clamdata.input:
     inputfilepath = str(inputfile)
     encoding = inputfile.metadata['encoding'] #Example showing how to obtain metadata parameters
     if inputtemplate == "inputtext":
-        clam.common.status.write(statusfile, "Processing text document " + os.path.basename(inputfilepath)) # status update
-        outputjson = os.path.join(outputdir, os.path.basename(inputfilepath[-4]) + '.json') #remove .txt extension, add .json
-        os.system("babelente " + options + " -s " + shellsafe(clamdata['lang'],'"') + " -S " + shellsafe(inputfilepath,'"') + " > " + shellsafe(outputjson,'"')) == 0 or sys.exit(2)
+        msg = "Processing text document " + os.path.basename(inputfilepath)
+        clam.common.status.write(statusfile, msg) # status update
+        print(msg, file=sys.stderr)
+        outputjson = os.path.join(outputdir, os.path.basename(inputfilepath[:-4]) + '.json') #remove .txt extension, add .json
+        cmd = "babelente " + options + " -s " + shellsafe(clamdata['lang'],'"') + " -S " + shellsafe(inputfilepath,'"') + " > " + shellsafe(outputjson,'"')
+        print(cmd.replace(BABELNET_API_KEY,"###REDACTED###"), file=sys.stderr)
+        os.system(cmd) == 0 or sys.exit(2)
     elif inputtemplate == "inputfolia":
-        clam.common.status.write(statusfile, "Processing FoLiA document " + os.path.basename(inputfilepath)) # status update
-        outputjson = os.path.join(outputdir, os.path.basename(inputfilepath[-10]) + '.json') #remove .folia.xml extension, add .json
-        os.system("babelente " + options + " -s " + shellsafe(clamdata['lang'],'"') + shellsafe(inputfilepath,'"') + " > " + shellsafe(outputjson,'"')) == 0 or sys.exit(2)
+        msg = "Processing FoLiA document " + os.path.basename(inputfilepath) # status update
+        clam.common.status.write(statusfile, msg) # status update
+        print(msg, file=sys.stderr)
+        outputjson = os.path.join(outputdir, os.path.basename(inputfilepath[:-10]) + '.json') #remove .folia.xml extension, add .json
+        cmd = "babelente " + options + " -s " + shellsafe(clamdata['lang'],'"') + " " + shellsafe(inputfilepath,'"') + " > " + shellsafe(outputjson,'"')
+        print(cmd.replace(BABELNET_API_KEY,"###REDACTED###"), file=sys.stderr)
+        os.system(cmd) == 0 or sys.exit(2)
     elif inputtemplate == "evalsource":
         evalsource = inputfilepath
     elif inputtemplate == "evaltarget":
@@ -129,5 +138,6 @@ if evalsource and evaltarget:
 
 
 clam.common.status.write(statusfile, "Done",100) # status update
+print("Done",file=sys.stderr)
 
 sys.exit(0) #non-zero exit codes indicate an error and will be picked up by CLAM as such!
