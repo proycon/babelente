@@ -86,9 +86,9 @@ if 'VIRTUAL_ENV' in os.environ:
         REALM = "WEBSERVICES-LST"
         DIGESTOPAQUE = open(os.environ['CLAM_DIGESTOPAQUEFILE']).read().strip()
         SECRET_KEY = open(os.environ['CLAM_SECRETKEYFILE']).read().strip()
-        BABELNET_API_KEY = open(os.environ['CLAM_BABELNETAPIKEYFILE']).read().strip()
+        os.environ['BABELNET_API_KEY'] = open(os.environ['CLAM_BABELNETAPIKEYFILE']).read().strip()
         ADMINS = ['proycon','antalb','wstoop']
-        MAXLOADAVG = 20.0
+        MAXLOADAVG = 25.0
 else:
     raise Exception("I don't know where I'm running from! Got " + host)
 

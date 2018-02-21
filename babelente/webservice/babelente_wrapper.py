@@ -62,7 +62,7 @@ clamdata = clam.common.data.getclamdata(datafile)
 
 clam.common.status.write(statusfile, "Starting...")
 
-if 'BABELNETAPIKEY' in os.environ:
+if 'BABELNET_API_KEY' in os.environ:
     BABELNET_API_KEY = os.environ['BABELNET_API_KEY']
 else:
     print("No BabelNet API key found in environment variable BABELNET_API_KEY!",file=sys.stderr)
@@ -86,7 +86,7 @@ if 'anntype' in clamdata and clamdata['anntype'] is not None:
     options += " --anntype " + str(clamdata['anntype'])
 if 'annres' in clamdata and clamdata['annres'] is not None:
     options += " --annres " + str(clamdata['annres'])
-if 'th' in clamdata and clamdata['th'] is not None:
+if 'th' in clamdata and clamdata['th']:
     options += " --th " + str(clamdata['th'])
 if 'cands' in clamdata and clamdata['cands'] is not None:
     options += " --cands " + str(clamdata['cands'])
