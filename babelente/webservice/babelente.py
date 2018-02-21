@@ -159,13 +159,13 @@ STYLE = 'classic'
 
 PROFILES = [
     Profile(
-        InputTemplate('inputtext', PlainTextFormat,"Input text to perform entity recognition/linkin on",
+        InputTemplate('inputtext', PlainTextFormat,"Input text to perform entity recognition/linking on",
             StaticParameter(id='encoding',name='Encoding',description='The character encoding of the file', value='utf-8'), #note that encoding is required if you work with PlainTextFormat
             extension=".txt",
             unique=False,
         ),
         OutputTemplate('outputjson',JSONFormat,'Output JSON with extracted entities',
-            replaceextension='.txt',
+            removeextensions=['.txt'],
             extension='.json', #set an extension or set a filename:
             unique=False
         ),
@@ -176,12 +176,12 @@ PROFILES = [
             unique=False,
         ),
         OutputTemplate('outputjson',JSONFormat,'Output JSON with extracted entities',
-            replaceextension='.txt',
+            removeextensions=['.txt'],
             extension='.json', #set an extension or set a filename:
             unique=False
         ),
         OutputTemplate('outputfolia',FoLiAXMLFormat,'Output document with entities and entity links (FoLiA)',
-            replaceextension='.folia.xml',
+            removeextensions=['.folia.xml'],
             extension='.babelente.folia.xml', #set an extension or set a filename:
             unique=False
         ),
@@ -241,7 +241,6 @@ COMMAND = WEBSERVICEDIR + "/babelente_wrapper.py $DATAFILE $STATUSFILE $OUTPUTDI
 PARAMETERS =  [
     ('General', [
         ChoiceParameter(id='lang',name="Language",description="The language your input documents (or translation output) are in", choices=[('AR','Arabic'), ('BG','Bulgarian'),('ZH','Chinese'),('CS', 'Czech'),('HR','Croatian'),('NL','Dutch'),('EN','English'),('EO','Esperanto'),('FI','Finnish'),('FR','French'),('DE','German'),('EL','Greek'),('HI','Hindi'), ('IT','Italian'),('JA','Japanese'),('RU','Russian'), ('FA','Persian'),('PT','Portuguese'), ('SR','Serbian'), ('ES','Spanish'),('SW','Swahili'), ('SV','Swedish'),('TR','Turkish')],default='EN',required=True), #not exhaustive yet
-        #StringParameter(id='author',name='Author',description='Sign output metadata with the specified author name',maxlength=255),
     ] ),
     ('BabelEnte Parameters', [
         ChoiceParameter(id='overlap',name="Overlap strategy", description="Resolve overlapping entities?", choices=[('allow','Allow overlap'),('longest','Prefer the longest'), ('score','Prefer the one with the highest score'),('globalscore', 'Prefer the one with the highest global score'), ('coherencescore','Prefer the one with the highest coherence score')], default='allow')
@@ -252,13 +251,13 @@ PARAMETERS =  [
         FloatParameter(id='th',name="Cutting Threshold",description="", required=False),
         ChoiceParameter(id='cands', name="Candidate List", description="Returns all candidates or only the top ranked ones? (The next two parameters can only be used with the latter)",choices=[("ALL","All"),("TOP","Top")], default='ALL'),
         ChoiceParameter(id='match',name="Extraction strategy",description="", choices=[('EXACT_MATCHING','Exact matching only'),('PARTIAL_MATCHING','Both exact and partial matching')], default='PARTIAL_MATCHING', required=False),
-        ChoiceParameter(id='mcs',name="Most Common Sense Backof Strategy",description="", choices=[('ON','On'),('ON_WITH_STOPWORDS','On (with stopwords)', 'Both exact and partial matching')], default='ON', required=False),
-        BoolParameter(id='dens',name="Densest subgraph",description="Enable the densest subgraph heuristic during the disambiguation pipeline.", required=False),
+        ChoiceParameter(id='mcs',name="Most Common Sense Backof Strategy",description="", choices=[('ON','On'),('ON_WITH_STOPWORDS','On (with stopwords)'), ('OFF', 'Off')], default='ON', required=False),
+        BooleanParameter(id='dens',name="Densest subgraph",description="Enable the densest subgraph heuristic during the disambiguation pipeline.", required=False),
         ChoiceParameter(id='postag', name="Tokenisation and PoS tagging", description="Use this parameter to change the tokenization and pos-tagging pipeline for your input text.", choices=[ ('STANDARD','Standard'), ('NOMINALIZE_ADJECTIVES', 'Nominalize adjectives'), ('INPUT_FRAGMENTS_AS_NOUNS', 'Input fragments as nouns'), ('CHAR_BASED_TOKENIZATION_ALL_NOUN','Character based tokenisation, all nouns')], default='STANDARD',required=False),
-        BoolParameter(id='extaida',name="aida_means",description="Extend the candidates sets with the aida_means relations from YAGO.", required=False),
+        BooleanParameter(id='extaida',name="aida_means",description="Extend the candidates sets with the aida_means relations from YAGO.", required=False),
     ]),
     ('Implicit Evaluation Parameters (TraMOOC)', [
-        BoolParameter(id='nodup',name="No duplicates",description="Filter out duplicates in evaluation", required=False),
+        BooleanParameter(id='nodup',name="No duplicates",description="Filter out duplicates in evaluation", required=False),
     ]),
 ]
 
