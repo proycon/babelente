@@ -172,11 +172,11 @@ PROFILES = [
     ),
     Profile(
         InputTemplate('inputfolia', FoLiAXMLFormat,"Input document (FoLiA) to perform entity recognition/linking on",
-            extension=".txt",
+            extension=".folia.xml",
             unique=False,
         ),
         OutputTemplate('outputjson',JSONFormat,'Output JSON with extracted entities',
-            removeextensions=['.txt'],
+            removeextensions=['.folia.xml'],
             extension='.json', #set an extension or set a filename:
             unique=False
         ),
