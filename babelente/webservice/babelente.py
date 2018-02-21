@@ -89,8 +89,6 @@ if 'VIRTUAL_ENV' in os.environ:
         BABELNET_API_KEY = open(os.environ['CLAM_BABELNETAPIKEYFILE']).read().strip()
         ADMINS = ['proycon','antalb','wstoop']
         MAXLOADAVG = 20.0
-    else:
-        BABELNET_API_KEY = "unset" #Set this to a valid BabelNet key!
 else:
     raise Exception("I don't know where I'm running from! Got " + host)
 
@@ -230,7 +228,7 @@ PROFILES = [
 #                        (set to "anonymous" if there is none)
 #     $PARAMETERS      - List of chosen parameters, using the specified flags
 #
-COMMAND = WEBSERVICEDIR + "/babelente_wrapper.py $DATAFILE $STATUSFILE $OUTPUTDIRECTORY " + BABELNET_API_KEY
+COMMAND = WEBSERVICEDIR + "/babelente_wrapper.py $DATAFILE $STATUSFILE $OUTPUTDIRECTORY"
 
 #Or if you only use the action paradigm, set COMMAND = None
 

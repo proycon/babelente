@@ -48,7 +48,6 @@ shellsafe = clam.common.data.shellsafe
 datafile = sys.argv[1]
 statusfile = sys.argv[2]
 outputdir = sys.argv[3]
-BABELNET_API_KEY = sys.argv[4]
 
 #If you make use of CUSTOM_FORMATS, you need to import your service configuration file here and set clam.common.data.CUSTOM_FORMATS
 #Moreover, you can import any other settings from your service configuration file as well:
@@ -62,6 +61,13 @@ clamdata = clam.common.data.getclamdata(datafile)
 # clamdata.system_id , clamdata.project, clamdata.user, clamdata.status , clamdata.parameters, clamdata.inputformats, clamdata.outputformats , clamdata.input , clamdata.output
 
 clam.common.status.write(statusfile, "Starting...")
+
+if 'BABELNETAPIKEY' in os.environ:
+    BABELNET_API_KEY = os.environ['BABELNET_API_KEY']
+else:
+    print("No BabelNet API key found in environment variable BABELNET_API_KEY!",file=sys.stderr)
+    sys.exit(2)
+
 
 #=========================================================================================================================
 
