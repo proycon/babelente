@@ -1,0 +1,4 @@
+port: 8806
+root: "{{VIRTUAL_ENV}}/babelente.clam"
+bindir: "{{VIRTUAL_ENV}}/bin"
+flaturl: "https://flat.science.ru.nl"

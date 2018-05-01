@@ -1,0 +1,5 @@
+include README.rst
+include babelente/*.py
+include babelente/webservice/*.py
+include babelente/webservice/*.wsgi
+include babelente/webservice/*.yml

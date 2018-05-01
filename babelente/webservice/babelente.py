@@ -30,7 +30,7 @@ import sys
 import os
 from base64 import b64decode as D
 
-REQUIRE_VERSION = 2.1
+REQUIRE_VERSION = 2.3
 
 CLAMDIR = clam.__path__[0] #directory where CLAM is installed, detected automatically
 WEBSERVICEDIR = os.path.dirname(os.path.abspath(__file__)) #directory where this webservice is installed, detected automatically
@@ -50,108 +50,10 @@ SYSTEM_DESCRIPTION = "This is an entity extractor, translator and evaluator that
 
 CUSTOMHTML_INDEX = "You can read more about BabelEnte and obtain its source code to run it locally <a href=\"https://github.com/proycon/babelente\">here</a>. Note that the number of requests this webservice can make to the BabelFy/BabelNet backend is limited!"
 
-# ======== LOCATION ===========
-
-#Add a section for your host:
-
-# ================ Server specific configuration for CLAM ===============
-host = os.uname()[1]
-if 'VIRTUAL_ENV' in os.environ:
-    # Virtual Environment (LaMachine)
-    ROOT = os.environ['VIRTUAL_ENV'] + "/babelente.clam/"
-    PORT = 8806
-
-    if host == 'mlp01': #configuration for server in Nijmegen
-        HOST = "webservices-lst.science.ru.nl"
-        URLPREFIX = 'babelente'
-
-        if not 'CLAMTEST' in os.environ:
-            ROOT = "/var/www/webservices-lst/live/writable/babelente/"
-            if 'CLAMSSL' in os.environ:
-                PORT = 443
-            else:
-                PORT = 80
-        else:
-            ROOT = "/var/www/webservices-lst/test/writable/babelente/"
-            PORT = 81
-
-        USERS_MYSQL = {
-            'host': 'mysql-clamopener.science.ru.nl',
-            'user': 'clamopener',
-            'password': D(open(os.environ['CLAMOPENER_KEYFILE']).read().strip()),
-            'database': 'clamopener',
-            'table': 'clamusers_clamusers'
-        }
-        DEBUG = False
-        REALM = "WEBSERVICES-LST"
-        DIGESTOPAQUE = open(os.environ['CLAM_DIGESTOPAQUEFILE']).read().strip()
-        SECRET_KEY = open(os.environ['CLAM_SECRETKEYFILE']).read().strip()
-        os.environ['BABELNET_API_KEY'] = open(os.environ['CLAM_BABELNETAPIKEYFILE']).read().strip()
-        ADMINS = ['proycon','antalb','wstoop']
-        MAXLOADAVG = 25.0
-else:
-    raise Exception("I don't know where I'm running from! Got " + host)
-
-
-# ======== AUTHENTICATION & SECURITY ===========
-
-#Users and passwords
-
-#set security realm, a required component for hashing passwords (will default to SYSTEM_ID if not set)
-#REALM = SYSTEM_ID
-
 USERS = None #no user authentication/security (this is not recommended for production environments!)
 
-ADMINS = None #List of usernames that are administrator and can access the administrative web-interface (on URL /admin/)
-
-#If you want to enable user-based security, you can define a dictionary
-#of users and (hashed) passwords here. The actual authentication will proceed
-#as HTTP Digest Authentication. Although being a convenient shortcut,
-#using pwhash and plaintext password in this code is not secure!!
-
-#USERS = { user1': '4f8dh8337e2a5a83734b','user2': pwhash('username', REALM, 'secret') }
-
-#Amount of free memory required prior to starting a new process (in MB!), Free Memory + Cached (without swap!). Set to 0 to disable this check (not recommended)
-REQUIREMEMORY = 100
-
-
-
-#The amount of diskspace a user may use (in MB), this is a soft quota which can be exceeded, but creation of new projects is blocked until usage drops below the quota again
-#USERQUOTA = 100
-
-#The secret key is used internally for cryptographically signing session data, in production environments, you'll want to set this to a persistent value. If not set it will be randomly generated.
-#SECRET_KEY = 'mysecret'
-
-#Allow Asynchronous HTTP requests from **web browsers** in following domains (sets Access-Control-Allow-Origin HTTP headers), by default this is unrestricted
-#ALLOW_ORIGIN = "*"
-
-# ======== WEB-APPLICATION STYLING =============
-
-#Choose a style (has to be defined as a CSS file in clam/style/ ). You can copy, rename and adapt it to make your own style
-STYLE = 'classic'
-
-# ======== ENABLED FORMATS ===========
-
-#In CUSTOM_FORMATS you can specify a list of Python classes corresponding to extra formats.
-#You can define the classes first, and then put them in CUSTOM_FORMATS, as shown in this example:
-
-#class MyXMLFormat(CLAMMetaData):
-#    attributes = {}
-#    name = "My XML format"
-#    mimetype = 'text/xml'
-
-# CUSTOM_FORMATS = [ MyXMLFormat ]
-
-# ======= INTERFACE OPTIONS ===========
-
-#Here you can specify additional interface options (space separated list), see the documentation for all allowed options
-#INTERFACEOPTIONS = "inputfromweb" #allow CLAM to download its input from a user-specified url
-
-# ======== PREINSTALLED DATA ===========
-
-#INPUTSOURCES = [
-#    InputSource(id='sampledocs',label='Sample texts',path=ROOT+'/inputsources/sampledata',defaultmetadata=PlainTextFormat(None, encoding='utf-8') ),
-#]
+#Load externa configuration file
+loadconfig(__name__)
 
 # ======== PROFILE DEFINITIONS ===========
 
