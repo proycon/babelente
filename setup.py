@@ -30,7 +30,7 @@ setup(
     ],
     zip_safe=False,
     include_package_data=True,
-    package_data = { 'babelente': 'babelente.config.yml' },
+    package_data = { 'babelente': ['babelente.config.yml'] },
     install_requires=[ 'babelpy >= 1.0', 'numpy', 'pynlpl >= 1.2'],
-    entry_points = {    'console_scripts': [ 'babelente = babelente.babelente:main' ] }
+    entry_points = {   'console_scripts': [ 'babelente = babelente.babelente:main' ] }
 )
