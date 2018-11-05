@@ -208,7 +208,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.979899"
-     inkscape:cx="150.75541"
+     inkscape:cx="1.7579106"
      inkscape:cy="789.86874"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
@@ -226,7 +226,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -366,17 +366,17 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46666622px;line-height:7.67291737px;font-family:'Ubuntu Condensed';-inkscape-font-specification:'Ubuntu Condensed, ';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="94.073669"
-       y="119.8877"
+       x="111.44619"
+       y="119.35316"
        id="text859-3"><tspan
          sodipodi:role="line"
-         x="94.073669"
-         y="119.8877"
+         x="111.44619"
+         y="119.35316"
          style="line-height:7.67291737px;text-align:center;text-anchor:middle;stroke-width:0.26458332px"
          id="tspan861-0">Evaluation</tspan><tspan
          sodipodi:role="line"
-         x="94.073669"
-         y="127.56062"
+         x="111.44619"
+         y="127.02608"
          style="line-height:7.67291737px;text-align:center;text-anchor:middle;stroke-width:0.26458332px"
          id="tspan955" /></text>
     <rect
@@ -539,67 +539,29 @@
        id="rect815-3-2-6-5-7-4"
        width="20.188601"
        height="12.247282"
-       x="138.37393"
-       y="138.46591"
+       x="136.36942"
+       y="140.20317"
        ry="17.717188"
        rx="2.7755579e-17" />
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46666622px;line-height:3.96875px;font-family:'Ubuntu Condensed';-inkscape-font-specification:'Ubuntu Condensed, ';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="148.35854"
-       y="143.14691"
+       x="146.35402"
+       y="144.48326"
        id="text834-9-1-5-6-4"><tspan
          sodipodi:role="line"
-         x="148.35854"
-         y="143.14691"
+         x="146.35402"
+         y="144.48326"
          style="font-size:4.23333311px;line-height:3.96875px;text-align:center;text-anchor:middle;stroke-width:0.26458332px"
          id="tspan5797-6-0">Recall</tspan><tspan
          sodipodi:role="line"
-         x="148.35854"
-         y="148.41737"
+         x="146.35402"
+         y="149.75372"
          style="font-size:4.23333311px;line-height:3.96875px;text-align:center;text-anchor:middle;stroke-width:0.26458332px"
          id="tspan13046">Score</tspan></text>
-    <rect
-       style="color:#000000;display:inline;overflow:visible;visibility:visible;opacity:1;vector-effect:none;fill:#e9ddaf;fill-opacity:1;stroke:#000000;stroke-width:0.16075046;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;enable-background:accumulate"
-       id="rect815-9-7"
-       width="36.205589"
-       height="12.124186"
-       x="117.00195"
-       y="111.3996"
-       rx="7.4457202"
-       ry="17.717188" />
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.56333971px;line-height:5.04177761px;font-family:'Ubuntu Condensed';-inkscape-font-specification:'Ubuntu Condensed, ';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.17385437px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="136.20921"
-       y="114.84008"
-       id="text859-3-8"
-       transform="scale(0.98569703,1.0145105)"><tspan
-         sodipodi:role="line"
-         x="136.20921"
-         y="114.84008"
-         style="line-height:5.04177761px;text-align:center;text-anchor:middle;stroke-width:0.17385437px"
-         id="tspan13076">Translate</tspan><tspan
-         sodipodi:role="line"
-         x="136.20921"
-         y="119.88186"
-         style="line-height:5.04177761px;text-align:center;text-anchor:middle;stroke-width:0.17385437px"
-         id="tspan955-8" /></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.56333971px;line-height:1.56468928px;font-family:'Ubuntu Condensed';-inkscape-font-specification:'Ubuntu Condensed, ';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.17385437px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="122.73288"
-       y="118.77659"
-       id="text834-3-2-8"
-       transform="scale(0.98569702,1.0145105)"><tspan
-         sodipodi:role="line"
-         id="tspan832-56-8-4"
-         x="122.73288"
-         y="118.77659"
-         style="font-size:3.7088933px;line-height:1.39083493px;stroke-width:0.17385437px">(BabelNet webservice)</tspan></text>
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#Arrow2Lstart-0-3)"
-       d="m 147.66174,136.32531 v -12.37871 0"
+       d="m 146.19176,138.998 v -12.37871 0"
        id="path1042-6-4"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccc" />
