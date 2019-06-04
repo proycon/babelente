@@ -15,7 +15,8 @@ import pickle
 import random
 from collections import Counter, defaultdict
 from babelpy.babelfy import BabelfyClient
-from pynlpl.formats import folia
+from babelente import VERSION
+from folia import main as folia
 
 
 def gettextchunks(lines, maxchunksize=4096):
@@ -363,9 +364,11 @@ def evaluate(sourceentities, targetentities, sourcelines, targetlines, do_recall
     return evaluation
 
 def processfolia(doc, args, cache):
-    doc.declare(folia.Entity, set=args.foliaset, annotator='babelente',annotatortype=folia.AnnotatorType.AUTO)
-    doc.declare(folia.Alignment, set=args.foliaalignset, annotator='babelente',annotatortype=folia.AnnotatorType.AUTO)
-    doc.declare(folia.Metric, set=args.foliametricset, annotator='babelente',annotatortype=folia.AnnotatorType.AUTO)
+    doc.processor = folia.Processor.create(name="babelente", version=VERSION)
+    doc.provenance.append(doc.processor)
+    doc.declare(folia.Entity, set=args.foliaset, processor=doc.processor)
+    doc.declare(folia.Relation, set=args.foliarelationset, processor=doc.processor)
+    doc.declare(folia.Metric, set=args.foliametricset, processor=doc.processor)
 
     processed = set()
     data = []
@@ -395,12 +398,12 @@ def processfolia(doc, args, cache):
         foliaentity.add(folia.Description, value=entity['text'])
         if 'DBpediaURL' in entity and entity['DBpediaURL']:
             url = entity['DBpediaURL'].replace('/resource/','/data/') + '.rdf'
-            alignment = foliaentity.add(folia.Alignment, cls="dbpedia", href=url, set=args.foliaalignset, format="application/rdf+xml")
-            alignment.add(folia.AlignReference, id=entity['DBpediaURL'])
+            relation = foliaentity.add(folia.Relation, cls="dbpedia", href=url, set=args.foliarelationset, format="application/rdf+xml")
+            relation.add(folia.LinkReference, id=entity['DBpediaURL'])
         if 'BabelNetURL' in entity and entity['BabelNetURL']:
             url = entity['BabelNetURL'].replace('/rdf/','/rdf/data/')
-            alignment = foliaentity.add(folia.Alignment, cls="babelnet", href=entity['BabelNetURL'], set=args.foliaalignset, format="application/rdf+xml")
-            alignment.add(folia.AlignReference, id=entity['BabelNetURL'])
+            relation = foliaentity.add(folia.Relation, cls="babelnet", href=entity['BabelNetURL'], set=args.foliarelationset, format="application/rdf+xml")
+            relation.add(folia.LinkReference, id=entity['BabelNetURL'])
 
 def stripmultispace(line):
     line = line.strip()
@@ -433,7 +436,7 @@ def main():
     parser.add_argument('inputfiles', nargs='*', help='FoLiA input documents, use with -s to choose source language. For tramooc style usage: use -S/-T or --evalfile instead of this.')
     #hidden power options:
     parser.add_argument('--foliaset',type=str, help=argparse.SUPPRESS, action='store',default="https://raw.githubusercontent.com/proycon/babelente/master/setdefinitions/babelente.babelnet.ttl", required=False)
-    parser.add_argument('--foliaalignset',type=str, help=argparse.SUPPRESS, action='store',default="https://raw.githubusercontent.com/proycon/babelente/master/setdefinitions/babelente.alignments.ttl", required=False)
+    parser.add_argument('--foliarelationset',type=str, help=argparse.SUPPRESS, action='store',default="https://raw.githubusercontent.com/proycon/babelente/master/setdefinitions/babelente.relations.ttl", required=False)
     parser.add_argument('--foliametricset',type=str, help=argparse.SUPPRESS, action='store',default="https://raw.githubusercontent.com/proycon/babelente/master/setdefinitions/babelente.metrics.ttl", required=False)
     args = parser.parse_args()
 
